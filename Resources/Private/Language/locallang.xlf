@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-05-09T14:53:01Z" product-name="frab_integration">
+		<header/>
+		<body>
+			<trans-unit id="tx_frabintegration_domain_model_conference">
+				<source>Conference</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_conference.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_conference.start">
+				<source>Start</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_conference.end">
+				<source>End</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_conference.days_count">
+				<source>Days Count</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_conference.timeslot_duration">
+				<source>Timeslot Duration</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_conference.days">
+				<source>Days</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_room">
+				<source>Room</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_room.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_room.events">
+				<source>Events</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_person">
+				<source>Person</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_person.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_person.full_public_name">
+				<source>Full Public Name</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_person.abstract">
+				<source>Abstract</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_person.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_person.links">
+				<source>Links</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_person.events">
+				<source>Events</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_day">
+				<source>Day</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_day.tx_frabintegration_index">
+				<source>Index</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_day.date">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_day.day_start">
+				<source>Day Start</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_day.day_end">
+				<source>Day End</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_day.rooms">
+				<source>Rooms</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event">
+				<source>Event</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event.guid">
+				<source>Guid</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event.date">
+				<source>Date</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event.start">
+				<source>Start</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event.duration">
+				<source>Duration</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event.room">
+				<source>Room</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event.slug">
+				<source>Slug</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event.subtitle">
+				<source>Subtitle</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event.track">
+				<source>Track</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event.language">
+				<source>Language</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event.abstract">
+				<source>Abstract</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event.description">
+				<source>Description</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event.links">
+				<source>Links</source>
+			</trans-unit>
+			<trans-unit id="tx_frabintegration_domain_model_event.persons">
+				<source>Persons</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,58 @@
+
+plugin.tx_frabintegration {
+	view {
+		templateRootPath = {$plugin.tx_frabintegration.view.templateRootPath}
+		partialRootPath = {$plugin.tx_frabintegration.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_frabintegration.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_frabintegration.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+	settings {
+		conferenceParameters{
+			conferenceUri = {$plugin.tx_frabintegration.settings.conferenceParameters.conferenceUri}
+			speakersUri = {$plugin.tx_frabintegration.settings.conferenceParameters.speakersUri}
+			useragent = {$plugin.tx_frabintegration.settings.conferenceParameters.useragent}
+			accept = {$plugin.tx_frabintegration.settings.conferenceParameters.accept}
+			encoding = {$plugin.tx_frabintegration.settings.conferenceParameters.encoding}
+		} 
+	}
+}
+
+plugin.tx_frabintegration._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-frab-integration table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-frab-integration table th {
+		font-weight:bold;
+	}
+
+	.tx-frab-integration table td {
+		vertical-align:top;
+	}
+
+	.typo3-messages .message-error {
+		color:red;
+	}
+
+	.typo3-messages .message-ok {
+		color:green;
+	}
+
+)

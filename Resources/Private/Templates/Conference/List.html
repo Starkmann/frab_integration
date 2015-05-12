@@ -1,0 +1,53 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<h1>Listing for Conference</h1>
+
+<f:flashMessages renderMode="div" />
+
+
+
+	<f:for each="{conferences}" as="conference">
+		<div>
+			<div>Title: {conference.title}</div>
+			<div>Start: {conference.start -> f:format.date()}</div>
+			<div>End: {conference.end -> f:format.date()}</div>
+			<div>How many days: {conference.daysCount}</div>
+			<div>Time Slot Duratiuon: {conference.timeslotDuration-> f:format.date(format:'H:i')}</div>
+		</div>
+		<h1>Days</h1>
+		<f:for each="{conference.days}" as="day">
+			<h2>Day {day.index}</h2>
+			<div>
+				<div>Date: {day.date -> f:format.date()}</div>
+				<div>Start: {day.dayStart -> f:format.date(format:'Y-m-d H:i')}</div>
+				<div>End: {day.dayEnd -> f:format.date(format:'Y-m-d H:i')}</div>
+			</div>
+			<h3>Rooms</h3>
+			<f:for each="{day.rooms}" as="room">
+				<h4>{room.name}</h4>
+				<h5>Events</h5>
+				<ul>
+				<f:for each="{room.events}" as="event">
+					<li><f:link.action action="showEvent" arguments="{eventGuid:event.guid}">{event.title}</f:link.action></li>
+				</f:for>
+				</ul>
+			</f:for>
+		</f:for>
+	</f:for>
+
+
+
+</f:section>

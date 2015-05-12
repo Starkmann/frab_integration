@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-05-09T14:53:01Z" product-name="frab_integration">
+		<header/>
+		<body>
+			<trans-unit id="tx_frabintegration_index.description">
+				<source>index</source>
+			</trans-unit>
+			<trans-unit id="date.description">
+				<source>date</source>
+			</trans-unit>
+			<trans-unit id="day_start.description">
+				<source>dayStart</source>
+			</trans-unit>
+			<trans-unit id="day_end.description">
+				<source>dayEnd</source>
+			</trans-unit>
+			<trans-unit id="rooms.description">
+				<source>rooms</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

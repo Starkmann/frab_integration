@@ -1,0 +1,29 @@
+
+plugin.tx_frabintegration {
+	view {
+		# cat=plugin.tx_frabintegration/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:frab_integration/Resources/Private/Templates/
+		# cat=plugin.tx_frabintegration/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:frab_integration/Resources/Private/Partials/
+		# cat=plugin.tx_frabintegration/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:frab_integration/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_frabintegration//a; type=string; label=Default storage PID
+		storagePid =
+	}
+	settings{
+		conferenceParameters{
+		# cat=plugin.tx_frabintegration/uri; type=string; label= Url to conference json
+		conferenceUri = 
+		# cat=plugin.tx_frabintegration/uri; type=string; label= Url to speakers json
+		speakersUri =
+		# cat=plugin.tx_frabintegration/useragent; type=string; label= User agent
+		useragent = 
+		# cat=plugin.tx_frabintegration/accept; type=string; label=
+		accept =
+		# cat=plugin.tx_frabintegration/encoding; type=string; label=Encoding
+		encoding = utf-8
+		}
+	}
+}

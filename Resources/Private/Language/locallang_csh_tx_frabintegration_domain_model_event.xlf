@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-05-09T14:53:01Z" product-name="frab_integration">
+		<header/>
+		<body>
+			<trans-unit id="guid.description">
+				<source>guid</source>
+			</trans-unit>
+			<trans-unit id="date.description">
+				<source>date</source>
+			</trans-unit>
+			<trans-unit id="start.description">
+				<source>start</source>
+			</trans-unit>
+			<trans-unit id="duration.description">
+				<source>duration</source>
+			</trans-unit>
+			<trans-unit id="room.description">
+				<source>room</source>
+			</trans-unit>
+			<trans-unit id="slug.description">
+				<source>slug</source>
+			</trans-unit>
+			<trans-unit id="title.description">
+				<source>title</source>
+			</trans-unit>
+			<trans-unit id="subtitle.description">
+				<source>subtitle</source>
+			</trans-unit>
+			<trans-unit id="track.description">
+				<source>track</source>
+			</trans-unit>
+			<trans-unit id="type.description">
+				<source>type</source>
+			</trans-unit>
+			<trans-unit id="language.description">
+				<source>language</source>
+			</trans-unit>
+			<trans-unit id="abstract.description">
+				<source>abstract</source>
+			</trans-unit>
+			<trans-unit id="description.description">
+				<source>description</source>
+			</trans-unit>
+			<trans-unit id="links.description">
+				<source>links</source>
+			</trans-unit>
+			<trans-unit id="persons.description">
+				<source>persons</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

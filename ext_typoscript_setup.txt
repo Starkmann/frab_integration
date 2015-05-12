@@ -1,0 +1,14 @@
+
+config.tx_extbase{
+    persistence{
+        classes{
+
+            Eike\FrabIntegration\Domain\Model\Day {
+                mapping {
+                    
+                }
+            }
+            
+    	}
+    }
+}

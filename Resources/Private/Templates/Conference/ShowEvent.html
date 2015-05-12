@@ -1,0 +1,42 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<f:flashMessages renderMode="div" />
+<div>
+
+	<h1>{event.title}</h1>
+	<b>Subtitle</b>
+	<div>{event.subtitle}</div>
+	<b>Abstract</b>	
+	<div>{event.abstract ->f:format.html()}</div>
+	<b>Date</b>
+	<div>{event.date  -> f:format.date(format:'Y-m-d H:i')}</div>
+	<b>Description</b>
+	<div>{event.description ->f:format.html()}</div>	
+	<b>Duration	</b>					
+	<div>{event.duration -> f:format.date(format:'H:i')}</div>
+	<b>Language</b>
+	<div>{event.language}</div>
+	<b>Start</b>
+	<div>{event.start -> f:format.date(format:'H:i')}</div>
+	<b>Track</b>
+	<div>{event.track}</div>
+	<b>Type</b>
+	<div>{event.type}</div>
+	<b>Room</b>
+	<div>{event.room}</div>
+</div>
+
+</f:section>
