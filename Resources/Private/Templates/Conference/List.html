@@ -13,32 +13,32 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
-<h1>Listing for Conference</h1>
+
 
 <f:flashMessages renderMode="div" />
 
 
 
 	<f:for each="{conferences}" as="conference">
-		<div>
-			<div>Title: {conference.title}</div>
-			<div>Start: {conference.start -> f:format.date()}</div>
-			<div>End: {conference.end -> f:format.date()}</div>
-			<div>How many days: {conference.daysCount}</div>
-			<div>Time Slot Duratiuon: {conference.timeslotDuration-> f:format.date(format:'H:i')}</div>
-		</div>
-		<h1>Days</h1>
+
+<div class="news single row"> 
+<div class="span8">
+
+	<h1>Veranstaltungen auf der {conference.title}</h1>
+
+		<!--<h1>Veranstaltungstage</h1>-->
 		<f:for each="{conference.days}" as="day">
-			<h2>Day {day.index}</h2>
-			<div>
-				<div>Date: {day.date -> f:format.date()}</div>
-				<div>Start: {day.dayStart -> f:format.date(format:'Y-m-d H:i')}</div>
-				<div>End: {day.dayEnd -> f:format.date(format:'Y-m-d H:i')}</div>
-			</div>
-			<h3>Rooms</h3>
+			<h2>Tag {day.index} – {day.date -> f:format.date(format:'l, d.m.Y')}</h2>
+			<!--<div>
+				<div>Datum: {day.date -> f:format.date()}</div>
+				<div>Beginn: {day.dayStart -> f:format.date(format:'Y-m-d H:i')}</div>
+				<div>Ende: {day.dayEnd -> f:format.date(format:'Y-m-d H:i')}</div>
+			</div>-->
+			
+			<!--<h3>Räume</h3>-->
 			<f:for each="{day.rooms}" as="room">
-				<h4>{room.name}</h4>
-				<h5>Events</h5>
+				<!--<h4>{room.name}</h4>-->
+				<h5>Veranstaltungen</h5>
 				<ul>
 				<f:for each="{room.events}" as="event">
 					<li><f:link.action action="showEvent" arguments="{eventGuid:event.guid}">{event.title}</f:link.action></li>
@@ -46,8 +46,21 @@ Otherwise your changes will be overwritten the next time you save the extension 
 				</ul>
 			</f:for>
 		</f:for>
-	</f:for>
+		</div><!-- span8 -->
+	
 
 
+<div class="span4">
+    <div id="news-more">
+
+		<div class="infobox fair">
+			<h2>{conference.title}</h2>
+			<p>{conference.start -> f:format.date(format:'l, d.m.Y')} bis {conference.end -> f:format.date(format:'l, d.m.Y')}</p>
+		</div>
+		    
+    </div>
+</div><!-- span4 -->
+</f:for>
+</div>
 
 </f:section>
