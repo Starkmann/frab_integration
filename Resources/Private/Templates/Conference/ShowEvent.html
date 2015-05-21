@@ -14,29 +14,60 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:section name="main">
 <f:flashMessages renderMode="div" />
-<div>
+<div class="news single row"> 
+    <div class="span8">
+        <div class="news_teaser"><h1>{event.title}</h1></div>
+       <!-- <b>Kurzbeschreibung</b>
+        <div>{event.subtitle}</div>-->
+        <b>Beschreibung</b>	
+        <div>{event.abstract ->f:format.html()}</div>
 
-	<h1>{event.title}</h1>
-	<b>Subtitle</b>
-	<div>{event.subtitle}</div>
-	<b>Abstract</b>	
-	<div>{event.abstract ->f:format.html()}</div>
-	<b>Date</b>
-	<div>{event.date  -> f:format.date(format:'Y-m-d H:i')}</div>
-	<b>Description</b>
-	<div>{event.description ->f:format.html()}</div>	
-	<b>Duration	</b>					
-	<div>{event.duration -> f:format.date(format:'H:i')}</div>
-	<b>Language</b>
-	<div>{event.language}</div>
-	<b>Start</b>
-	<div>{event.start -> f:format.date(format:'H:i')}</div>
-	<b>Track</b>
-	<div>{event.track}</div>
-	<b>Type</b>
-	<div>{event.type}</div>
-	<b>Room</b>
-	<div>{event.room}</div>
+        <b>Weitere Informationen</b>
+        <div>{event.description ->f:format.html()}</div>	
+ 
+        <button class="btn" onclick="goBack()">Zurück</button>
+
+        <script>
+            function goBack() {
+            window.history.back();
+            }
+        </script>
+
+    </div><!-- span8 -->
+    
+    <div class="span4">
+        <div id="news-more">
+        
+            <div class="infobox fair">
+                <h2>Themenstrang</h2>
+                <p>{event.track}</p>
+            </div>
+            
+            <div class="infobox dark">
+                <h2>Beginn</h2>
+                <p>{event.date  -> f:format.date(format:'d.m Y')} um {event.start -> f:format.date(format:'H:i')} Uhr</p>
+            </div>
+        
+            <div class="infobox dark">
+                <h2>Länge der Veranstaltung</h2>					
+                <p>{event.duration -> f:format.date(format:'H:i')} h</p>
+            </div>
+            
+            <!--<b>Sprache</b>
+            <div>{event.language}</div>-->
+        
+            <div class="infobox dark">
+                <h2>Veranstaltungstyp</h2>
+                <p>{event.type}</p>
+            </div>
+            
+            <div class="infobox dark">    
+                <h2>Raum</h2>
+                <p>{event.room}</p>
+            </div>
+            
+        </div>
+    </div><!-- span4 -->
 </div>
 
 </f:section>
