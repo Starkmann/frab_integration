@@ -1,7 +1,5 @@
 <?php
 
-namespace Eike\FrabIntegration\Domain\Repository;
-
 /***************************************************************
  *
 *  Copyright notice
@@ -31,7 +29,7 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class Tx_FrabIntegration_Domain_Repository_FrabRepository extends Tx_Extbase_Persistence_Repository {
 	
 	/**
 	 * 
@@ -45,11 +43,11 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		$result = $this->query($uri, $useragent, $accept, $encoding);
 		$result = json_decode($result, TRUE);
 		
-		/* @var $confercences \TYPO3\CMS\Extbase\Persistence\ObjectStorage  */
-		$confercences = $this->objectManager->get('\TYPO3\CMS\Extbase\Persistence\ObjectStorage');
+		/* @var $confercences Tx_Extbase_Persistence_ObjectStorage  */
+		$confercences = $this->objectManager->get('Tx_Extbase_Persistence_ObjectStorage');
 		
-		/* @var $confercence \Eike\FrabIntegration\Domain\Model\Conference  */
-		$confercence = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Conference');
+		/* @var $confercence Tx_FrabIntegration_Domain_Model_Conference  */
+		$confercence = $this->objectManager->get('Tx_FrabIntegration_Domain_Model_Conference');
 		$confercence->setTitle($result['schedule']['conference']['title']);
 		$confercence->setStart(new \DateTime($result['schedule']['conference']['start']));
 		$confercence->setEnd(new \DateTime($result['schedule']['conference']['end']));
@@ -59,8 +57,8 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		if(count($result['schedule']['conference']['days'])>0){
 			//Days
 			foreach ($result['schedule']['conference']['days'] as $resultDay){
-				/* @var $day \Eike\FrabIntegration\Domain\Model\Day  */
-				$day = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Day');
+				/* @var $day Tx_FrabIntegration_Domain_Model_Day  */
+				$day = $this->objectManager->get('Tx_FrabIntegration_Domain_Model_Day');
 				$day->setDate(new \DateTime($resultDay['date']));
 				$day->setDayEnd(new \DateTime($resultDay['day_end']));
 				$day->setDayStart(new \DateTime($resultDay['day_start']));
@@ -68,15 +66,15 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 				//Rooms
 				if(count($resultDay['rooms'])>0){
 					foreach ($resultDay['rooms'] as $key=>$events){
-						/* @var $room \Eike\FrabIntegration\Domain\Model\Room  */
-						$room = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Room');
+						/* @var $room Tx_FrabIntegration_Domain_Model_Room  */
+						$room = $this->objectManager->get('Tx_FrabIntegration_Domain_Model_Room');
 						$room->setName($key);
 						
 						//Events
 						if(count($events)>0){
 							foreach ($events as $resultEvent){
-								/* @var $event \Eike\FrabIntegration\Domain\Model\Event  */
-								$event = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Event');
+								/* @var $event Tx_FrabIntegration_Domain_Model_Event  */
+								$event = $this->objectManager->get('Tx_FrabIntegration_Domain_Model_Event');
 								$event->setTitle($resultEvent['title']);
 								$event->setRoom($room);
 								$event->setGuid($resultEvent['guid']);
@@ -106,8 +104,8 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		if(count($result['schedule']['conference']['days'])>0){
 			//Days
 			foreach ($result['schedule']['conference']['days'] as $resultDay){
-				/* @var $day \Eike\FrabIntegration\Domain\Model\Day  */
-				$day = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Day');
+				/* @var $day Tx_FrabIntegration_Domain_Model_Day  */
+				$day = $this->objectManager->get('Tx_FrabIntegration_Domain_Model_Day');
 				$day->setDate(new \DateTime($resultDay['date']));
 				$day->setDayEnd(new \DateTime($resultDay['day_end']));
 				$day->setDayStart(new \DateTime($resultDay['day_start']));
@@ -115,16 +113,16 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 				//Rooms
 				if(count($resultDay['rooms'])>0){
 					foreach ($resultDay['rooms'] as $key=>$events){
-						/* @var $room \Eike\FrabIntegration\Domain\Model\Room  */
-						$room = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Room');
+						/* @var $room Tx_FrabIntegration_Domain_Model_Room  */
+						$room = $this->objectManager->get('Tx_FrabIntegration_Domain_Model_Room');
 						$room->setName($key);
 	
 						//Events
 						if(count($events)>0){
 							foreach ($events as $resultEvent){
 								if($resultEvent['guid']==$eventGuid){
-									/* @var $event \Eike\FrabIntegration\Domain\Model\Event  */
-									$event = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Event');
+									/* @var $event Tx_FrabIntegration_Domain_Model_Event  */
+									$event = $this->objectManager->get('Tx_FrabIntegration_Domain_Model_Event');
 									$event->setTitle($resultEvent['title']);
 									$event->setRoom($resultEvent['room']);
 									$event->setGuid($resultEvent['guid']);
@@ -170,7 +168,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 				}
 			}
 
-			$data = GeneralUtility::getUrl($uri, 0, $headers, $report);
+			$data = t3lib_div::getUrl($uri, 0, $headers, $report);
 			if (!empty($report['message'])) {
 				$message = sprintf(
 						"Json not fetched",
@@ -187,12 +185,12 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			} else {
 				// Standardize charset name and compare
 				
-				$encoding = $this->charsetConverter->parse_charset($encoding);
+				$encoding = $this->getCharsetConverter()->parse_charset($encoding);
 				$isSameCharset = $this->getCharset() == $encoding;
 			}
 			// If the charset is not the same, convert data
 			if (!$isSameCharset) {
-				$data = $this->charsetConverter->conv($data, $encoding, $this->getCharset());
+				$data = $this->getCharsetConverter()->conv($data, $encoding, $this->getCharset());
 			}
 		}
 	
@@ -207,6 +205,25 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			return $GLOBALS['LANG']->charSet;
 		} else {
 			return 'utf-8';
+		}
+	}
+	
+	/**
+	 * Get an existing instance of the charset conversion class, depending on context.
+	 *
+	 * @throws Exception
+	 * @return t3lib_cs
+	 */
+	public function getCharsetConverter() {
+		if (TYPO3_MODE == 'FE') {
+			return $GLOBALS['TSFE']->csConvObj;
+		} elseif (isset($GLOBALS['LANG'])) {
+			return $GLOBALS['LANG']->csConvObj;
+		} else {
+			throw new Exception(
+					sprintf('No charset converter available in the current context (%s)', TYPO3_MODE),
+					1396448477
+			);
 		}
 	}
 }

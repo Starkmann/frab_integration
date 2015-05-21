@@ -27,7 +27,7 @@ namespace Eike\FrabIntegration\Tests\Unit\Domain\Model;
  ***************************************************************/
 
 /**
- * Test case for class \Eike\FrabIntegration\Domain\Model\Day.
+ * Test case for class Tx_FrabIntegration_Domain_Model_Day.
  *
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
@@ -36,12 +36,12 @@ namespace Eike\FrabIntegration\Tests\Unit\Domain\Model;
  */
 class DayTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
-	 * @var \Eike\FrabIntegration\Domain\Model\Day
+	 * @var Tx_FrabIntegration_Domain_Model_Day
 	 */
 	protected $subject = NULL;
 
 	protected function setUp() {
-		$this->subject = new \Eike\FrabIntegration\Domain\Model\Day();
+		$this->subject = new Tx_FrabIntegration_Domain_Model_Day();
 	}
 
 	protected function tearDown() {
@@ -158,7 +158,7 @@ class DayTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function setRoomsForObjectStorageContainingRoomSetsRooms() {
-		$room = new \Eike\FrabIntegration\Domain\Model\Room();
+		$room = new Tx_FrabIntegration_Domain_Model_Room();
 		$objectStorageHoldingExactlyOneRooms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$objectStorageHoldingExactlyOneRooms->attach($room);
 		$this->subject->setRooms($objectStorageHoldingExactlyOneRooms);
@@ -174,7 +174,7 @@ class DayTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function addRoomToObjectStorageHoldingRooms() {
-		$room = new \Eike\FrabIntegration\Domain\Model\Room();
+		$room = new Tx_FrabIntegration_Domain_Model_Room();
 		$roomsObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
 		$roomsObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($room));
 		$this->inject($this->subject, 'rooms', $roomsObjectStorageMock);
@@ -186,7 +186,7 @@ class DayTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function removeRoomFromObjectStorageHoldingRooms() {
-		$room = new \Eike\FrabIntegration\Domain\Model\Room();
+		$room = new Tx_FrabIntegration_Domain_Model_Room();
 		$roomsObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
 		$roomsObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($room));
 		$this->inject($this->subject, 'rooms', $roomsObjectStorageMock);

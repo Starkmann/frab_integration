@@ -81,7 +81,7 @@ overwriteSettings:
 classBuilder:
 
   Controller:
-    parentClass: \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+    parentClass: Tx_Extbase_MVC_Controller_ActionController
 
   Model:
     AbstractEntity:

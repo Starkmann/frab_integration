@@ -30,7 +30,7 @@ namespace Eike\FrabIntegration\Controller;
 /**
  * PersonController
  */
-class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class PersonController extends Tx_Extbase_MVC_Controller_ActionController {
 
 	/**
 	 * action list
@@ -45,10 +45,10 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 	/**
 	 * action show
 	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Person $person
+	 * @param Tx_FrabIntegration_Domain_Model_Person $person
 	 * @return void
 	 */
-	public function showAction(\Eike\FrabIntegration\Domain\Model\Person $person) {
+	public function showAction(Tx_FrabIntegration_Domain_Model_Person $person) {
 		$this->view->assign('person', $person);
 	}
 

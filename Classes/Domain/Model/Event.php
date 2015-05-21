@@ -1,6 +1,4 @@
 <?php
-namespace Eike\FrabIntegration\Domain\Model;
-
 
 /***************************************************************
  *
@@ -30,7 +28,7 @@ namespace Eike\FrabIntegration\Domain\Model;
 /**
  * Event
  */
-class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
+class Tx_FrabIntegration_Domain_Model_Event extends Tx_Extbase_DomainObject_AbstractValueObject {
 
 	/**
 	 * guid
@@ -133,7 +131,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	/**
 	 * persons
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Person>
+	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_FrabIntegration_Domain_Model_Person>
 	 */
 	protected $persons = NULL;
 
@@ -154,7 +152,7 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	 * @return void
 	 */
 	protected function initStorageObjects() {
-		$this->persons = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->persons = new Tx_Extbase_Persistence_ObjectStorage();
 	}
 
 	/**
@@ -426,27 +424,27 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	/**
 	 * Adds a Person
 	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Person $person
+	 * @param Tx_FrabIntegration_Domain_Model_Person $person
 	 * @return void
 	 */
-	public function addPerson(\Eike\FrabIntegration\Domain\Model\Person $person) {
+	public function addPerson(Tx_FrabIntegration_Domain_Model_Person $person) {
 		$this->persons->attach($person);
 	}
 
 	/**
 	 * Removes a Person
 	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Person $personToRemove The Person to be removed
+	 * @param Tx_FrabIntegration_Domain_Model_Person $personToRemove The Person to be removed
 	 * @return void
 	 */
-	public function removePerson(\Eike\FrabIntegration\Domain\Model\Person $personToRemove) {
+	public function removePerson(Tx_FrabIntegration_Domain_Model_Person $personToRemove) {
 		$this->persons->detach($personToRemove);
 	}
 
 	/**
 	 * Returns the persons
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Person> $persons
+	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_FrabIntegration_Domain_Model_Person> $persons
 	 */
 	public function getPersons() {
 		return $this->persons;
@@ -455,10 +453,10 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	/**
 	 * Sets the persons
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Person> $persons
+	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_FrabIntegration_Domain_Model_Person> $persons
 	 * @return void
 	 */
-	public function setPersons(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $persons) {
+	public function setPersons(Tx_Extbase_Persistence_ObjectStorage $persons) {
 		$this->persons = $persons;
 	}
 

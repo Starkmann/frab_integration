@@ -1,7 +1,4 @@
 <?php
-namespace Eike\FrabIntegration\Controller;
-
-
 /***************************************************************
  *
  *  Copyright notice
@@ -30,17 +27,20 @@ namespace Eike\FrabIntegration\Controller;
 /**
  * ConferenceController
  */
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
-class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+
+class Tx_FrabIntegration_Controller_ConferenceController extends Tx_Extbase_MVC_Controller_ActionController {
 	
 	/**
 	* 
- 	* @var \Eike\FrabIntegration\Domain\Repository\FrabRepository
+ 	* @var Tx_FrabIntegration_Domain_Repository_FrabRepository
  	* @inject
 	*/
 	protected $frabRepository;
 
+	public function injectFrabRepository(Tx_FrabIntegration_Domain_Repository_FrabRepository $frabRepository){
+		$this->frabRepository = $frabRepository;
+	} 
 	/**
 	 * action list
 	 *
@@ -53,17 +53,16 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 				$this->settings['conferenceParameters']['accept'],
 				$this->settings['conferenceParameters']['encoding']
 				);
-		DebuggerUtility::var_dump($conferences);
 		$this->view->assign('conferences', $conferences);
 	}
 
 	/**
 	 * action show
 	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Conference $conference
+	 * @param Tx_FrabIntegration_Domain_Model_Conference $conference
 	 * @return void
 	 */
-	public function showAction(\Eike\FrabIntegration\Domain\Model\Conference $conference) {
+	public function showAction(Tx_FrabIntegration_Domain_Model_Conference $conference) {
 		$this->view->assign('conference', $conference);
 	}
 	
