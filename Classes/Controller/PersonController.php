@@ -32,22 +32,44 @@
 class Tx_FrabIntegration_Controller_PersonController extends Tx_Extbase_MVC_Controller_ActionController {
 
 	/**
+	* 
+ 	* @var Tx_FrabIntegration_Domain_Repository_FrabRepository
+ 	* @inject
+	*/
+	protected $frabRepository;
+
+	public function injectFrabRepository(Tx_FrabIntegration_Domain_Repository_FrabRepository $frabRepository){
+		$this->frabRepository = $frabRepository;
+	} 
+	/**
 	 * action list
 	 *
 	 * @return void
 	 */
 	public function listAction() {
-		$persons = $this->personRepository->findAll();
+		$persons = $this->frabRepository->findPersons(
+				$this->settings['conferenceParameters']['speakersUri'],
+				$this->settings['conferenceParameters']['userAgent'],
+				$this->settings['conferenceParameters']['accept'],
+				$this->settings['conferenceParameters']['encoding']
+				);
 		$this->view->assign('persons', $persons);
 	}
 
 	/**
 	 * action show
 	 *
-	 * @param Tx_FrabIntegration_Domain_Model_Person $person
+	 * @param integer $personId
 	 * @return void
 	 */
-	public function showAction(Tx_FrabIntegration_Domain_Model_Person $person) {
+	public function showAction($personId) {
+		$person = $this->frabRepository->findPerson(
+				$this->settings['conferenceParameters']['speakersUri'],
+				$this->settings['conferenceParameters']['userAgent'],
+				$this->settings['conferenceParameters']['accept'],
+				$this->settings['conferenceParameters']['encoding'],
+				$personId
+		);
 		$this->view->assign('person', $person);
 	}
 

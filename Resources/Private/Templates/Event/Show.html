@@ -65,7 +65,9 @@ Otherwise your changes will be overwritten the next time you save the extension 
                 <h2>Raum</h2>
                 <p>{event.room}</p>
             </div>
-            
+            <f:for each="{event.persons}" as="person">
+				<li><f:link.action controller="Person" action="show" arguments="{personId:person.id}">{person.fullPublicName}</f:link.action></li>
+			</f:for>
         </div>
     </div><!-- span4 -->
 </div>

@@ -96,10 +96,47 @@ class Tx_FrabIntegration_Domain_Repository_FrabRepository extends Tx_Extbase_Per
 		return $confercences;
 	}
 	
+	public function findEvents($uri, $useragent, $accept, $encoding){
+		$result = $this->query($uri, $useragent, $accept, $encoding);
+		$result = json_decode($result, TRUE);
+		
+		if(count($result['schedule']['conference']['days'])>0){
+			/* @var $eventStorage \TYPO3\CMS\Extbase\Persistence\ObjectStorage  */
+			$eventStorage = $this->objectManager->get('\TYPO3\CMS\Extbase\Persistence\ObjectStorage');
+			
+			//Days
+			foreach ($result['schedule']['conference']['days'] as $resultDay){
+				//Rooms
+				if(count($resultDay['rooms'])>0){
+					foreach ($resultDay['rooms'] as $key=>$events){
+						/* @var $room \Eike\FrabIntegration\Domain\Model\Room  */
+						$room = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Room');
+						$room->setName($key);
+	
+						//Events
+						if(count($events)>0){
+							
+							foreach ($events as $resultEvent){
+								/* @var $event \Eike\FrabIntegration\Domain\Model\Event  */
+								$event = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Event');
+								$event->setTitle($resultEvent['title']);
+								$event->setRoom($room);
+								$event->setGuid($resultEvent['guid']);
+								$eventStorage->attach($event);
+							}
+						}
+					}
+				}
+			}
+		}
+	
+		return $eventStorage;
+	}
+	
+	
 	public function findEvent($uri, $useragent, $accept, $encoding, $eventGuid){
 		$result = $this->query($uri, $useragent, $accept, $encoding);
 		$result = json_decode($result, TRUE);
-	
 	
 		if(count($result['schedule']['conference']['days'])>0){
 			//Days
@@ -137,6 +174,11 @@ class Tx_FrabIntegration_Domain_Repository_FrabRepository extends Tx_Extbase_Per
 									$event->setSubtitle($resultEvent['subtitle']);
 									$event->setTrack($resultEvent['track']);
 									$event->setType($resultEvent['type']);
+									if(count($resultEvent['persons'])>0){
+										foreach ($resultEvent['persons'] as $resultPerson){
+											$event->addPerson($this->buildPerson($resultPerson));
+										}
+									}
 									return $event;
 								}
 							}
@@ -145,6 +187,53 @@ class Tx_FrabIntegration_Domain_Repository_FrabRepository extends Tx_Extbase_Per
 				}
 			}
 		}
+	}
+	
+	public function findPersons($uri, $useragent, $accept, $encoding){
+		$result = $this->query($uri, $useragent, $accept, $encoding);
+		$result = json_decode($result, TRUE);
+		if(count($result['schedule_speakers']['speakers'])>0){
+			/* @var $personStorage \TYPO3\CMS\Extbase\Persistence\ObjectStorage  */
+			$personStorage = $this->objectManager->get('\TYPO3\CMS\Extbase\Persistence\ObjectStorage');
+			foreach ($result['schedule_speakers']['speakers'] as $resultPerson){
+				$personStorage->attach($this->buildPerson($resultPerson));
+			}
+		}
+		return $personStorage;
+	}
+	
+	public function findPerson($uri, $useragent, $accept, $encoding, $personId){
+		$result = $this->query($uri, $useragent, $accept, $encoding);
+		$result = json_decode($result, TRUE);
+		if(count($result['schedule_speakers']['speakers'])>0){
+			foreach ($result['schedule_speakers']['speakers'] as $resultPerson){
+				if($resultPerson['id']==$personId){
+					return $this->buildPerson($resultPerson);
+				}
+			}
+		}	
+	}
+	
+	protected function buildPerson($resultPerson){
+		/* @var $person \Eike\FrabIntegration\Domain\Model\Person  */
+		$person = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Person');
+		$person->setFullPublicName($resultPerson['full_public_name']);
+		$person->setId($resultPerson['id']);
+		$person->setAbstract($resultPerson['abstract']);
+		$person->setDescription($resultPerson['description']);
+		$person->setImage($resultPerson['image']);
+		if(count($resultPerson['events'])>0){
+			foreach ($resultPerson['events'] as $resultEvent){
+				/* @var $event \Eike\FrabIntegration\Domain\Model\Event  */
+				$event = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Event');
+				$event->setTitle($resultEvent['title']);
+				$event->setType($resultEvent['type']);
+				$event->setGuid($resultEvent['guid']);
+				$person->addEvent($event);
+			}
+		}
+		return $person;
+		
 	}
 	
 	protected function query($uri, $useragent, $accept, $encoding) {

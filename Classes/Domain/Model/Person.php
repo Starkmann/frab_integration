@@ -30,6 +30,12 @@
 class Tx_FrabIntegration_Domain_Model_Person extends Tx_Extbase_DomainObject_AbstractValueObject {
 
 	/**
+	 * ID
+	 * @var integer
+	 */
+	protected $id = NULL;
+	
+	/**
 	 * image
 	 *
 	 * @var string
@@ -91,6 +97,25 @@ class Tx_FrabIntegration_Domain_Model_Person extends Tx_Extbase_DomainObject_Abs
 		$this->events = new Tx_Extbase_Persistence_ObjectStorage();
 	}
 
+	/**
+	 * Returns the id
+	 *
+	 * @return string $id
+	 */
+	public function getId() {
+		return $this->id;
+	}
+	
+	/**
+	 * Sets the id
+	 *
+	 * @param string $id
+	 * @return void
+	 */
+	public function setId($id) {
+		$this->id = $id;
+	}
+	
 	/**
 	 * Returns the image
 	 *

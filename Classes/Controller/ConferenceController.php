@@ -66,21 +66,5 @@ class Tx_FrabIntegration_Controller_ConferenceController extends Tx_Extbase_MVC_
 		$this->view->assign('conference', $conference);
 	}
 	
-	/**
-	 * action show
-	 *
-	 * @param \string $eventGuid
-	 * @return void
-	 */
-	public function showEventAction($eventGuid) {
-		$event = $conferences = $this->frabRepository->findEvent(
-				$this->settings['conferenceParameters']['conferenceUri'],
-				$this->settings['conferenceParameters']['userAgent'],
-				$this->settings['conferenceParameters']['accept'],
-				$this->settings['conferenceParameters']['encoding'],
-				$eventGuid
-				);
-		$this->view->assign('event', $event);
-	}
 
 }
