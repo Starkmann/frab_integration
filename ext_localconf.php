@@ -9,12 +9,13 @@ if (!defined('TYPO3_MODE')) {
 	array(
 		'Conference' => 'list, show, showEvent',
 		'Person' => 'list, show',
+		'Event' => 'list, show',
 		
 	),
 	// non-cacheable actions
 	array(
 		'Conference' => '',
 		'Person' => '',
-		
+		'Event' => '',
 	)
 );

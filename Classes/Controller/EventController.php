@@ -28,9 +28,16 @@ namespace Eike\FrabIntegration\Controller;
  ***************************************************************/
 
 /**
- * PersonController
+ * EventController
  */
-class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+	
+	/**
+	 *
+	 * @var \Eike\FrabIntegration\Domain\Repository\FrabRepository
+	 * @inject
+	 */
+	protected $frabRepository;
 
 	/**
 	 * action list
@@ -45,11 +52,19 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 	/**
 	 * action show
 	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Person $person
+	 * @param \string $eventGuid
 	 * @return void
 	 */
-	public function showEventAction(\Eike\FrabIntegration\Domain\Model\Event $event) {
-		$this->view->assign('person', $person);
+	public function showAction($eventGuid) {
+		$event = $conferences = $this->frabRepository->findEvent(
+				$this->settings['conferenceParameters']['conferenceUri'],
+				$this->settings['conferenceParameters']['userAgent'],
+				$this->settings['conferenceParameters']['accept'],
+				$this->settings['conferenceParameters']['encoding'],
+				$eventGuid
+				);
+		$this->view->assign('event', $event);
 	}
+	
 
 }

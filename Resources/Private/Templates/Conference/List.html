@@ -41,7 +41,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 				<h5>Veranstaltungen</h5>
 				<ul>
 				<f:for each="{room.events}" as="event">
-					<li><f:link.action action="showEvent" arguments="{eventGuid:event.guid}">{event.title}</f:link.action></li>
+					<li><f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}">{event.title}</f:link.action></li>
 				</f:for>
 				</ul>
 			</f:for>
