@@ -27,28 +27,49 @@
  ***************************************************************/
 
 /**
- * PersonController
+ * EventController
  */
-class PersonController extends Tx_Extbase_MVC_Controller_ActionController {
+class Tx_FrabIntegration_Controller_EventController extends Tx_Extbase_MVC_Controller_ActionController {
+	/**
+	* 
+ 	* @var Tx_FrabIntegration_Domain_Repository_FrabRepository
+ 	* @inject
+	*/
+	protected $frabRepository;
 
+	public function injectFrabRepository(Tx_FrabIntegration_Domain_Repository_FrabRepository $frabRepository){
+		$this->frabRepository = $frabRepository;
+	}
 	/**
 	 * action list
 	 *
 	 * @return void
 	 */
 	public function listAction() {
-		$persons = $this->personRepository->findAll();
-		$this->view->assign('persons', $persons);
+		$events = $this->frabRepository->findEvents(
+				$this->settings['conferenceParameters']['conferenceUri'],
+				$this->settings['conferenceParameters']['userAgent'],
+				$this->settings['conferenceParameters']['accept'],
+				$this->settings['conferenceParameters']['encoding']
+				);
+		$this->view->assign('events', $events);
 	}
 
 	/**
 	 * action show
 	 *
-	 * @param Tx_FrabIntegration_Domain_Model_Person $person
+	 * @param \string $eventGuid
 	 * @return void
 	 */
-	public function showEventAction(Tx_FrabIntegration_Domain_Model_Event $event) {
-		$this->view->assign('person', $person);
+	public function showAction($eventGuid) {
+		$event = $conferences = $this->frabRepository->findEvent(
+				$this->settings['conferenceParameters']['conferenceUri'],
+				$this->settings['conferenceParameters']['userAgent'],
+				$this->settings['conferenceParameters']['accept'],
+				$this->settings['conferenceParameters']['encoding'],
+				$eventGuid
+				);
+		$this->view->assign('event', $event);
 	}
 
 }
