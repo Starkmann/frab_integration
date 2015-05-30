@@ -33,6 +33,12 @@ namespace Eike\FrabIntegration\Domain\Model;
 class Person extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 
 	/**
+	 * ID
+	 * @var integer
+	 */
+	protected $id = NULL;
+	
+	/**
 	 * image
 	 *
 	 * @var string
@@ -94,6 +100,25 @@ class Person extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 		$this->events = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
+	/**
+	 * Returns the id
+	 *
+	 * @return string $id
+	 */
+	public function getId() {
+		return $this->id;
+	}
+	
+	/**
+	 * Sets the id
+	 *
+	 * @param string $id
+	 * @return void
+	 */
+	public function setId($id) {
+		$this->id = $id;
+	}
+	
 	/**
 	 * Returns the image
 	 *

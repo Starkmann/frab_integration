@@ -30,6 +30,8 @@ namespace Eike\FrabIntegration\Controller;
 /**
  * EventController
  */
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+
 class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	
 	/**
@@ -45,8 +47,13 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 	 * @return void
 	 */
 	public function listAction() {
-		$persons = $this->personRepository->findAll();
-		$this->view->assign('persons', $persons);
+		$events = $this->frabRepository->findEvents(
+				$this->settings['conferenceParameters']['conferenceUri'],
+				$this->settings['conferenceParameters']['userAgent'],
+				$this->settings['conferenceParameters']['accept'],
+				$this->settings['conferenceParameters']['encoding']
+				);
+		$this->view->assign('events', $events);
 	}
 
 	/**

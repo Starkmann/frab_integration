@@ -15,11 +15,11 @@
 								<items>
 									<numIndex index="0">
 										<numIndex index="0">Conference</numIndex>
-										<numIndex index="1">Conference->list;Conference->show;Event->show</numIndex>
+										<numIndex index="1">Conference->list;Conference->show;Event->show;Person->show</numIndex>
 									</numIndex>
 									<numIndex index="1">
 										<numIndex index="0">Events</numIndex>
-										<numIndex index="1">Event->list;Event->show</numIndex>
+										<numIndex index="1">Event->list;Event->show;Person->show</numIndex>
 									</numIndex>
 									<numIndex index="2">
 										<numIndex index="0">Persons</numIndex>

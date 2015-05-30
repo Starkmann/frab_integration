@@ -30,7 +30,16 @@ namespace Eike\FrabIntegration\Controller;
 /**
  * PersonController
  */
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+
 class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+	
+	/**
+	 *
+	 * @var \Eike\FrabIntegration\Domain\Repository\FrabRepository
+	 * @inject
+	 */
+	protected $frabRepository;
 
 	/**
 	 * action list
@@ -38,17 +47,29 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 	 * @return void
 	 */
 	public function listAction() {
-		$persons = $this->personRepository->findAll();
+		$persons = $this->frabRepository->findPersons(
+				$this->settings['conferenceParameters']['speakersUri'],
+				$this->settings['conferenceParameters']['userAgent'],
+				$this->settings['conferenceParameters']['accept'],
+				$this->settings['conferenceParameters']['encoding']
+				);
 		$this->view->assign('persons', $persons);
 	}
 
 	/**
 	 * action show
 	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Person $person
+	 * @param integer $personId
 	 * @return void
 	 */
-	public function showAction(\Eike\FrabIntegration\Domain\Model\Person $person) {
+	public function showAction($personId) {
+		$person = $this->frabRepository->findPerson(
+				$this->settings['conferenceParameters']['speakersUri'],
+				$this->settings['conferenceParameters']['userAgent'],
+				$this->settings['conferenceParameters']['accept'],
+				$this->settings['conferenceParameters']['encoding'],
+				$personId
+		);
 		$this->view->assign('person', $person);
 	}
 

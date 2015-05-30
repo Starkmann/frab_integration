@@ -53,7 +53,7 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 				$this->settings['conferenceParameters']['accept'],
 				$this->settings['conferenceParameters']['encoding']
 				);
-		DebuggerUtility::var_dump($conferences);
+		
 		$this->view->assign('conferences', $conferences);
 	}
 
