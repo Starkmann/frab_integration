@@ -1,5 +1,4 @@
 <?php
-namespace Eike\FrabIntegration\Controller;
 
 
 /***************************************************************
@@ -30,7 +29,7 @@ namespace Eike\FrabIntegration\Controller;
 /**
  * PersonController
  */
-class PersonController extends Tx_Extbase_MVC_Controller_ActionController {
+class Tx_FrabIntegration_Controller_PersonController extends Tx_Extbase_MVC_Controller_ActionController {
 
 	/**
 	 * action list
