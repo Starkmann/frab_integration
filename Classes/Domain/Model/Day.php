@@ -110,7 +110,8 @@ class Tx_FrabIntegration_Domain_Model_Day extends Tx_Extbase_DomainObject_Abstra
 	 * @return \DateTime $date
 	 */
 	public function getDate() {
-		return $this->date;
+		setlocale(LC_TIME, "de_DE");
+		return strftime('%A, %d.%m.%Y',$this->date->getTimestamp());
 	}
 
 	/**
