@@ -41,3 +41,7 @@
 		</td>
 	</tr>
 </table>
+
+<f:for each="{person.events}" as="event">
+	<li><f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}">{event.title}</f:link.action></li>
+</f:for>
