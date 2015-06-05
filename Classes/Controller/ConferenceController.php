@@ -55,16 +55,6 @@ class Tx_FrabIntegration_Controller_ConferenceController extends Tx_Extbase_MVC_
 				);
 		$this->view->assign('conferences', $conferences);
 	}
-
-	/**
-	 * action show
-	 *
-	 * @param Tx_FrabIntegration_Domain_Model_Conference $conference
-	 * @return void
-	 */
-	public function showAction(Tx_FrabIntegration_Domain_Model_Conference $conference) {
-		$this->view->assign('conference', $conference);
-	}
 	
 
 }

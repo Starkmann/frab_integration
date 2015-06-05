@@ -101,24 +101,24 @@ class Tx_FrabIntegration_Domain_Repository_FrabRepository extends Tx_Extbase_Per
 		$result = json_decode($result, TRUE);
 		
 		if(count($result['schedule']['conference']['days'])>0){
-			/* @var $eventStorage \TYPO3\CMS\Extbase\Persistence\ObjectStorage  */
-			$eventStorage = $this->objectManager->get('\TYPO3\CMS\Extbase\Persistence\ObjectStorage');
+			/* @var $eventStorage Tx_Extbase_Persistence_ObjectStorage  */
+			$eventStorage = $this->objectManager->get('Tx_Extbase_Persistence_ObjectStorage');
 			
 			//Days
 			foreach ($result['schedule']['conference']['days'] as $resultDay){
 				//Rooms
 				if(count($resultDay['rooms'])>0){
 					foreach ($resultDay['rooms'] as $key=>$events){
-						/* @var $room \Eike\FrabIntegration\Domain\Model\Room  */
-						$room = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Room');
+						/* @var $room Tx_FrabIntegration_Domain_Model_Room  */
+						$room = $this->objectManager->get('Tx_FrabIntegration_Domain_Model_Room');
 						$room->setName($key);
 	
 						//Events
 						if(count($events)>0){
 							
 							foreach ($events as $resultEvent){
-								/* @var $event \Eike\FrabIntegration\Domain\Model\Event  */
-								$event = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Event');
+								/* @var $event Tx_FrabIntegration_Domain_Model_Event  */
+								$event = $this->objectManager->get('Tx_FrabIntegration_Domain_Model_Event');
 								$event->setTitle($resultEvent['title']);
 								$event->setRoom($room);
 								$event->setGuid($resultEvent['guid']);
@@ -193,8 +193,8 @@ class Tx_FrabIntegration_Domain_Repository_FrabRepository extends Tx_Extbase_Per
 		$result = $this->query($uri, $useragent, $accept, $encoding);
 		$result = json_decode($result, TRUE);
 		if(count($result['schedule_speakers']['speakers'])>0){
-			/* @var $personStorage \TYPO3\CMS\Extbase\Persistence\ObjectStorage  */
-			$personStorage = $this->objectManager->get('\TYPO3\CMS\Extbase\Persistence\ObjectStorage');
+			/* @var $personStorage Tx_Extbase_Persistence_ObjectStorage  */
+			$personStorage = $this->objectManager->get('Tx_Extbase_Persistence_ObjectStorage');
 			foreach ($result['schedule_speakers']['speakers'] as $resultPerson){
 				$personStorage->attach($this->buildPerson($resultPerson));
 			}
@@ -215,8 +215,8 @@ class Tx_FrabIntegration_Domain_Repository_FrabRepository extends Tx_Extbase_Per
 	}
 	
 	protected function buildPerson($resultPerson){
-		/* @var $person \Eike\FrabIntegration\Domain\Model\Person  */
-		$person = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Person');
+		/* @var $person Tx_FrabIntegration_Domain_Model_Person  */
+		$person = $this->objectManager->get('Tx_FrabIntegration_Domain_Model_Person');
 		$person->setFullPublicName($resultPerson['full_public_name']);
 		$person->setId($resultPerson['id']);
 		$person->setAbstract($resultPerson['abstract']);
@@ -224,8 +224,8 @@ class Tx_FrabIntegration_Domain_Repository_FrabRepository extends Tx_Extbase_Per
 		$person->setImage($resultPerson['image']);
 		if(count($resultPerson['events'])>0){
 			foreach ($resultPerson['events'] as $resultEvent){
-				/* @var $event \Eike\FrabIntegration\Domain\Model\Event  */
-				$event = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Event');
+				/* @var $event Tx_FrabIntegration_Domain_Model_Event  */
+				$event = $this->objectManager->get('Tx_FrabIntegration_Domain_Model_Event');
 				$event->setTitle($resultEvent['title']);
 				$event->setType($resultEvent['type']);
 				$event->setGuid($resultEvent['guid']);
