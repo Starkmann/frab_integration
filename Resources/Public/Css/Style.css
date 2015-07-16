@@ -1,0 +1,32 @@
+#c79472 div.tx-frab-integration div.news.single.row div.span8 table {
+border: none;
+}
+
+#c79472 div.tx-frab-integration div.news.single.row div.span8 table
+td  {
+border: none;
+}
+
+#c79472 div.tx-frab-integration div.news.single.row div.span8 table thead tr th {
+	border: none;
+	border-left: 1px solid #000000;
+
+	
+}
+
+#c79472 div.tx-frab-integration div.news.single.row div.span8 table tbody tr td.event-03-00 {
+	border: 1px solid #000000;
+	padding: 5px;
+	background-color: #ffffff;
+	}
+
+#c79472 div.tx-frab-integration div.news.single.row div.span8 table tbody tr td.event-03-00 a {
+	
+	
+}
+
+
+ div.dataTables_wrapper {
+     width: 900px;
+     margin: 0 auto;
+ }

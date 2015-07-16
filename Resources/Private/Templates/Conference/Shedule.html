@@ -1,4 +1,4 @@
-
+{namespace u=Tx_FrabIntegration_ViewHelpers}
 <f:layout name="Default" />
 
 This Template is responsible for creating a table of domain objects.
@@ -23,7 +23,6 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <div class="news single row">
 <div class="span8">
-	<f:debug>{beginingTime}</f:debug>
 	<h1>Veranstaltungen auf der {conference.title}</h1>
 
 		<div>
@@ -31,7 +30,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 					<f:link.action action="shedule" arguments="{currentDay: day.index}">Tag {day.index}</f:link.action>
 			</f:for>
 		</div>
-		<table border="1" style="width:100%">
+		<table id="scrollable" class="display compact" cellspacing="0" width="100%">
 		<!--<h1>Veranstaltungstage</h1>-->
 		<f:for each="{conference.days}" as="day">
 			<f:if condition="{day.index} == {currentDay}">
@@ -46,40 +45,31 @@ Otherwise your changes will be overwritten the next time you save the extension 
 				</tr>
 				</thead>
 				<tbody>
-				<tr>	
 				<f:for each="{timeline}" as="timeSlot">
 					<tr>
-					<td>{timeSlot -> f:format.date(format:'H:i')}</td>
+					<td style="max-width:25px;">{timeSlot -> f:format.date(format:'H:i')}</td>
 					<f:for each="{day.rooms}" as="room">
 						<f:if condition="{room.events}">
-						<td>
-						<f:for each="{room.events}" as="event">
+						<f:for each="{room.events}" as="event" iteration="iterator">
 							<f:if condition="{f:format.date(date:event.start, format:'H:i')} == {f:format.date(date:timeSlot, format:'H:i')}">
 								<f:then>
-	  						 	{room.name} {event.title} {f:format.date(date:event.start, format:'H:i')} {f:format.date(date:event.end, format:'H:i')} {f:format.date(date:event.date, format:'d.m.Y')} {event.room}
+									<td rowspan="<u:rowspan duration='{event.duration}'/>" class="event-{f:format.date(date:event.duration, format:'H-i')}">
+	  						 			<f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}">{event.title}</f:link.action>
+	  						 		</td>
 	  						 	</f:then>
 	  						 	<f:else>
-	  						 		<f:if condition="{f:format.date(date:event.start, format:'H:i')} < {f:format.date(date:timeSlot, format:'H:i')}">
-	  									<f:if condition="{f:format.date(date:event.end, format:'H:i')} > {f:format.date(date:timeSlot, format:'H:i')}">
-	  										<f:then>
-	  						 					|
-	  						 				</f:then>
-	  						 				<f:else>
-	  						 					<f:if condition="{f:format.date(date:event.end, format:'H:i')} == {f:format.date(date:timeSlot, format:'H:i')}">
-	  						 					X
-	  						 					</f:if>
-	  						 				</f:else>
-	  						 			</f:if>
-	  								</f:if>
+	  						 		<f:if condition="{iterator.index} == 0">
+	  						 			<f:then>
+	  						 			 <td></td>
+	  						 			</f:then>
+	  						 		</f:if>
 	  						 	</f:else>
 	  						</f:if>
 	  					</f:for>
-	  					</td>
 	  					</f:if>
   					</f:for>
   					</tr>
 				</f:for>
-				</tr>
 				</tbody>
 			</f:if>
 		</f:for>

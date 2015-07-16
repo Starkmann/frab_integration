@@ -41,6 +41,26 @@ class Tx_FrabIntegration_Controller_ConferenceController extends Tx_Extbase_MVC_
 	public function injectFrabRepository(Tx_FrabIntegration_Domain_Repository_FrabRepository $frabRepository){
 		$this->frabRepository = $frabRepository;
 	} 
+	
+	/**
+	 * Initialize view
+	 *
+	 * @return void
+	 */
+	public function initializeAction() {
+		if($this->settings['cssPath'])
+			$this->response->addAdditionalHeaderData($this->wrapCssFile($this->settings['cssPath']));
+		else
+			$this->response->addAdditionalHeaderData($this->wrapCssFile(t3lib_extMgm::siteRelPath('frab_integration') . 'Resources/Public/Css/Style.css'));
+		
+		$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/jquery.js'));
+		$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/jquery.dataTables.js'));
+		$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/dataTables.fixedColumns.js'));
+		$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/Scroll.js'));
+		
+	}
+	
+	
 	/**
 	 * action list
 	 *
@@ -76,6 +96,7 @@ class Tx_FrabIntegration_Controller_ConferenceController extends Tx_Extbase_MVC_
 				$this->settings['conferenceParameters']['accept'],
 				$this->settings['conferenceParameters']['encoding']
 		);
+		
 		$timeline = $this->generateTimeline($day->getDayStart(), $day->getDayEnd(), 15);
 		$this->view->assign('conferences', $conferences);
 		$this->view->assign('currentDay', $currentDay);
@@ -86,10 +107,10 @@ class Tx_FrabIntegration_Controller_ConferenceController extends Tx_Extbase_MVC_
 	/**
 	 * action show
 	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Conference $conference
+	 * @param Tx_FrabIntegration_Domain_Model_Conference $conference
 	 * @return void
 	 */
-	public function showAction(\Eike\FrabIntegration\Domain\Model\Conference $conference) {
+	public function showAction(Tx_FrabIntegration_Domain_Model_Conference $conference) {
 		$this->view->assign('conference', $conference);
 	}
 	
@@ -113,6 +134,30 @@ class Tx_FrabIntegration_Controller_ConferenceController extends Tx_Extbase_MVC_
 			$timeSolts[] = clone $currentTime;
 		}
 		return $timeSolts;
+	}
+	
+	/**
+	 * Wrap css files inside <link /> tag
+	 *
+	 * @param string $cssFile Path to file
+	 * @return string <link.. string ready for <head> part
+	 */
+	public function wrapCssFile($cssFile) {
+		$cssFile = t3lib_div::resolveBackPath($cssFile);
+		$cssFile = t3lib_div::createVersionNumberedFilename($cssFile);
+		return '<link rel="stylesheet" type="text/css" href="' . htmlspecialchars($cssFile) . '" media="screen" />';
+	}
+	
+	/**
+	 * Wrap css files inside <link /> tag
+	 *
+	 * @param string $cssFile Path to filegetPo
+	 * @return string <link.. string ready for <head> part
+	 */
+	public function wrapJsFile($jsFile) {
+		$jsFile = t3lib_div::resolveBackPath($jsFile);
+		$jsFile = t3lib_div::createVersionNumberedFilename($jsFile);
+		return '<script type="text/javascript" src="' . htmlspecialchars($jsFile) . '" ></script>';
 	}
 
 }

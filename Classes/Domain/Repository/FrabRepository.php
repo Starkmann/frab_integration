@@ -232,7 +232,7 @@ class Tx_FrabIntegration_Domain_Repository_FrabRepository extends Tx_Extbase_Per
 	 * @param unknown $useragent
 	 * @param unknown $accept
 	 * @param unknown $encoding
-	 * @return \Eike\FrabIntegration\Domain\Model\Day
+	 * @return Tx_FrabIntegration_Domain_Model_Day
 	 */
 	public function findDayByIndex($index, $uri, $useragent, $accept, $encoding){
 		$result = $this->query($uri, $useragent, $accept, $encoding);
@@ -242,8 +242,8 @@ class Tx_FrabIntegration_Domain_Repository_FrabRepository extends Tx_Extbase_Per
 			//Days
 			foreach ($result['schedule']['conference']['days'] as $resultDay){
 				if($resultDay['index']==$index){
-					/* @var $day \Eike\FrabIntegration\Domain\Model\Day  */
-					$day = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Day');
+					/* @var $day Tx_FrabIntegration_Domain_Model_Day  */
+					$day = $this->objectManager->get('Tx_FrabIntegration_Domain_Model_Day');
 					$day->setDate(new \DateTime($resultDay['date']));
 					$day->setDayEnd(new \DateTime($resultDay['day_end']));
 					$day->setDayStart(new \DateTime($resultDay['day_start']));
