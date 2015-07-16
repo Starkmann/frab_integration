@@ -213,6 +213,23 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	public function setStart(\DateTime $start) {
 		$this->start = $start;
 	}
+	
+	/**
+	 * Returns the start
+	 *
+	 * @return \DateTime $end
+	 */
+	public function getEnd() {
+		$end = clone $this->start;
+		$zerodate = new \DateTime('00:00:00');
+		$interval = $zerodate->diff($this->duration);
+		$end->add($interval);
+		$end->sub(new \DateInterval('PT' . 15 . 'M'));
+		return $end;
+	}
+	
+	
+	
 
 	/**
 	 * Returns the duration

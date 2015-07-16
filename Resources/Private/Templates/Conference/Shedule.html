@@ -1,0 +1,103 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+
+<f:flashMessages renderMode="div" />
+
+
+
+	<f:for each="{conferences}" as="conference">
+
+<div class="news single row">
+<div class="span8">
+	<f:debug>{beginingTime}</f:debug>
+	<h1>Veranstaltungen auf der {conference.title}</h1>
+
+		<div>
+			<f:for each="{conference.days}" as="day">
+					<f:link.action action="shedule" arguments="{currentDay: day.index}">Tag {day.index}</f:link.action>
+			</f:for>
+		</div>
+		<table border="1" style="width:100%">
+		<!--<h1>Veranstaltungstage</h1>-->
+		<f:for each="{conference.days}" as="day">
+			<f:if condition="{day.index} == {currentDay}">
+				<thead>
+				<tr>	
+				<th></th>
+				<f:for each="{day.rooms}" as="room">
+					<f:if condition="{room.events}">
+					<th>{room.name}</th>
+					</f:if>
+				</f:for>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>	
+				<f:for each="{timeline}" as="timeSlot">
+					<tr>
+					<td>{timeSlot -> f:format.date(format:'H:i')}</td>
+					<f:for each="{day.rooms}" as="room">
+						<f:if condition="{room.events}">
+						<td>
+						<f:for each="{room.events}" as="event">
+							<f:if condition="{f:format.date(date:event.start, format:'H:i')} == {f:format.date(date:timeSlot, format:'H:i')}">
+								<f:then>
+	  						 	{room.name} {event.title} {f:format.date(date:event.start, format:'H:i')} {f:format.date(date:event.end, format:'H:i')} {f:format.date(date:event.date, format:'d.m.Y')} {event.room}
+	  						 	</f:then>
+	  						 	<f:else>
+	  						 		<f:if condition="{f:format.date(date:event.start, format:'H:i')} < {f:format.date(date:timeSlot, format:'H:i')}">
+	  									<f:if condition="{f:format.date(date:event.end, format:'H:i')} > {f:format.date(date:timeSlot, format:'H:i')}">
+	  										<f:then>
+	  						 					|
+	  						 				</f:then>
+	  						 				<f:else>
+	  						 					<f:if condition="{f:format.date(date:event.end, format:'H:i')} == {f:format.date(date:timeSlot, format:'H:i')}">
+	  						 					X
+	  						 					</f:if>
+	  						 				</f:else>
+	  						 			</f:if>
+	  								</f:if>
+	  						 	</f:else>
+	  						</f:if>
+	  					</f:for>
+	  					</td>
+	  					</f:if>
+  					</f:for>
+  					</tr>
+				</f:for>
+				</tr>
+				</tbody>
+			</f:if>
+		</f:for>
+		</div><!-- span8 -->
+	</table>
+
+
+<div class="span4">
+    <div id="news-more">
+
+		<div class="infobox fair">
+			<h2>{conference.title}</h2>
+			<p>{conference.start -> f:format.date(format:'l, d.m.Y')} bis {conference.end -> f:format.date(format:'l, d.m.Y')}</p>
+		</div>
+
+    </div>
+</div><!-- span4 -->
+</f:for>
+</div>
+
+</f:section>

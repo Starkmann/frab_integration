@@ -7,7 +7,7 @@ if (!defined('TYPO3_MODE')) {
 	'Eike.' . $_EXTKEY,
 	'List',
 	array(
-		'Conference' => 'list, show, showEvent',
+		'Conference' => 'list, show, showEvent, shedule',
 		'Person' => 'list, show',
 		'Event' => 'list, show',
 		
