@@ -53,8 +53,66 @@ class Tx_FrabIntegration_Controller_ConferenceController extends Tx_Extbase_MVC_
 				$this->settings['conferenceParameters']['accept'],
 				$this->settings['conferenceParameters']['encoding']
 				);
+		
 		$this->view->assign('conferences', $conferences);
 	}
 	
+	/**
+	 * action list
+	 *@param integer $currentDay
+	 * @return void
+	 */
+	public function sheduleAction($currentDay = 0) {
+		$conferences = $this->frabRepository->findConference(
+				$this->settings['conferenceParameters']['conferenceUri'],
+				$this->settings['conferenceParameters']['userAgent'],
+				$this->settings['conferenceParameters']['accept'],
+				$this->settings['conferenceParameters']['encoding']
+		);
+		$day = $this->frabRepository->findDayByIndex(
+				$currentDay,
+				$this->settings['conferenceParameters']['conferenceUri'],
+				$this->settings['conferenceParameters']['userAgent'],
+				$this->settings['conferenceParameters']['accept'],
+				$this->settings['conferenceParameters']['encoding']
+		);
+		$timeline = $this->generateTimeline($day->getDayStart(), $day->getDayEnd(), 15);
+		$this->view->assign('conferences', $conferences);
+		$this->view->assign('currentDay', $currentDay);
+		$this->view->assign('timeline', $timeline);
+		
+	}
+
+	/**
+	 * action show
+	 *
+	 * @param \Eike\FrabIntegration\Domain\Model\Conference $conference
+	 * @return void
+	 */
+	public function showAction(\Eike\FrabIntegration\Domain\Model\Conference $conference) {
+		$this->view->assign('conference', $conference);
+	}
+	
+
+	
+
+	
+	/**
+	 * 
+	 * @param \DateTime $begin
+	 * @param \DateTime $end
+	 * @param integer $step
+	 */
+	protected function generateTimeline($begin, $end, $step){
+		$timeSolts = array();
+		$timeSolts[] = $begin;
+		$currentTime = clone $begin;
+
+		while($currentTime<$end){
+			$currentTime->add(new \DateInterval('PT' . $step . 'M'));
+			$timeSolts[] = clone $currentTime;
+		}
+		return $timeSolts;
+	}
 
 }

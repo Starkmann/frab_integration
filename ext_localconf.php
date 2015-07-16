@@ -7,7 +7,7 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY,
 	'List',
 	array(
-		'Conference' => 'list',
+		'Conference' => 'list, show, showEvent, shedule',
 		'Person' => 'list, show',
 		'Event' => 'list, show',
 		

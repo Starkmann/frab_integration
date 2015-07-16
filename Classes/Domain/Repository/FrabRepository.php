@@ -78,6 +78,17 @@ class Tx_FrabIntegration_Domain_Repository_FrabRepository extends Tx_Extbase_Per
 								$event->setTitle($resultEvent['title']);
 								$event->setRoom($room);
 								$event->setGuid($resultEvent['guid']);
+								$event->setAbstract($resultEvent['abstract']);
+								$event->setDate(new \DateTime($resultEvent['date']));
+								$event->setDescription($resultEvent['description']);
+								$event->setAbstract($resultEvent['abstract']);
+								$event->setDuration(new \DateTime($resultEvent['duration']));
+								$event->setLanguage($resultEvent['language']);
+								$event->setLinks($resultEvent['links']);
+								$event->setStart(new \DateTime($resultEvent['start']));
+								$event->setSubtitle($resultEvent['subtitle']);
+								$event->setTrack($resultEvent['track']);
+								$event->setType($resultEvent['type']);
 								$room->addEvent($event);
 							}
 						}
@@ -212,6 +223,36 @@ class Tx_FrabIntegration_Domain_Repository_FrabRepository extends Tx_Extbase_Per
 				}
 			}
 		}	
+	}
+	
+	/**
+	 * 
+	 * @param unknown $index
+	 * @param unknown $uri
+	 * @param unknown $useragent
+	 * @param unknown $accept
+	 * @param unknown $encoding
+	 * @return \Eike\FrabIntegration\Domain\Model\Day
+	 */
+	public function findDayByIndex($index, $uri, $useragent, $accept, $encoding){
+		$result = $this->query($uri, $useragent, $accept, $encoding);
+		$result = json_decode($result, TRUE);
+			
+		if(count($result['schedule']['conference']['days'])>0){
+			//Days
+			foreach ($result['schedule']['conference']['days'] as $resultDay){
+				if($resultDay['index']==$index){
+					/* @var $day \Eike\FrabIntegration\Domain\Model\Day  */
+					$day = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Day');
+					$day->setDate(new \DateTime($resultDay['date']));
+					$day->setDayEnd(new \DateTime($resultDay['day_end']));
+					$day->setDayStart(new \DateTime($resultDay['day_start']));
+					$day->setIndex($resultDay['index']);	
+				}
+			}
+		}
+		return $day;
+		
 	}
 	
 	protected function buildPerson($resultPerson){
