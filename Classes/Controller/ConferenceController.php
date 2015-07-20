@@ -53,10 +53,10 @@ class Tx_FrabIntegration_Controller_ConferenceController extends Tx_Extbase_MVC_
 		else
 			$this->response->addAdditionalHeaderData($this->wrapCssFile(t3lib_extMgm::siteRelPath('frab_integration') . 'Resources/Public/Css/Style.css'));
 		
-		$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/jquery.js'));
-		$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/jquery.dataTables.js'));
-		$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/dataTables.fixedColumns.js'));
-		$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/Scroll.js'));
+		#$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/jquery.js'));
+		#$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/jquery.dataTables.js'));
+		#$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/dataTables.fixedColumns.js'));
+		#$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/Scroll.js'));
 		
 	}
 	

@@ -25,8 +25,18 @@ border: none;
 	
 }
 
-
- div.dataTables_wrapper {
-     width: 900px;
-     margin: 0 auto;
- }
+div.scrollable { 
+    width: 800px; 
+    overflow-x:scroll;  
+    margin-left:5em; 
+    overflow-y:visible;
+    padding-bottom:5px;
+}
+.headcol {
+    position:absolute; 
+    left:400px;
+    top:auto;
+    border-right: 0px none black; 
+    border-top-width:3px; /*only relevant for first row*/
+    margin-top:-3px; /*compensate for top border*/
+}
