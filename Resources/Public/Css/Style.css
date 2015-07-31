@@ -14,16 +14,7 @@ border: none;
 	
 }
 
-#c79472 div.tx-frab-integration div.news.single.row div.span8 table tbody tr td.event-03-00 {
-	border: 1px solid #000000;
-	padding: 5px;
-	background-color: #ffffff;
-	}
 
-#c79472 div.tx-frab-integration div.news.single.row div.span8 table tbody tr td.event-03-00 a {
-	
-	
-}
 
 div.scrollable { 
     width: 800px; 
@@ -39,4 +30,20 @@ div.scrollable {
     border-right: 0px none black; 
     border-top-width:3px; /*only relevant for first row*/
     margin-top:-3px; /*compensate for top border*/
+}
+
+#c83729 div.tx-frab-integration div.news.single.row div.span8 div.scrollable table.scrollable tbody tr td.event-03-00  {
+	background-color: white;
+	border: 1px solid #000000;
+}
+
+
+#c83729 div.tx-frab-integration div.news.single.row div.span8 div.scrollable table.scrollable tbody tr td.event-01-30 {
+	background-color: white;
+	border: 1px solid #000000;	
+}
+
+#c83729 div.tx-frab-integration div.news.single.row div.span8 div.scrollable table.scrollable thead tr th {
+		background-color: white;
+	border: 1px solid #000000;
 }

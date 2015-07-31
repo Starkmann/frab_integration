@@ -19,7 +19,6 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <div class="news single row"> 
 <div class="span8">
-		<h1>Veranstaltungen</h1>
 		<ul>
 		<f:for each="{events}" as="event">
 			<li><f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}">{event.title}</f:link.action></li>

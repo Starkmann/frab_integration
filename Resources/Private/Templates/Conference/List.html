@@ -28,7 +28,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 		<!--<h1>Veranstaltungstage</h1>-->
 		<f:for each="{conference.days}" as="day">
-			<h2>Tag {day.index} – {day.date}</h2>
+			<h2>{day.date}</h2>
 			<!--<div>
 				<div>Datum: {day.date -> f:format.date()}</div>
 				<div>Beginn: {day.dayStart -> f:format.date(format:'Y-m-d H:i')}</div>
@@ -38,7 +38,6 @@ Otherwise your changes will be overwritten the next time you save the extension 
 			<!--<h3>Räume</h3>-->
 			<f:for each="{day.rooms}" as="room">
 				<f:if condition="{room.events}">
-  				<h5>Veranstaltungen</h5>
   				<ul>
   				<f:for each="{room.events}" as="event">
   					<li><f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}">{event.title}</f:link.action></li>
@@ -56,7 +55,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 		<div class="infobox fair">
 			<h2>{conference.title}</h2>
-			<p>{conference.start -> f:format.date(format:'l, d.m.Y')} bis {conference.end -> f:format.date(format:'l, d.m.Y')}</p>
+			<p>{conference.start -> f:format.date(format:'d.m.Y')} bis {conference.end -> f:format.date(format:'d.m.Y')}</p>
 		</div>
 
     </div>

@@ -98,22 +98,39 @@ class Tx_FrabIntegration_Domain_Model_Person extends Tx_Extbase_DomainObject_Abs
 	}
 
 	/**
+
 	 * Returns the id
+
 	 *
+
 	 * @return string $id
+
 	 */
+
 	public function getId() {
+
 		return $this->id;
+
 	}
+
 	
+
 	/**
+
 	 * Sets the id
+
 	 *
+
 	 * @param string $id
+
 	 * @return void
+
 	 */
+
 	public function setId($id) {
+
 		$this->id = $id;
+
 	}
 	
 	/**
