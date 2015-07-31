@@ -89,7 +89,9 @@ class Tx_FrabIntegration_Domain_Repository_FrabRepository extends Tx_Extbase_Per
 								$event->setSubtitle($resultEvent['subtitle']);
 								$event->setTrack($resultEvent['track']);
 								$event->setType($resultEvent['type']);
+								$event->setDay($resultDay);
 								$room->addEvent($event);
+								
 							}
 						}
 						$day->addRoom($room);

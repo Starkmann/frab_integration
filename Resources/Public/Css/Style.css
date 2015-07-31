@@ -1,13 +1,13 @@
-#c79472 div.tx-frab-integration div.news.single.row div.span8 table {
+div.tx-frab-integration div.news.single.row div.span8 table {
 border: none;
 }
 
-#c79472 div.tx-frab-integration div.news.single.row div.span8 table
+div.tx-frab-integration div.news.single.row div.span8 table
 td  {
 border: none;
 }
 
-#c79472 div.tx-frab-integration div.news.single.row div.span8 table thead tr th {
+div.tx-frab-integration div.news.single.row div.span8 table thead tr th {
 	border: none;
 	border-left: 1px solid #000000;
 
@@ -32,18 +32,18 @@ div.scrollable {
     margin-top:-3px; /*compensate for top border*/
 }
 
-#c83729 div.tx-frab-integration div.news.single.row div.span8 div.scrollable table.scrollable tbody tr td.event-03-00  {
+div.scrollable table.scrollable tbody tr td.event-03-00  {
 	background-color: white;
 	border: 1px solid #000000;
 }
 
 
-#c83729 div.tx-frab-integration div.news.single.row div.span8 div.scrollable table.scrollable tbody tr td.event-01-30 {
+div.scrollable table.scrollable tbody tr td.event-01-30 {
 	background-color: white;
 	border: 1px solid #000000;	
 }
 
-#c83729 div.tx-frab-integration div.news.single.row div.span8 div.scrollable table.scrollable thead tr th {
+div.scrollable table.scrollable thead tr th {
 		background-color: white;
-	border: 1px solid #000000;
+		border: 1px solid #000000;
 }

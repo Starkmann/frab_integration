@@ -134,6 +134,12 @@ class Tx_FrabIntegration_Domain_Model_Event extends Tx_Extbase_DomainObject_Abst
 	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_FrabIntegration_Domain_Model_Person>
 	 */
 	protected $persons = NULL;
+	
+	/**
+	 * Helper property to easier handle sheduler view
+	 * @var integer
+	 */
+	protected $day = NULL;
 
 	/**
 	 * __construct
@@ -477,4 +483,20 @@ class Tx_FrabIntegration_Domain_Model_Event extends Tx_Extbase_DomainObject_Abst
 		$this->persons = $persons;
 	}
 
+	/**
+	 * 
+	 * @return integer
+	 */
+	public function getDay(){
+		return $this->day;
+	}
+	
+	/**
+	 * 
+	 * @param integer $day
+	 */
+	public function setDay($day){
+		$this->day = $day;
+	}
+	
 }
