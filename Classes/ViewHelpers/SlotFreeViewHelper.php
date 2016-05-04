@@ -43,7 +43,7 @@ class Tx_FrabIntegration_ViewHelpers_SlotFreeViewHelper extends Tx_Fluid_Core_Vi
 			if($event->getStart()->format('H:i') == $timeslot->format('H:i')){
 				return false;
 			}
-			if($event->getStart()->format('H:i') < $timeslot->format('H:i') && $event->getEnd()->format('H:i') > $timeslot->format('H:i')){
+			if($event->getStart()->format('H:i') < $timeslot->format('H:i') && ($event->getEnd()->format('H:i') > $timeslot->format('H:i') || $event->getEnd()->format('H:i') == $timeslot->format('H:i'))){
 				return false;
 			}
 		}
