@@ -1,49 +1,107 @@
-div.tx-frab-integration div.news.single.row div.span8 table {
-border: none;
+/* Component styles */
+
+body {background:#efefef !important}
+
+.scrollable {
+	margin: 0;
+	padding: 1em 0 2em;
+	width: 99%;
+	max-width: 1000px;
+	overflow: hidden;
+}
+.scrollable table {
+	max-width: none;
+}
+.scrollable .filler {
+	color: #d3d3d3;
+}
+.scrollable .td, .scrollable th {
+    padding: .2em .2em;
+    text-align: left;
+}
+.scrollable thead th {
+	text-align:center;
+}
+.scrollable td.err {
+	background-color: #e992b9;
+	color: #fff;
+	font-size: 0.75em;
+	text-align: center;
+	line-height: 1;
+}
+.scrollable th {
+    background-color: #998993;
+    font-weight: bold;
+    color: #fff;
+    white-space: nowrap;
+}
+.scheduler-table tbody tr:nth-child(2n-1) {
+    background-color: #EBEBEB;
+    transition: all .125s ease-in-out;
+}
+.scheduler-table tbody tr:hover {
+    background-color: rgba(184, 176, 180,.3);
+}
+/* For appearance */
+.sticky-wrap {
+	overflow-x: auto;
+	overflow-y: hidden;
+	position: relative;
+	margin: 3em 0;
+	width: 100%;
+}
+.sticky-wrap .sticky-thead,
+.sticky-wrap .sticky-col,
+.sticky-wrap .sticky-intersect {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: all .125s ease-in-out;
+	z-index: 50;
+	width: auto; /* Prevent table from stretching to full size */
+}
+	.sticky-wrap .sticky-thead {
+		box-shadow: 0 0.25em 0.1em -0.1em rgba(0,0,0,.125);
+		z-index: 100;
+		width: 100%; /* Force stretch */
+	}
+	.sticky-wrap .sticky-intersect {
+		opacity: 1;
+		z-index: 150;
+
+	}
+	.sticky-wrap .sticky-intersect th {
+		color: #eee;
+	}
+	.sticky-wrap td,
+	.sticky-wrap th {
+		box-sizing: border-box;
+	}
+
+/* Not needed for sticky header/column functionality */
+td.user-name {
+	text-transform: capitalize;
+}
+.sticky-wrap.overflow-y {
+	overflow-y: auto;
+	max-height: 50vh;
 }
 
-div.tx-frab-integration div.news.single.row div.span8 table
-td  {
-border: none;
+.scheduler-table td[class^="event-"] {
+	background-color: #fff;
+	position: relative;
+	box-shadow: inset 0 0 10px #ddd;
+	vertical-align:top;
+}
+.scheduler-table td a {
+	display: block;
+	padding: .2em;
+	color:#000000;
 }
 
-div.tx-frab-integration div.news.single.row div.span8 table thead tr th {
-	border: none;
-	border-left: 1px solid #000000;
-
-	
-}
-
-
-
-div.scrollable { 
-    width: 800px; 
-    overflow-x:scroll;  
-    margin-left:5em; 
-    overflow-y:visible;
-    padding-bottom:5px;
-}
-.headcol {
-    position:absolute; 
-    left:400px;
-    top:auto;
-    border-right: 0px none black; 
-    border-top-width:3px; /*only relevant for first row*/
-    margin-top:-3px; /*compensate for top border*/
-}
-
-div.scrollable table.scrollable tbody tr td.event-03-00  {
-	background-color: white;
-	border: 1px solid #000000;
-}
-
-
-div.scrollable table.scrollable tbody tr td.event-01-30 {
-	background-color: white;
-	border: 1px solid #000000;	
-}
-
-div.scrollable table.scrollable thead tr th {
-		background-color: white;
-		border: 1px solid #000000;
+.scheduler-table td a:hover {
+	display: block;
+	padding: .2em;
+	color:#eb6721;
 }
