@@ -69,6 +69,7 @@ class Tx_FrabIntegration_Controller_EventController extends Tx_Extbase_MVC_Contr
 				$this->settings['conferenceParameters']['encoding'],
 				$eventGuid
 				);
+		//debug($event);
 		$this->view->assign('event', $event);
 	}
 
