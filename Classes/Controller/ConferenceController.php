@@ -40,6 +40,18 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
  	* @inject
 	*/
 	protected $frabRepository;
+	
+	/**
+	 * Initialize view
+	 *
+	 * @return void
+	 */
+	public function initializeAction() {
+		if($this->settings['cssPath'])
+			$this->response->addAdditionalHeaderData($this->wrapCssFile($this->settings['cssPath']));
+		else
+		$this->response->addAdditionalHeaderData($this->wrapCssFile(t3lib_extMgm::siteRelPath('frab_integration') . 'Resources/Public/Css/Style.css'));
+	}
 
 	/**
 	 * action list
@@ -76,6 +88,7 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 				$this->settings['conferenceParameters']['accept'],
 				$this->settings['conferenceParameters']['encoding']
 		);
+		
 		$timeline = $this->generateTimeline($day->getDayStart(), $day->getDayEnd(), 15);
 		$this->view->assign('conferences', $conferences);
 		$this->view->assign('currentDay', $currentDay);
@@ -113,6 +126,30 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 			$timeSolts[] = clone $currentTime;
 		}
 		return $timeSolts;
+	}
+	
+	/**
+	 * Wrap css files inside <link /> tag
+	 *
+	 * @param string $cssFile Path to file
+	 * @return string <link.. string ready for <head> part
+	 */
+	public function wrapCssFile($cssFile) {
+		$cssFile = t3lib_div::resolveBackPath($cssFile);
+		$cssFile = t3lib_div::createVersionNumberedFilename($cssFile);
+		return '<link rel="stylesheet" type="text/css" href="' . htmlspecialchars($cssFile) . '" media="screen" />';
+	}
+	
+	/**
+	 * Wrap css files inside <link /> tag
+	 *
+	 * @param string $cssFile Path to filegetPo
+	 * @return string <link.. string ready for <head> part
+	 */
+	public function wrapJsFile($jsFile) {
+		$jsFile = t3lib_div::resolveBackPath($jsFile);
+		$jsFile = t3lib_div::createVersionNumberedFilename($jsFile);
+		return '<script type="text/javascript" src="' . htmlspecialchars($jsFile) . '" ></script>';
 	}
 
 }

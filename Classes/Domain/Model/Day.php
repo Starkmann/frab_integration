@@ -1,6 +1,4 @@
 <?php
-namespace Eike\FrabIntegration\Domain\Model;
-
 
 /***************************************************************
  *
@@ -30,7 +28,7 @@ namespace Eike\FrabIntegration\Domain\Model;
 /**
  * Day
  */
-class Day extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
+class Tx_FrabIntegration_Domain_Model_Day extends Tx_Extbase_DomainObject_AbstractValueObject {
 
 	/**
 	 * index
@@ -63,7 +61,7 @@ class Day extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	/**
 	 * rooms
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Room>
+	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_FrabIntegration_Domain_Model_Room>
 	 */
 	protected $rooms = NULL;
 
@@ -84,7 +82,7 @@ class Day extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	 * @return void
 	 */
 	protected function initStorageObjects() {
-		$this->rooms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->rooms = new Tx_Extbase_Persistence_ObjectStorage();
 	}
 
 	/**
@@ -112,7 +110,8 @@ class Day extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	 * @return \DateTime $date
 	 */
 	public function getDate() {
-		return $this->date;
+		setlocale(LC_TIME, "de_DE");
+		return strftime('%A, %d.%m.%Y',$this->date->getTimestamp());
 	}
 
 	/**
@@ -166,27 +165,27 @@ class Day extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	/**
 	 * Adds a Room
 	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Room $room
+	 * @param Tx_FrabIntegration_Domain_Model_Room $room
 	 * @return void
 	 */
-	public function addRoom(\Eike\FrabIntegration\Domain\Model\Room $room) {
+	public function addRoom(Tx_FrabIntegration_Domain_Model_Room $room) {
 		$this->rooms->attach($room);
 	}
 
 	/**
 	 * Removes a Room
 	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Room $roomToRemove The Room to be removed
+	 * @param Tx_FrabIntegration_Domain_Model_Room $roomToRemove The Room to be removed
 	 * @return void
 	 */
-	public function removeRoom(\Eike\FrabIntegration\Domain\Model\Room $roomToRemove) {
+	public function removeRoom(Tx_FrabIntegration_Domain_Model_Room $roomToRemove) {
 		$this->rooms->detach($roomToRemove);
 	}
 
 	/**
 	 * Returns the rooms
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Room> $rooms
+	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_FrabIntegration_Domain_Model_Room> $rooms
 	 */
 	public function getRooms() {
 		return $this->rooms;
@@ -195,10 +194,10 @@ class Day extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	/**
 	 * Sets the rooms
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Room> $rooms
+	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_FrabIntegration_Domain_Model_Room> $rooms
 	 * @return void
 	 */
-	public function setRooms(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $rooms) {
+	public function setRooms(Tx_Extbase_Persistence_ObjectStorage $rooms) {
 		$this->rooms = $rooms;
 	}
 

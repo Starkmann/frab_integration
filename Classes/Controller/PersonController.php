@@ -1,5 +1,4 @@
 <?php
-namespace Eike\FrabIntegration\Controller;
 
 
 /***************************************************************
@@ -30,17 +29,18 @@ namespace Eike\FrabIntegration\Controller;
 /**
  * PersonController
  */
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+class Tx_FrabIntegration_Controller_PersonController extends Tx_Extbase_MVC_Controller_ActionController {
 
-class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
-	
 	/**
-	 *
-	 * @var \Eike\FrabIntegration\Domain\Repository\FrabRepository
-	 * @inject
-	 */
+	* 
+ 	* @var Tx_FrabIntegration_Domain_Repository_FrabRepository
+ 	* @inject
+	*/
 	protected $frabRepository;
 
+	public function injectFrabRepository(Tx_FrabIntegration_Domain_Repository_FrabRepository $frabRepository){
+		$this->frabRepository = $frabRepository;
+	} 
 	/**
 	 * action list
 	 *

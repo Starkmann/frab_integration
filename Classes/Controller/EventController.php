@@ -1,5 +1,4 @@
 <?php
-namespace Eike\FrabIntegration\Controller;
 
 
 /***************************************************************
@@ -30,17 +29,17 @@ namespace Eike\FrabIntegration\Controller;
 /**
  * EventController
  */
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
-
-class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
-	
+class Tx_FrabIntegration_Controller_EventController extends Tx_Extbase_MVC_Controller_ActionController {
 	/**
-	 *
-	 * @var \Eike\FrabIntegration\Domain\Repository\FrabRepository
-	 * @inject
-	 */
+	* 
+ 	* @var Tx_FrabIntegration_Domain_Repository_FrabRepository
+ 	* @inject
+	*/
 	protected $frabRepository;
 
+	public function injectFrabRepository(Tx_FrabIntegration_Domain_Repository_FrabRepository $frabRepository){
+		$this->frabRepository = $frabRepository;
+	}
 	/**
 	 * action list
 	 *
@@ -70,8 +69,8 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 				$this->settings['conferenceParameters']['encoding'],
 				$eventGuid
 				);
+		//debug($event);
 		$this->view->assign('event', $event);
 	}
-	
 
 }

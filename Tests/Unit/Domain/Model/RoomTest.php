@@ -27,7 +27,7 @@ namespace Eike\FrabIntegration\Tests\Unit\Domain\Model;
  ***************************************************************/
 
 /**
- * Test case for class \Eike\FrabIntegration\Domain\Model\Room.
+ * Test case for class Tx_FrabIntegration_Domain_Model_Room.
  *
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
@@ -36,12 +36,12 @@ namespace Eike\FrabIntegration\Tests\Unit\Domain\Model;
  */
 class RoomTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
-	 * @var \Eike\FrabIntegration\Domain\Model\Room
+	 * @var Tx_FrabIntegration_Domain_Model_Room
 	 */
 	protected $subject = NULL;
 
 	protected function setUp() {
-		$this->subject = new \Eike\FrabIntegration\Domain\Model\Room();
+		$this->subject = new Tx_FrabIntegration_Domain_Model_Room();
 	}
 
 	protected function tearDown() {
@@ -86,7 +86,7 @@ class RoomTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function setEventsForObjectStorageContainingEventSetsEvents() {
-		$event = new \Eike\FrabIntegration\Domain\Model\Event();
+		$event = new Tx_FrabIntegration_Domain_Model_Event();
 		$objectStorageHoldingExactlyOneEvents = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$objectStorageHoldingExactlyOneEvents->attach($event);
 		$this->subject->setEvents($objectStorageHoldingExactlyOneEvents);
@@ -102,7 +102,7 @@ class RoomTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function addEventToObjectStorageHoldingEvents() {
-		$event = new \Eike\FrabIntegration\Domain\Model\Event();
+		$event = new Tx_FrabIntegration_Domain_Model_Event();
 		$eventsObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
 		$eventsObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($event));
 		$this->inject($this->subject, 'events', $eventsObjectStorageMock);
@@ -114,7 +114,7 @@ class RoomTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function removeEventFromObjectStorageHoldingEvents() {
-		$event = new \Eike\FrabIntegration\Domain\Model\Event();
+		$event = new Tx_FrabIntegration_Domain_Model_Event();
 		$eventsObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
 		$eventsObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($event));
 		$this->inject($this->subject, 'events', $eventsObjectStorageMock);

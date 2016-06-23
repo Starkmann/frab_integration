@@ -14,8 +14,8 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:section name="main">
 <f:flashMessages renderMode="div" />
-<div style="margin-left:-35px;"> 
-    <div class="span11">
+<div class="news single row"> 
+    <div class="span8">
         <div class="news_teaser"><h1>{event.title}</h1></div>
        <!-- <b>Kurzbeschreibung</b>
         <div>{event.subtitle}</div>-->
@@ -32,7 +32,8 @@ Otherwise your changes will be overwritten the next time you save the extension 
             window.history.back();
             }
         </script>
-</div><!-- span8 -->
+
+    </div><!-- span8 -->
     
     <div class="span4">
         <div id="news-more">
@@ -64,14 +65,9 @@ Otherwise your changes will be overwritten the next time you save the extension 
                 <h2>Raum</h2>
                 <p>{event.room}</p>
             </div>
-            <div class="infobox dark">   
-            <f:for each="{event.persons}" as="person">
-				<h2>Referent_in</h2>
-				<p><f:link.action controller="Person" action="show" arguments="{personId:person.id}">{person.fullPublicName}</f:link.action></p>
-			</f:for>
-			</div>
+            
         </div>
     </div><!-- span4 -->
-
+</div>
 
 </f:section>

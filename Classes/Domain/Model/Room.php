@@ -1,6 +1,4 @@
 <?php
-namespace Eike\FrabIntegration\Domain\Model;
-
 
 /***************************************************************
  *
@@ -30,7 +28,7 @@ namespace Eike\FrabIntegration\Domain\Model;
 /**
  * Room
  */
-class Room extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
+class Tx_FrabIntegration_Domain_Model_Room extends Tx_Extbase_DomainObject_AbstractValueObject {
 
 	/**
 	 * name
@@ -42,7 +40,7 @@ class Room extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	/**
 	 * events
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Event>
+	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_FrabIntegration_Domain_Model_Event>
 	 * @cascade remove
 	 */
 	protected $events = NULL;
@@ -64,7 +62,7 @@ class Room extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	 * @return void
 	 */
 	protected function initStorageObjects() {
-		$this->events = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->events = new Tx_Extbase_Persistence_ObjectStorage();
 	}
 
 	/**
@@ -89,27 +87,27 @@ class Room extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	/**
 	 * Adds a Event
 	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Event $event
+	 * @param Tx_FrabIntegration_Domain_Model_Event $event
 	 * @return void
 	 */
-	public function addEvent(\Eike\FrabIntegration\Domain\Model\Event $event) {
+	public function addEvent(Tx_FrabIntegration_Domain_Model_Event $event) {
 		$this->events->attach($event);
 	}
 
 	/**
 	 * Removes a Event
 	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Event $eventToRemove The Event to be removed
+	 * @param Tx_FrabIntegration_Domain_Model_Event $eventToRemove The Event to be removed
 	 * @return void
 	 */
-	public function removeEvent(\Eike\FrabIntegration\Domain\Model\Event $eventToRemove) {
+	public function removeEvent(Tx_FrabIntegration_Domain_Model_Event $eventToRemove) {
 		$this->events->detach($eventToRemove);
 	}
 
 	/**
 	 * Returns the events
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Event> $events
+	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_FrabIntegration_Domain_Model_Event> $events
 	 */
 	public function getEvents() {
 		return $this->events;
@@ -118,10 +116,10 @@ class Room extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	/**
 	 * Sets the events
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Event> $events
+	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_FrabIntegration_Domain_Model_Event> $events
 	 * @return void
 	 */
-	public function setEvents(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $events) {
+	public function setEvents(Tx_Extbase_Persistence_ObjectStorage $events) {
 		$this->events = $events;
 	}
 

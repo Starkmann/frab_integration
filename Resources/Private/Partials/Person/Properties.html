@@ -1,47 +1,20 @@
 
-<table class="tx-frab-integration" >
-	<tr>
-		<td>
-			<f:translate key="tx_frabintegration_domain_model_person.image" />
-		</td>
-		<td>
-		{person.image}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_frabintegration_domain_model_person.full_public_name" />
-		</td>
-		<td>
-		{person.fullPublicName}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_frabintegration_domain_model_person.abstract" />
-		</td>
-		<td>
-		{person.abstract}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_frabintegration_domain_model_person.description" />
-		</td>
-		<td>
-		{person.description}
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<f:translate key="tx_frabintegration_domain_model_person.links" />
-		</td>
-		<td>
-		{person.links}
-		</td>
-	</tr>
-</table>
+        <f:translate key="tx_frabintegration_domain_model_person.full_public_name" />
 
-<f:for each="{person.events}" as="event">
-	<li><f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}">{event.title}</f:link.action></li>
-</f:for>
+		<h1>{person.fullPublicName}</h1>
+
+			<f:translate key="tx_frabintegration_domain_model_person.abstract" />
+        <h1>Beschreibung</h1>
+		<p>{person.abstract}
+
+			<f:translate key="tx_frabintegration_domain_model_person.description" />
+
+		{person.description}</p>
+
+			<f:translate key="tx_frabintegration_domain_model_person.links" />
+    <h1>Veranstaltungen mit {person.fullPublicName}</h1>
+		{person.links}<p>
+    <f:for each="{person.events}" as="event">
+	   <li><f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}">{event.title}</f:link.action></li>
+    </f:for></p>
+

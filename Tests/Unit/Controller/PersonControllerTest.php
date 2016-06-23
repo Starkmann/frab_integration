@@ -66,7 +66,7 @@ class PersonControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function showActionAssignsTheGivenPersonToView() {
-		$person = new \Eike\FrabIntegration\Domain\Model\Person();
+		$person = new Tx_FrabIntegration_Domain_Model_Person();
 
 		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
 		$this->inject($this->subject, 'view', $view);

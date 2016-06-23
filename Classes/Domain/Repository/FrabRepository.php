@@ -40,14 +40,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 */
 	protected $charsetConverter;
 				
-	/**
-	 * 
-	 * @param string $uri
-	 * @param string $useragent
-	 * @param string $accept
-	 * @param string $encoding
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
-	 */
+	
 	public function findConference($uri, $useragent, $accept, $encoding){
 		$result = $this->query($uri, $useragent, $accept, $encoding);
 		$result = json_decode($result, TRUE);
@@ -85,7 +78,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 								/* @var $event \Eike\FrabIntegration\Domain\Model\Event  */
 								$event = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Event');
 								$event->setTitle($resultEvent['title']);
-								$event->setRoom($resultEvent['room']);
+								$event->setRoom($room);
 								$event->setGuid($resultEvent['guid']);
 								$event->setAbstract($resultEvent['abstract']);
 								$event->setDate(new \DateTime($resultEvent['date']));
@@ -98,6 +91,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 								$event->setSubtitle($resultEvent['subtitle']);
 								$event->setTrack($resultEvent['track']);
 								$event->setType($resultEvent['type']);
+								$event->setDay($resultDay);
 								$room->addEvent($event);
 							}
 						}
@@ -267,7 +261,13 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	protected function buildPerson($resultPerson){
 		/* @var $person \Eike\FrabIntegration\Domain\Model\Person  */
 		$person = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Person');
-		$person->setFullPublicName($resultPerson['full_public_name']);
+		//@TODO This is a fix because the name might differ on json you come from (full_public_name or public_name) 
+		if($resultPerson['full_public_name']){
+		    $person->setFullPublicName($resultPerson['full_public_name']);
+		}elseif($resultPerson['public_name']){
+		    $person->setFullPublicName($resultPerson['public_name']);
+		}
+		
 		$person->setId($resultPerson['id']);
 		$person->setAbstract($resultPerson['abstract']);
 		$person->setDescription($resultPerson['description']);
