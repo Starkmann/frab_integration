@@ -1,4 +1,6 @@
 <?php
+namespace Eike\FrabIntegration\Domain\Model;
+use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 
 /***************************************************************
  *
@@ -28,7 +30,7 @@
 /**
  * Conference
  */
-class Tx_FrabIntegration_Domain_Model_Conference extends Tx_Extbase_DomainObject_AbstractValueObject {
+class Conference extends  AbstractValueObject{
 
 	/**
 	 * title
@@ -68,7 +70,7 @@ class Tx_FrabIntegration_Domain_Model_Conference extends Tx_Extbase_DomainObject
 	/**
 	 * days
 	 *
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_FrabIntegration_Domain_Model_Day>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Day>
 	 * @cascade remove
 	 */
 	protected $days = NULL;
@@ -90,7 +92,7 @@ class Tx_FrabIntegration_Domain_Model_Conference extends Tx_Extbase_DomainObject
 	 * @return void
 	 */
 	protected function initStorageObjects() {
-		$this->days = new Tx_Extbase_Persistence_ObjectStorage();
+		$this->days = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
 	/**
@@ -191,27 +193,27 @@ class Tx_FrabIntegration_Domain_Model_Conference extends Tx_Extbase_DomainObject
 	/**
 	 * Adds a Day
 	 *
-	 * @param Tx_FrabIntegration_Domain_Model_Day $day
+	 * @param \Eike\FrabIntegration\Domain\Model\Day $day
 	 * @return void
 	 */
-	public function addDay(Tx_FrabIntegration_Domain_Model_Day $day) {
+	public function addDay(\Eike\FrabIntegration\Domain\Model\Day $day) {
 		$this->days->attach($day);
 	}
 
 	/**
 	 * Removes a Day
 	 *
-	 * @param Tx_FrabIntegration_Domain_Model_Day $dayToRemove The Day to be removed
+	 * @param \Eike\FrabIntegration\Domain\Model\Day $dayToRemove The Day to be removed
 	 * @return void
 	 */
-	public function removeDay(Tx_FrabIntegration_Domain_Model_Day $dayToRemove) {
+	public function removeDay(\Eike\FrabIntegration\Domain\Model\Day $dayToRemove) {
 		$this->days->detach($dayToRemove);
 	}
 
 	/**
 	 * Returns the days
 	 *
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_FrabIntegration_Domain_Model_Day> $days
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Day> $days
 	 */
 	public function getDays() {
 		return $this->days;
@@ -220,10 +222,10 @@ class Tx_FrabIntegration_Domain_Model_Conference extends Tx_Extbase_DomainObject
 	/**
 	 * Sets the days
 	 *
-	 * @param Tx_Extbase_Persistence_ObjectStorage<Tx_FrabIntegration_Domain_Model_Day> $days
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Day> $days
 	 * @return void
 	 */
-	public function setDays(Tx_Extbase_Persistence_ObjectStorage $days) {
+	public function setDays(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $days) {
 		$this->days = $days;
 	}
 

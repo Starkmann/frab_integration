@@ -149,7 +149,7 @@ $GLOBALS['TCA']['tx_frabintegration_domain_model_person'] = array(
 			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_person.events',
 			'config' => array(
 				'type' => 'select',
-				'foreign_table' => 'tx_frabintegration_domain_model_event',
+				'foreign_table' => '\Eike\FrabIntegration\Domain\Model\Event',
 				'MM' => 'tx_frabintegration_person_event_mm',
 				'size' => 10,
 				'autoSizeMax' => 30,
@@ -171,7 +171,7 @@ $GLOBALS['TCA']['tx_frabintegration_domain_model_person'] = array(
 						'title' => 'Create new',
 						'icon' => 'add.gif',
 						'params' => array(
-							'table' => 'tx_frabintegration_domain_model_event',
+							'table' => '\Eike\FrabIntegration\Domain\Model\Event',
 							'pid' => '###CURRENT_PID###',
 							'setValue' => 'prepend'
 							),

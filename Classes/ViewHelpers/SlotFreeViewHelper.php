@@ -1,5 +1,7 @@
 <?php
 
+namespace Eike\FrabIntegration\ViewHelpers;
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /***************************************************************
  *
@@ -30,14 +32,14 @@
  *
  * @author Eike Starkmann
  */
-class Tx_FrabIntegration_ViewHelpers_SlotFreeViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class SlotFreeViewHelper extends AbstractViewHelper {
 
 	/**
-	 * @param \Tx_Extbase_Persistence_ObjectStorage<Tx_FrabIntegration_Domain_Model_Event> $events
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Event> $events
 	 * @params \DateTime $timeslot
 	 * return \boolean
 	 */
-	public function render(\Tx_Extbase_Persistence_ObjectStorage $events, \DateTime $timeslot) {
+	public function render(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $events, \DateTime $timeslot) {
 		$localEvents = clone $events;
 		foreach($localEvents as $event){
 			if($event->getStart()->format('H:i') == $timeslot->format('H:i')){

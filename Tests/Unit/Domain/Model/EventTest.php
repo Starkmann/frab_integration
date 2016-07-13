@@ -27,7 +27,7 @@ namespace Eike\FrabIntegration\Tests\Unit\Domain\Model;
  ***************************************************************/
 
 /**
- * Test case for class Tx_FrabIntegration_Domain_Model_Event.
+ * Test case for class \Eike\FrabIntegration\Domain\Model\Event.
  *
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
@@ -36,12 +36,12 @@ namespace Eike\FrabIntegration\Tests\Unit\Domain\Model;
  */
 class EventTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
-	 * @var Tx_FrabIntegration_Domain_Model_Event
+	 * @var \Eike\FrabIntegration\Domain\Model\Event
 	 */
 	protected $subject = NULL;
 
 	protected function setUp() {
-		$this->subject = new Tx_FrabIntegration_Domain_Model_Event();
+		$this->subject = new \Eike\FrabIntegration\Domain\Model\Event();
 	}
 
 	protected function tearDown() {
@@ -375,7 +375,7 @@ class EventTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function getPersonsReturnsInitialValueForPerson() {
-		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$newObjectStorage = new \\TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->assertEquals(
 			$newObjectStorage,
 			$this->subject->getPersons()
@@ -387,7 +387,7 @@ class EventTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 */
 	public function setPersonsForObjectStorageContainingPersonSetsPersons() {
 		$person = new Tx_FrabIntegration_Domain_Model_Person();
-		$objectStorageHoldingExactlyOnePersons = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$objectStorageHoldingExactlyOnePersons = new \\TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$objectStorageHoldingExactlyOnePersons->attach($person);
 		$this->subject->setPersons($objectStorageHoldingExactlyOnePersons);
 

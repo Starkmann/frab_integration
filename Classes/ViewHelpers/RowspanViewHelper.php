@@ -1,5 +1,8 @@
 <?php
 
+namespace Eike\FrabIntegration\ViewHelpers;
+
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /***************************************************************
  *
@@ -30,7 +33,7 @@
  *
  * @author Eike Starkmann
  */
-class Tx_FrabIntegration_ViewHelpers_RowspanViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class RowspanViewHelper extends AbstractViewHelper {
 
 	/**
 	 * @param \DateTime $duratrion

@@ -1,5 +1,5 @@
 <?php
-
+namespace Eike\FrabIntegration\Controller;
 
 /***************************************************************
  *
@@ -29,16 +29,16 @@
 /**
  * PersonController
  */
-class Tx_FrabIntegration_Controller_PersonController extends Tx_Extbase_MVC_Controller_ActionController {
+class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
 	* 
- 	* @var Tx_FrabIntegration_Domain_Repository_FrabRepository
+ 	* @var \Eike\FrabIntegration\Domain\Repository\FrabRepository
  	* @inject
 	*/
 	protected $frabRepository;
 
-	public function injectFrabRepository(Tx_FrabIntegration_Domain_Repository_FrabRepository $frabRepository){
+	public function injectFrabRepository(\Eike\FrabIntegration\Domain\Repository\FrabRepository $frabRepository){
 		$this->frabRepository = $frabRepository;
 	} 
 	/**

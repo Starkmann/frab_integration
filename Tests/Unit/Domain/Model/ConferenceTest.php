@@ -2,6 +2,8 @@
 
 namespace Eike\FrabIntegration\Tests\Unit\Domain\Model;
 
+use \Eike\FrabIntegration\Domain\Model\Day;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -27,7 +29,7 @@ namespace Eike\FrabIntegration\Tests\Unit\Domain\Model;
  ***************************************************************/
 
 /**
- * Test case for class Tx_FrabIntegration_Domain_Model_Conference.
+ * Test case for class Eike\FrabIntegration\Domain\Model\Conference.
  *
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
@@ -36,12 +38,12 @@ namespace Eike\FrabIntegration\Tests\Unit\Domain\Model;
  */
 class ConferenceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
-	 * @var Tx_FrabIntegration_Domain_Model_Conference
+	 * @var Eike\FrabIntegration\Domain\Model\Conference
 	 */
 	protected $subject = NULL;
 
 	protected function setUp() {
-		$this->subject = new Tx_FrabIntegration_Domain_Model_Conference();
+		$this->subject = new Eike\FrabIntegration\Domain\Model\Conference();
 	}
 
 	protected function tearDown() {
@@ -169,7 +171,7 @@ class ConferenceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function getDaysReturnsInitialValueForDay() {
-		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$newObjectStorage = new \\TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->assertEquals(
 			$newObjectStorage,
 			$this->subject->getDays()
@@ -180,8 +182,8 @@ class ConferenceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function setDaysForObjectStorageContainingDaySetsDays() {
-		$day = new Tx_FrabIntegration_Domain_Model_Day();
-		$objectStorageHoldingExactlyOneDays = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$day = new Day();
+		$objectStorageHoldingExactlyOneDays = new \\TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$objectStorageHoldingExactlyOneDays->attach($day);
 		$this->subject->setDays($objectStorageHoldingExactlyOneDays);
 
@@ -196,7 +198,7 @@ class ConferenceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function addDayToObjectStorageHoldingDays() {
-		$day = new Tx_FrabIntegration_Domain_Model_Day();
+		$day = new Day();
 		$daysObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
 		$daysObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($day));
 		$this->inject($this->subject, 'days', $daysObjectStorageMock);
@@ -208,7 +210,7 @@ class ConferenceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function removeDayFromObjectStorageHoldingDays() {
-		$day = new Tx_FrabIntegration_Domain_Model_Day();
+		$day = new Day();
 		$daysObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
 		$daysObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($day));
 		$this->inject($this->subject, 'days', $daysObjectStorageMock);

@@ -75,7 +75,7 @@ class RoomTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function getEventsReturnsInitialValueForEvent() {
-		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$newObjectStorage = new \\TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->assertEquals(
 			$newObjectStorage,
 			$this->subject->getEvents()
@@ -86,8 +86,8 @@ class RoomTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function setEventsForObjectStorageContainingEventSetsEvents() {
-		$event = new Tx_FrabIntegration_Domain_Model_Event();
-		$objectStorageHoldingExactlyOneEvents = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$event = new \Eike\FrabIntegration\Domain\Model\Event();
+		$objectStorageHoldingExactlyOneEvents = new \\TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$objectStorageHoldingExactlyOneEvents->attach($event);
 		$this->subject->setEvents($objectStorageHoldingExactlyOneEvents);
 
@@ -102,7 +102,7 @@ class RoomTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function addEventToObjectStorageHoldingEvents() {
-		$event = new Tx_FrabIntegration_Domain_Model_Event();
+		$event = new \Eike\FrabIntegration\Domain\Model\Event();
 		$eventsObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
 		$eventsObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($event));
 		$this->inject($this->subject, 'events', $eventsObjectStorageMock);
@@ -114,7 +114,7 @@ class RoomTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function removeEventFromObjectStorageHoldingEvents() {
-		$event = new Tx_FrabIntegration_Domain_Model_Event();
+		$event = new \Eike\FrabIntegration\Domain\Model\Event();
 		$eventsObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
 		$eventsObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($event));
 		$this->inject($this->subject, 'events', $eventsObjectStorageMock);

@@ -66,7 +66,7 @@ class ConferenceControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function showActionAssignsTheGivenConferenceToView() {
-		$conference = new Tx_FrabIntegration_Domain_Model_Conference();
+		$conference = new Eike\FrabIntegration\Domain\Model\Conference();
 
 		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
 		$this->inject($this->subject, 'view', $view);

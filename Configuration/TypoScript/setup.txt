@@ -29,6 +29,7 @@ plugin.tx_frabintegration {
 		} 
 	}
 }
+
 /*
 plugin.tx_frabintegration._CSS_DEFAULT_STYLE (
 	textarea.f3-form-error {

@@ -147,7 +147,7 @@ class DayTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function getRoomsReturnsInitialValueForRoom() {
-		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$newObjectStorage = new \\TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->assertEquals(
 			$newObjectStorage,
 			$this->subject->getRooms()
@@ -159,7 +159,7 @@ class DayTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 */
 	public function setRoomsForObjectStorageContainingRoomSetsRooms() {
 		$room = new Tx_FrabIntegration_Domain_Model_Room();
-		$objectStorageHoldingExactlyOneRooms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$objectStorageHoldingExactlyOneRooms = new \\TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$objectStorageHoldingExactlyOneRooms->attach($room);
 		$this->subject->setRooms($objectStorageHoldingExactlyOneRooms);
 

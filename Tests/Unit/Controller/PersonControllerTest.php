@@ -1,5 +1,7 @@
 <?php
 namespace Eike\FrabIntegration\Tests\Unit\Controller;
+use \Eike\FrabIntegration\Domain\Model\Person;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -66,7 +68,7 @@ class PersonControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function showActionAssignsTheGivenPersonToView() {
-		$person = new Tx_FrabIntegration_Domain_Model_Person();
+		$person = new Person();
 
 		$view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
 		$this->inject($this->subject, 'view', $view);

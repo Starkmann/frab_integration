@@ -3,8 +3,8 @@ if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
 
-Tx_Extbase_Utility_Extension::registerPlugin(
-	$_EXTKEY,
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	'Eike.'.$_EXTKEY,
 	'List',
 	'Frab Conference'
 );
@@ -131,11 +131,11 @@ $GLOBALS['TCA']['tx_frabintegration_domain_model_day'] = array(
 	),
 );
 
-t3lib_extMgm::addLLrefForTCAdescr('tx_frabintegration_domain_model_event', 'EXT:frab_integration/Resources/Private/Language/locallang_csh_tx_frabintegration_domain_model_event.xlf');
-t3lib_extMgm::allowTableOnStandardPages('tx_frabintegration_domain_model_event');
-$GLOBALS['TCA']['tx_frabintegration_domain_model_event'] = array(
+t3lib_extMgm::addLLrefForTCAdescr('\Eike\FrabIntegration\Domain\Model\Event', 'EXT:frab_integration/Resources/Private/Language/locallang_csh_\Eike\FrabIntegration\Domain\Model\Event.xlf');
+t3lib_extMgm::allowTableOnStandardPages('\Eike\FrabIntegration\Domain\Model\Event');
+$GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 	'ctrl' => array(
-		'title'	=> 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event',
+		'title'	=> 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event',
 		'label' => 'guid',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
@@ -156,6 +156,6 @@ $GLOBALS['TCA']['tx_frabintegration_domain_model_event'] = array(
 		),
 		'searchFields' => 'guid,date,start,duration,room,slug,title,subtitle,track,type,language,abstract,description,links,persons,',
 		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Event.php',
-		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_frabintegration_domain_model_event.gif'
+		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/\Eike\FrabIntegration\Domain\Model\Event.gif'
 	),
 );
