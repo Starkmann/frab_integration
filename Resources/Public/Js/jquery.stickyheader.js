@@ -149,4 +149,11 @@ jQuery( document ).ready(function( $ ) {
 			.scroll($.throttle(250, repositionStickyHead));
 		}
 	});
+	$('.sticky-controls').on('click', 'button', function(e) {
+		var scrollDistance = 200;
+		var isLeft = $(e.target).hasClass('left');
+		var table = $('.sticky-wrap');
+		var oldScrollLeft = table.scrollLeft();
+		table.animate({scrollLeft:oldScrollLeft + (isLeft ? - scrollDistance : scrollDistance)}, 200);
+	});
 });

@@ -20,7 +20,9 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <table class="table table-hover table-bordered">
 		<f:for each="{persons}" as="person">
-			<tr><td><f:link.action action="show" arguments="{personId:person.id}">{person.fullPublicName}</f:link.action></td></tr>
+			<tr><td><f:link.action action="show" arguments="{personId:person.id}">{person.fullPublicName}</f:link.action></td>
+			<td>{person.links}</td>
+			</tr>
 		</f:for>
 </table>
 
