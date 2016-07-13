@@ -1,7 +1,4 @@
 <?php
-namespace Eike\FrabIntegration\Controller;
-
-
 /***************************************************************
  *
  *  Copyright notice
@@ -41,6 +38,32 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 	*/
 	protected $frabRepository;
 
+	public function injectFrabRepository(Tx_FrabIntegration_Domain_Repository_FrabRepository $frabRepository){
+		$this->frabRepository = $frabRepository;
+	} 
+	
+	/**
+	 * Initialize view
+	 *
+	 * @return void
+	 */
+	public function initializeAction() {
+		if($this->settings['cssPath'])
+			$this->response->addAdditionalHeaderData($this->wrapCssFile($this->settings['cssPath']));
+		else
+		$this->response->addAdditionalHeaderData($this->wrapCssFile(t3lib_extMgm::siteRelPath('frab_integration') . 'Resources/Public/Css/Style.css'));
+		#$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/jquery.js'));
+		#$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/jquery.dataTables.js'));
+		#$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/dataTables.fixedColumns.js'));
+		#$this->response->addAdditionalHeaderData($this->wrapJsFile(t3lib_extMgm::extRelPath('frab_integration') . 'Resources/Public/Js/Scroll.js'));
+		
+	}
+	
+	public function intitializeSheduleAction() {
+		
+	}
+	
+	
 	/**
 	 * action list
 	 *
@@ -116,4 +139,3 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 		return $timeSolts;
 	}
 
-}
