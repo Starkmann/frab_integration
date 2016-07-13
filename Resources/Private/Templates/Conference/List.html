@@ -27,8 +27,8 @@ Otherwise your changes will be overwritten the next time you save the extension 
 	<h1>Veranstaltungen auf der {conference.title}</h1>
 
 		<!--<h1>Veranstaltungstage</h1>-->
-		<f:for each="{conference.days}" as="day">
-			<h2>Tag {day.index} – {day.date -> f:format.date(format:'l, d.m.Y')}</h2>
+		<f:for each="{conference.days}" as="day" iteration="iterater">
+			<h2>Tag {iterater.cycle} – {day.date}</h2>
 			<!--<div>
 				<div>Datum: {day.date -> f:format.date()}</div>
 				<div>Beginn: {day.dayStart -> f:format.date(format:'Y-m-d H:i')}</div>

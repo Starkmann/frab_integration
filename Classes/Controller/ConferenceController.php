@@ -29,6 +29,9 @@ namespace Eike\FrabIntegration\Controller;
  * ConferenceController
  */
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use TYPO3\CMS\Documentation\Slots\ExtensionManager;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	
@@ -38,6 +41,14 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
  	* @inject
 	*/
 	protected $frabRepository;
+	
+	protected function initializeAction(){
+	    if($this->settings['cssPath'])
+	        $this->response->addAdditionalHeaderData($this->wrapCssFile($this->settings['cssPath']));
+	        else
+	            $this->response->addAdditionalHeaderData($this->wrapCssFile(ExtensionManagementUtility::siteRelPath('frab_integration') . 'Resources/Public/Css/Style.css'));
+	    
+	}
 	
 	
 	/**
@@ -92,10 +103,18 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 	public function showAction(\Eike\FrabIntegration\Domain\Model\Conference $conference) {
 		$this->view->assign('conference', $conference);
 	}
-	
 
-	
-
+	/**
+	 * Wrap css files inside <link /> tag
+	 *
+	 * @param string $cssFile Path to file
+	 * @return string <link.. string ready for <head> part
+	 */
+	protected function wrapCssFile($cssFile) {
+	    $cssFile = GeneralUtility::resolveBackPath($cssFile);
+	    $cssFile = GeneralUtility::createVersionNumberedFilename($cssFile);
+	    return '<link rel="stylesheet" type="text/css" href="' . htmlspecialchars($cssFile) . '" media="screen" />';
+	}
 	
 	/**
 	 * 
