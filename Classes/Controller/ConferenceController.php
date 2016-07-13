@@ -76,6 +76,7 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 				$this->settings['conferenceParameters']['accept'],
 				$this->settings['conferenceParameters']['encoding']
 		);
+		
 		$timeline = $this->generateTimeline($day->getDayStart(), $day->getDayEnd(), 15);
 		$this->view->assign('conferences', $conferences);
 		$this->view->assign('currentDay', $currentDay);

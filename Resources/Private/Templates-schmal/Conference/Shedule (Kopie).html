@@ -1,0 +1,95 @@
+{namespace u=Tx_FrabIntegration_ViewHelpers}
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<div class="frab-scheduler">
+
+<f:flashMessages renderMode="div" />
+
+	<f:for each="{conferences}" as="conference">
+	<h1>Veranstaltungen auf der {conference.title}</h1>
+
+		<div class="pagination">
+		<ul >
+			<f:for each="{conference.days}" as="day">
+					<li><f:link.action action="shedule" arguments="{currentDay: day.index}">Tag {day.index}</f:link.action></li>
+			</f:for>
+		</ul>
+		</div>
+		<div class="scrollable">
+		<table class="scheduler-table">
+		<!--<h1>Veranstaltungstage</h1>-->
+		<f:for each="{conference.days}" as="day">
+			<f:if condition="{day.index} == {currentDay}">
+				<thead>
+				<tr>	
+				<th>Zeit</th>
+				<f:for each="{day.rooms}" as="room">
+					<f:if condition="{room.events}">
+					<th>{room.name}</th>
+					</f:if>
+				</f:for>
+				</tr>
+				</thead>
+				<tbody>
+				<f:for each="{timeline}" as="timeSlot">
+					<tr>
+					<th class="headcol" >{timeSlot -> f:format.date(format:'H:i')}</th>
+					<f:for each="{day.rooms}" as="room">
+						<f:if condition="{room.events}">
+						<f:for each="{room.events}" as="event" iteration="iterator">
+							<f:if condition="{f:format.date(date:event.start, format:'H:i')} == {f:format.date(date:timeSlot, format:'H:i')}">
+								<f:then>
+									<td class="long" rowspan="<u:rowspan duration='{event.duration}'/>" class="event-{f:format.date(date:event.duration, format:'H-i')}">
+	  						 			<f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}">{event.title}</f:link.action>
+	  						 		</td>
+	  						 	</f:then>
+	  						 	<f:else>
+	  						 		<f:if condition="{f:format.date(date:event.start, format:'H:i')} < {f:format.date(date:timeSlot, format:'H:i')}">
+	  						 			<f:if condition="{f:format.date(date:event.end, format:'H:i')} < {f:format.date(date:timeSlot, format:'H:i')}">
+	  						 				<f:if condition="{iterator.index} == 0">
+			  						 			<f:then>
+			  						 			 	<f:if condition="<u:slotFree events='{room.events}' timeslot='{timeSlot}'/>">
+			  						 			 		<td class="long"></td>
+			  						 			 	</f:if>
+			  						 			</f:then>
+			  						 		</f:if>
+	  						 			</f:if>
+	  						 		</f:if>
+	  						 		<f:if condition="{f:format.date(date:event.start, format:'H:i')} > {f:format.date(date:timeSlot, format:'H:i')}">
+	  						 			<f:if condition="{f:format.date(date:event.end, format:'H:i')} > {f:format.date(date:timeSlot, format:'H:i')}">
+	  						 				<f:if condition="{iterator.index} == 0">
+			  						 			<f:then>
+			  						 			 	<f:if condition="<u:slotFree events='{room.events}' timeslot='{timeSlot}'/>">
+			  						 			 		<td class="long"></td>
+			  						 			 	</f:if>
+			  						 			</f:then>
+			  						 		</f:if>
+	  						 			</f:if>
+	  						 		</f:if>
+	  						 	</f:else>
+	  						</f:if>
+	  					</f:for>
+	  					</f:if>
+  					</f:for>
+  					</tr>
+				</f:for>
+				</tbody>
+			</f:if>
+		</f:for>
+	</table>
+	</div>
+</f:for>
+</div>
+</f:section>

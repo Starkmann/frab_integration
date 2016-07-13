@@ -27,7 +27,7 @@ namespace Eike\FrabIntegration\Tests\Unit\Domain\Model;
  ***************************************************************/
 
 /**
- * Test case for class \Eike\FrabIntegration\Domain\Model\Event.
+ * Test case for class Tx_FrabIntegration_Domain_Model_Event.
  *
  * @copyright Copyright belongs to the respective authors
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
@@ -36,12 +36,12 @@ namespace Eike\FrabIntegration\Tests\Unit\Domain\Model;
  */
 class EventTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
-	 * @var \Eike\FrabIntegration\Domain\Model\Event
+	 * @var Tx_FrabIntegration_Domain_Model_Event
 	 */
 	protected $subject = NULL;
 
 	protected function setUp() {
-		$this->subject = new \Eike\FrabIntegration\Domain\Model\Event();
+		$this->subject = new Tx_FrabIntegration_Domain_Model_Event();
 	}
 
 	protected function tearDown() {
@@ -386,7 +386,7 @@ class EventTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function setPersonsForObjectStorageContainingPersonSetsPersons() {
-		$person = new \Eike\FrabIntegration\Domain\Model\Person();
+		$person = new Tx_FrabIntegration_Domain_Model_Person();
 		$objectStorageHoldingExactlyOnePersons = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$objectStorageHoldingExactlyOnePersons->attach($person);
 		$this->subject->setPersons($objectStorageHoldingExactlyOnePersons);
@@ -402,7 +402,7 @@ class EventTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function addPersonToObjectStorageHoldingPersons() {
-		$person = new \Eike\FrabIntegration\Domain\Model\Person();
+		$person = new Tx_FrabIntegration_Domain_Model_Person();
 		$personsObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
 		$personsObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($person));
 		$this->inject($this->subject, 'persons', $personsObjectStorageMock);
@@ -414,7 +414,7 @@ class EventTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function removePersonFromObjectStorageHoldingPersons() {
-		$person = new \Eike\FrabIntegration\Domain\Model\Person();
+		$person = new Tx_FrabIntegration_Domain_Model_Person();
 		$personsObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
 		$personsObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($person));
 		$this->inject($this->subject, 'persons', $personsObjectStorageMock);

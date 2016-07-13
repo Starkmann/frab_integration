@@ -1,3 +1,10 @@
+/*
+page.includeJSFooter {
+	jqueryThrottle = EXT:frab_integration/Resources/Public/Js/jquery.ba-throttle-debounce.min.js
+	jqueryStickyHeader = EXT:frab_integration/Resources/Public/Js/jquery.stickyheader.js
+}
+*/
+
 
 plugin.tx_frabintegration {
 	view {
@@ -22,7 +29,7 @@ plugin.tx_frabintegration {
 		} 
 	}
 }
-
+/*
 plugin.tx_frabintegration._CSS_DEFAULT_STYLE (
 	textarea.f3-form-error {
 		background-color:#FF9F9F;
@@ -56,3 +63,4 @@ plugin.tx_frabintegration._CSS_DEFAULT_STYLE (
 	}
 
 )
+*/
