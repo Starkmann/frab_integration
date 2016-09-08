@@ -52,6 +52,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		$result = $this->query($uri, $useragent, $accept, $encoding);
 		$result = json_decode($result, TRUE);
 		
+		
 		/* @var $confercences \\TYPO3\CMS\Extbase\Persistence\ObjectStorage  */
 		$confercences = $this->objectManager->get('\\TYPO3\CMS\Extbase\Persistence\ObjectStorage');
 		

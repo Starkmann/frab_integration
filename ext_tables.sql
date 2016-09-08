@@ -174,7 +174,7 @@ CREATE TABLE tx_frabintegration_domain_model_day (
 #
 # Table structure for table '\Eike\FrabIntegration\Domain\Model\Event'
 #
-CREATE TABLE \Eike\FrabIntegration\Domain\Model\Event (
+CREATE TABLE tx_frabintegration_domain_model_event (
 
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
@@ -238,7 +238,7 @@ CREATE TABLE tx_frabintegration_domain_model_day (
 #
 # Table structure for table '\Eike\FrabIntegration\Domain\Model\Event'
 #
-CREATE TABLE \Eike\FrabIntegration\Domain\Model\Event (
+CREATE TABLE tx_frabtntegration_domain_model_event (
 
 	room  int(11) unsigned DEFAULT '0' NOT NULL,
 
