@@ -247,11 +247,10 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	public function findDayByIndex($index, $uri, $useragent, $accept, $encoding){
 		$result = $this->query($uri, $useragent, $accept, $encoding);
 		$result = json_decode($result, TRUE);
-			
 		if(count($result['schedule']['conference']['days'])>0){
 			//Days
 			foreach ($result['schedule']['conference']['days'] as $resultDay){
-				if($resultDay['index']==$index){
+				if($resultDay['index']==$index+1){
 					/* @var $day \\Eike\FrabIntegration\Domain\Model\Day  */
 					$day = $this->objectManager->get('\\Eike\FrabIntegration\Domain\Model\Day');
 					$day->setDate(new \DateTime($resultDay['date']));
