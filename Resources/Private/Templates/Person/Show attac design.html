@@ -1,0 +1,30 @@
+
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<f:flashMessages renderMode="div" />
+<div style="margin-left:-35px;"> 
+    <div class="span11">
+
+<f:render partial="Person/Properties" arguments="{person:person}" />
+
+    </div><!-- span11 -->
+    <div class="span4"><!-- span4 -->
+        <div class="infobox dark">
+            <h2>{person.fullPublicName}</h2>
+            <img src="http://frab.attac.de/{person.image}">
+        </div>
+        
+    </div><!-- span4 -->
+</f:section>

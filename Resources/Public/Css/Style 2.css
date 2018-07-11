@@ -1,7 +1,6 @@
 /* Component styles */
 
-/*body {background:#efefef !important}
-*/
+/*body {background:#efefef !important}*/
 
 .scrollable {
 	margin: 0;
@@ -31,7 +30,7 @@
 	line-height: 1;
 }
 .scrollable th {
-    background-color: #0060a7;
+    background-color: #998993;
     font-weight: bold;
     color: #fff;
     white-space: nowrap;
@@ -98,14 +97,6 @@ td.user-name {
 	box-shadow: inset 0 0 10px #ddd;
 	vertical-align:top;
 }
-
-.scheduler-table td[class^="event-"]:hover{
-	background-color: #ddd;
-	position: relative;
-	box-shadow: inset 0 0 10px #ddd;
-	vertical-align:top;
-}
-
 .scheduler-table td a {
 	display: block;
 	padding: .2em;
@@ -115,5 +106,5 @@ td.user-name {
 .scheduler-table td a:hover {
 	display: block;
 	padding: .2em;
-	color:#0060a7;
+	color:#eb6721;
 }

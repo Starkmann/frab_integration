@@ -13,15 +13,21 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
-<h1>Liste der ReferentInnen</h1>
+<p><a href="https://www.ein-anderes-europa.de/index.php?id=76974" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Tagesansicht</a>  | <a href="https://www.ein-anderes-europa.de/index.php?id=76975" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Liste der Veranstaltungen</a> 
 
 <f:flashMessages renderMode="div" />
+<h3>Referent_Innen</h3>
 
-
-<ul>
+<div class="card-columns">
 		<f:for each="{persons}" as="person">
-			<li><f:link.action action="show" arguments="{personId:person.id}">{person.fullPublicName}</f:link.action></li>
+			<div class="card">
+				<img class="card-img-top" src="https://frab.attac.de/{person.image}" alt="{person.fullPublicName}">
+			    <div class="card-body">
+			      <h5 class="card-title">{person.fullPublicName}</h5>
+			      <p class="card-text"><f:link.action action="show" class="btn btn-primary btn-sm" arguments="{personId:person.id}">Infos und Veranstaltungen</f:link.action></li></p>
+			    </div>
+			</div>
 		</f:for>
-		</ul>
+</div>
 
 </f:section>

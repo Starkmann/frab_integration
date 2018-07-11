@@ -13,30 +13,35 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
+<p><a href="https://www.ein-anderes-europa.de/index.php?id=76975" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Liste aller Veranstaltungen</a> | <a href="https://www.ein-anderes-europa.de/index.php?id=76973" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Liste der ReferentInnen</a></p>
 <div class="frab-scheduler">
 
 <f:flashMessages renderMode="div" />
 	<f:for each="{conferences}" as="conference">
-	<h1>Veranstaltungen auf der {conference.title}</h1>
 
-		<div class="pagination">
-		<ul >
+
+		<nav aria-label="Tagesmenue">
+		<ul class="pagination pagination-lg">
 			<f:for each="{conference.days}" as="day" iteration="iterator">
 					<f:if condition="{day.index}=={currentDay}">
 					<f:then>
-						<li class="active"><f:link.action action="shedule" arguments="{currentDay: day.index}">Tag {iterator.cycle}</f:link.action></li>
+						<li class="page-item active"><f:link.action action="shedule" class="page-link" arguments="{currentDay: day.index}">Tag {iterator.cycle}</f:link.action></li>
 					</f:then>
 					<f:else>
-						<li><f:link.action action="shedule" arguments="{currentDay: day.index}">Tag {iterator.cycle}</f:link.action></li>
+						<li class="page-item"><f:link.action action="shedule" class="page-link" arguments="{currentDay: day.index}">Tag {iterator.cycle}</f:link.action></li>
 					</f:else>
 					</f:if>
 					
 			</f:for>
 		</ul>
-		<p>Bitte die entsprechenden Tage auswählen. Alle Veranstaltungen des Tages erscheinen dann in unserer Programmtabelle. Diese lässt sich vertikal und horizontal Scrollen. Benutzen Sie dafür ihr Mausrad, die Scrollbalken ihres Browsers oder unsere Buttons links und rechts über der Programmtabelle.</p>
+		
+		</nav>
+		<div class="alert alert-success" role="alert">
+Bitte die entsprechenden Tage auswählen. Alle Veranstaltungen des Tages erscheinen dann in unserer Programmtabelle. Diese lässt sich vertikal und horizontal Scrollen. Benutzen Sie dafür ihr Mausrad, die Scrollbalken ihres Browsers oder unsere Buttons links und rechts über der Programmtabelle.
 		</div>
-		<div class="sticky-controls">
-			<button class="btn left pull-left">«</button><button class="btn right pull-right">»</button>
+
+		<div class="sticky-controls btn-group btn-group-lg" role="group" aria-label="Large button group">
+			<button type="button" class="btn btn-secondary btn-success left pull-left">«</button><button type="button" class="btn btn-secondary btn-success right pull-right">»</button>
 		</div>
 		<div class="scrollable">
 		<table class="scheduler-table">

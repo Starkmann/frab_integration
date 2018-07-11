@@ -14,18 +14,35 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:section name="main">
 <f:flashMessages renderMode="div" />
-<div style="margin-left:-35px;"> 
+<p><a href="https://www.ein-anderes-europa.de/index.php?id=76975" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Liste aller Veranstaltungen</a> | <a href="https://www.ein-anderes-europa.de/index.php?id=76973" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Liste der ReferentInnen</a> | <button type="button" class="btn btn-primary btn-sm" onclick="goBack()">Zurück zur Tagesübersicht</button></p>
+<div> 
     <div class="span11">
-        <div class="news_teaser"><h1>{event.title}</h1></div>
+        <div class="news_teaser"><h2>{event.title}</h2></div>
        <!-- <b>Kurzbeschreibung</b>
         <div>{event.subtitle}</div>-->
-        <b>Beschreibung</b>	
-        <div>{event.abstract ->f:format.html()}</div>
+		<div class="card">
+			<div class="card-header">
+				Beschreibung
+  			</div>
+  			<div class="card-body">
+  				<p class="card-text">{event.abstract ->f:format.html()}</p>	
+  			</div>
+		</div>
+		<br/>
+		<div class="card">
+			<div class="card-header">
+				Weitere Informationen
+  			</div>
+  			<div class="card-body">
+  				<p class="card-text">{event.description ->f:format.html()}</p>	
+  			</div>
+		</div>
+        
+        
+        
 
-        <b>Weitere Informationen</b>
-        <div>{event.description ->f:format.html()}</div>	
- 
-        <button class="btn" onclick="goBack()">Zurück</button>
+ <br/>
+        <button type="button" class="btn btn-primary btn-sm" onclick="goBack()">Zurück zur Tagesübersicht</button>
 
         <script>
             function goBack() {
@@ -33,45 +50,52 @@ Otherwise your changes will be overwritten the next time you save the extension 
             }
         </script>
 </div><!-- span8 -->
-    
-    <div class="span4">
-        <div id="news-more">
-        
-            <div class="infobox fair">
-                <h2>Themenstrang</h2>
-                <p>{event.track}</p>
-            </div>
-            
-            <div class="infobox dark">
-                <h2>Beginn</h2>
-                <p>{event.date  -> f:format.date(format:'d.m Y')} um {event.start -> f:format.date(format:'H:i')} Uhr</p>
-            </div>
-        
-            <div class="infobox dark">
-                <h2>Länge der Veranstaltung</h2>					
-                <p>{event.duration -> f:format.date(format:'H:i')} h</p>
-            </div>
-            
-            <!--<b>Sprache</b>
-            <div>{event.language}</div>-->
-        
-            <div class="infobox dark">
-                <h2>Veranstaltungstyp</h2>
-                <p>{event.type}</p>
-            </div>
-            
-            <div class="infobox dark">    
-                <h2>Raum</h2>
-                <p>{event.room}</p>
-            </div>
-            <div class="infobox dark">   
-            <f:for each="{event.persons}" as="person">
-				<h2>Referent_in</h2>
-				<p><f:link.action controller="Person" action="show" arguments="{personId:person.id}">{person.fullPublicName}</f:link.action></p>
+ <br/>
+	<div class="card-group">
+	  <div class="card">
+	    <div class="card-body">
+	      <h5 class="card-title">Themenstrang</h5>
+	      <p class="card-text">{event.track}</p>
+	    </div>
+	  </div>
+	  <div class="card">
+	    <div class="card-body">
+	      <h5 class="card-title">Beginn</h5>
+	      <p class="card-text">{event.date  -> f:format.date(format:'d.m Y')} um {event.start -> f:format.date(format:'H:i')} Uhr</p>
+	    </div>
+	  </div>
+	  <div class="card">
+	    <div class="card-body">
+	      <h5 class="card-title">Länge der Veranstaltung</h5>
+	      <p class="card-text">{event.duration -> f:format.date(format:'H:i')} h</p>
+	    </div>
+	  </div>
+	</div>
+	
+	<div class="card-group">
+	  <div class="card">
+	    <div class="card-body">
+	      <h5 class="card-title">Veranstaltungstyp</h5>
+	      <p class="card-text">{event.type}</p>
+	    </div>
+	  </div>
+	  <div class="card">
+	    <div class="card-body">
+	      <h5 class="card-title">Raum</h5>
+	      <p class="card-text">{event.room}</p>
+	    </div>
+	  </div>
+	  <div class="card">
+	    <div class="card-body">
+		    <f:for each="{event.persons}" as="person">
+				<h5 class="card-title">Referent_in</h5>
+				<p class="card-text"><f:link.action controller="Person" action="show" arguments="{personId:person.id}">{person.fullPublicName}</f:link.action></p>
 			</f:for>
-			</div>
-        </div>
-    </div><!-- span4 -->
+	        
+	    </div>
+	  </div>
+	</div>
+
 
 
 </f:section>
