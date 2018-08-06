@@ -1,12 +1,6 @@
 
 
-  <div class="card">
-	  <div class="card-header">Beschreibung</div>
-    <div class="card-body">
-
-      <p class="card-text">{person.description}</p>
-    </div>
-  </div>
+  
 
   <div class="card">
 	  <div class="card-header">Veranstaltungen</div>
@@ -14,7 +8,7 @@
       <p class="card-text">			
 	    <f:for each="{person.events}" as="event">
 	    Veranstaltungen mit {person.fullPublicName}:
-	   <p><f:link.action class="btn btn-sm btn-success" controller="Event" action="show" arguments="{eventGuid:event.guid}">{event.title}</f:link.action></p>
+	   <p><f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}">{event.title}</f:link.action></p>
     </f:for>
     </div>
   </div>

@@ -20,7 +20,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
         <div class="news_teaser"><h2>{event.title}</h2></div>
        <!-- <b>Kurzbeschreibung</b>
         <div>{event.subtitle}</div>-->
-		<div class="card">
+		<!-- <div class="card">
 			<div class="card-header">
 				Beschreibung
   			</div>
@@ -28,10 +28,10 @@ Otherwise your changes will be overwritten the next time you save the extension 
   				<p class="card-text">{event.abstract ->f:format.html()}</p>	
   			</div>
 		</div>
-		<br/>
+		<br/>-->
 		<div class="card">
 			<div class="card-header">
-				Weitere Informationen
+				Beschreibung
   			</div>
   			<div class="card-body">
   				<p class="card-text">{event.description ->f:format.html()}</p>	
@@ -42,7 +42,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
         
 
  <br/>
-        <button type="button" class="btn btn-primary btn-sm" onclick="goBack()">Zurück zur Tagesübersicht</button>
+        <button type="button" class="btn btn-primary btn-sm" onclick="goBack()">Zurück</button>
 
         <script>
             function goBack() {
