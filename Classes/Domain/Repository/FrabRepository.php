@@ -32,16 +32,16 @@ use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
-	
+
 	/**
-	 * 
+	 *
 	 * @var \TYPO3\CMS\Core\Charset\CharsetConverter
 	 * @inject
 	 */
 	protected $charsetConverter;
-				
+
 	/**
-	 * 
+	 *
 	 * @param string $uri
 	 * @param string $useragent
 	 * @param string $accept
@@ -51,11 +51,11 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	public function findConference($uri, $useragent, $accept, $encoding){
 		$result = $this->query($uri, $useragent, $accept, $encoding);
 		$result = json_decode($result, TRUE);
-		
-		
+
+
 		/* @var $confercences \\TYPO3\CMS\Extbase\Persistence\ObjectStorage  */
 		$confercences = $this->objectManager->get('\\TYPO3\CMS\Extbase\Persistence\ObjectStorage');
-		
+
 		/* @var $confercence \Eike\FrabIntegration\Domain\Model\Conference  */
 		$confercence = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Conference');
 		$confercence->setTitle($result['schedule']['conference']['title']);
@@ -63,7 +63,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		$confercence->setEnd(new \DateTime($result['schedule']['conference']['end']));
 		$confercence->setDaysCount($result['schedule']['conference']['daysCount']);
 		$confercence->setTimeslotDuration(new \DateTime($result['schedule']['conference']['timeslot_duration']));
-		
+
 		if(count($result['schedule']['conference']['days'])>0){
 			//Days
 			foreach ($result['schedule']['conference']['days'] as $resultDay){
@@ -79,7 +79,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 						/* @var $room \\Eike\FrabIntegration\Domain\Model\Room  */
 						$room = $this->objectManager->get('\\Eike\FrabIntegration\Domain\Model\Room');
 						$room->setName($key);
-						
+
 						//Events
 						if(count($events)>0){
 							foreach ($events as $resultEvent){
@@ -106,26 +106,26 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 						$day->addRoom($room);
 					}
 				}
-				
-				
+
+
 				$confercence->addDay($day);
 			}
 		}
-		
-		
+
+
 		$confercences->attach($confercence);
-		
+
 		return $confercences;
 	}
-	
+
 	public function findEvents($uri, $useragent, $accept, $encoding){
 		$result = $this->query($uri, $useragent, $accept, $encoding);
 		$result = json_decode($result, TRUE);
-		
+
 		if(count($result['schedule']['conference']['days'])>0){
 			/* @var $eventStorage \\TYPO3\CMS\Extbase\Persistence\ObjectStorage  */
 			$eventStorage = $this->objectManager->get('\\TYPO3\CMS\Extbase\Persistence\ObjectStorage');
-			
+
 			//Days
 			foreach ($result['schedule']['conference']['days'] as $resultDay){
 				//Rooms
@@ -134,10 +134,10 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 						/* @var $room \\Eike\FrabIntegration\Domain\Model\Room  */
 						$room = $this->objectManager->get('\\Eike\FrabIntegration\Domain\Model\Room');
 						$room->setName($key);
-	
+
 						//Events
 						if(count($events)>0){
-							
+
 							foreach ($events as $resultEvent){
 								/* @var $event \\Eike\FrabIntegration\Domain\Model\Event  */
 								$event = $this->objectManager->get('\\Eike\FrabIntegration\Domain\Model\Event');
@@ -151,15 +151,15 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 				}
 			}
 		}
-	
+
 		return $eventStorage;
 	}
-	
-	
+
+
 	public function findEvent($uri, $useragent, $accept, $encoding, $eventGuid){
 		$result = $this->query($uri, $useragent, $accept, $encoding);
 		$result = json_decode($result, TRUE);
-	
+
 		if(count($result['schedule']['conference']['days'])>0){
 			//Days
 			foreach ($result['schedule']['conference']['days'] as $resultDay){
@@ -175,7 +175,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 						/* @var $room \\Eike\FrabIntegration\Domain\Model\Room  */
 						$room = $this->objectManager->get('\\Eike\FrabIntegration\Domain\Model\Room');
 						$room->setName($key);
-	
+
 						//Events
 						if(count($events)>0){
 							foreach ($events as $resultEvent){
@@ -210,7 +210,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			}
 		}
 	}
-	
+
 	public function findPersons($uri, $useragent, $accept, $encoding){
 		$result = $this->query($uri, $useragent, $accept, $encoding);
 		$result = json_decode($result, TRUE);
@@ -223,7 +223,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		}
 		return $personStorage;
 	}
-	
+
 	public function findPerson($uri, $useragent, $accept, $encoding, $personId){
 		$result = $this->query($uri, $useragent, $accept, $encoding);
 		$result = json_decode($result, TRUE);
@@ -233,11 +233,11 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 					return $this->buildPerson($resultPerson);
 				}
 			}
-		}	
+		}
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param unknown $index
 	 * @param unknown $uri
 	 * @param unknown $useragent
@@ -251,24 +251,24 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		if(count($result['schedule']['conference']['days'])>0){
 			//Days
 			foreach ($result['schedule']['conference']['days'] as $resultDay){
-				if($resultDay['index']==$index+1){
+				if($resultDay['index']==$index){
 					/* @var $day \\Eike\FrabIntegration\Domain\Model\Day  */
 					$day = $this->objectManager->get('\\Eike\FrabIntegration\Domain\Model\Day');
 					$day->setDate(new \DateTime($resultDay['date']));
 					$day->setDayEnd(new \DateTime($resultDay['day_end']));
 					$day->setDayStart(new \DateTime($resultDay['day_start']));
-					$day->setIndex($resultDay['index']);	
+					$day->setIndex($resultDay['index']);
 				}
 			}
 		}
 		return $day;
-		
+
 	}
-	
+
 	protected function buildPerson($resultPerson){
 		/* @var $person \Eike\FrabIntegration\Domain\Model\Person  */
 		$person = $this->objectManager->get('\Eike\FrabIntegration\Domain\Model\Person');
-		//@TODO This is a fix because the name might differ on json you come from (full_public_name or public_name) 
+		//@TODO This is a fix because the name might differ on json you come from (full_public_name or public_name)
 		if($resultPerson['full_public_name']){
 		    $person->setFullPublicName($resultPerson['full_public_name']);
 		}elseif($resultPerson['public_name']){
@@ -289,11 +289,11 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			}
 		}
 		return $person;
-		
+
 	}
-	
+
 	protected function query($uri, $useragent, $accept, $encoding) {
-	
+
 		// Check if the json's URI is defined
 		if (empty($uri)) {
 			$message = "Url not well defined.";
@@ -329,7 +329,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 				$isSameCharset = TRUE;
 			} else {
 				// Standardize charset name and compare
-				
+
 				$encoding = $this->charsetConverter->parse_charset($encoding);
 				$isSameCharset = $this->getCharset() == $encoding;
 			}
@@ -338,11 +338,11 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 				$data = $this->charsetConverter->conv($data, $encoding, $this->getCharset());
 			}
 		}
-	
+
 		// Return the result
 		return $data;
 	}
-	
+
 	protected function getCharset() {
 		if (TYPO3_MODE == 'FE') {
 			return $GLOBALS['TSFE']->renderCharset;
