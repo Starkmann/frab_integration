@@ -72,7 +72,7 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 	 *@param integer $currentDay
 	 * @return void
 	 */
-	public function sheduleAction($currentDay = 0) {
+	public function sheduleAction($currentDay = 1) {
 		$conferences = $this->frabRepository->findConference(
 				$this->settings['conferenceParameters']['conferenceUri'],
 				$this->settings['conferenceParameters']['userAgent'],
