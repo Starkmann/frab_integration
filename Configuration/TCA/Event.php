@@ -3,8 +3,8 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-$GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
-	'ctrl' => $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event']['ctrl'],
+$GLOBALS['TCA']['tx_frabintegration_domain_model_event'] = array(
+	'ctrl' => $GLOBALS['TCA']['tx_frabintegration_domain_model_event']['ctrl'],
 	'interface' => array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, guid, date, start, duration, room, slug, title, subtitle, track, type, language, abstract, description, links, persons',
 	),
@@ -38,8 +38,8 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 				'items' => array(
 					array('', 0),
 				),
-				'foreign_table' => '\Eike\FrabIntegration\Domain\Model\Event',
-				'foreign_table_where' => 'AND \Eike\FrabIntegration\Domain\Model\Event.pid=###CURRENT_PID### AND \Eike\FrabIntegration\Domain\Model\Event.sys_language_uid IN (-1,0)',
+				'foreign_table' => 'tx_frabintegration_domain_model_event',
+				'foreign_table_where' => 'AND tx_frabintegration_domain_model_event.pid=###CURRENT_PID### AND tx_frabintegration_domain_model_event.sys_language_uid IN (-1,0)',
 			),
 		),
 		'l10n_diffsource' => array(
@@ -99,7 +99,7 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 
 		'guid' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event.guid',
+			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event.guid',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -108,7 +108,7 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 		),
 		'date' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event.date',
+			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event.date',
 			'config' => array(
 				'dbType' => 'datetime',
 				'type' => 'input',
@@ -120,7 +120,7 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 		),
 		'start' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event.start',
+			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event.start',
 			'config' => array(
 				'type' => 'input',
 				'size' => 4,
@@ -131,7 +131,7 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 		),
 		'duration' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event.duration',
+			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event.duration',
 			'config' => array(
 				'type' => 'input',
 				'size' => 4,
@@ -142,7 +142,7 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 		),
 		'room' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event.room',
+			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event.room',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -151,7 +151,7 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 		),
 		'slug' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event.slug',
+			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event.slug',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -160,7 +160,7 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 		),
 		'title' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event.title',
+			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event.title',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -169,7 +169,7 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 		),
 		'subtitle' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event.subtitle',
+			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event.subtitle',
 			'config' => array(
 				'type' => 'text',
 				'cols' => 40,
@@ -179,7 +179,7 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 		),
 		'track' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event.track',
+			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event.track',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -188,7 +188,7 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 		),
 		'type' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event.type',
+			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event.type',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -197,7 +197,7 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 		),
 		'language' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event.language',
+			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event.language',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -206,7 +206,7 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 		),
 		'abstract' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event.abstract',
+			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event.abstract',
 			'config' => array(
 				'type' => 'text',
 				'cols' => 40,
@@ -216,7 +216,7 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 		),
 		'description' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event.description',
+			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event.description',
 			'config' => array(
 				'type' => 'text',
 				'cols' => 40,
@@ -226,7 +226,7 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 		),
 		'links' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event.links',
+			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event.links',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -235,7 +235,7 @@ $GLOBALS['TCA']['\Eike\FrabIntegration\Domain\Model\Event'] = array(
 		),
 		'persons' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:\Eike\FrabIntegration\Domain\Model\Event.persons',
+			'label' => 'LLL:EXT:frab_integration/Resources/Private/Language/locallang_db.xlf:tx_frabintegration_domain_model_event.persons',
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_frabintegration_domain_model_person',

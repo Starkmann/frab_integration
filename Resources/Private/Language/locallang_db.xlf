@@ -72,52 +72,52 @@
 			<trans-unit id="tx_frabintegration_domain_model_day.rooms">
 				<source>Rooms</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event">
+			<trans-unit id="tx_frabintegration_domain_model_event">
 				<source>Event</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event.guid">
+			<trans-unit id="tx_frabintegration_domain_model_event.guid">
 				<source>Guid</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event.date">
+			<trans-unit id="tx_frabintegration_domain_model_event.date">
 				<source>Date</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event.start">
+			<trans-unit id="tx_frabintegration_domain_model_event.start">
 				<source>Start</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event.duration">
+			<trans-unit id="tx_frabintegration_domain_model_event.duration">
 				<source>Duration</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event.room">
+			<trans-unit id="tx_frabintegration_domain_model_event.room">
 				<source>Room</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event.slug">
+			<trans-unit id="tx_frabintegration_domain_model_event.slug">
 				<source>Slug</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event.title">
+			<trans-unit id="tx_frabintegration_domain_model_event.title">
 				<source>Title</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event.subtitle">
+			<trans-unit id="tx_frabintegration_domain_model_event.subtitle">
 				<source>Subtitle</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event.track">
+			<trans-unit id="tx_frabintegration_domain_model_event.track">
 				<source>Track</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event.type">
+			<trans-unit id="tx_frabintegration_domain_model_event.type">
 				<source>Type</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event.language">
+			<trans-unit id="tx_frabintegration_domain_model_event.language">
 				<source>Language</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event.abstract">
+			<trans-unit id="tx_frabintegration_domain_model_event.abstract">
 				<source>Abstract</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event.description">
+			<trans-unit id="tx_frabintegration_domain_model_event.description">
 				<source>Description</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event.links">
+			<trans-unit id="tx_frabintegration_domain_model_event.links">
 				<source>Links</source>
 			</trans-unit>
-			<trans-unit id="\Eike\FrabIntegration\Domain\Model\Event.persons">
+			<trans-unit id="tx_frabintegration_domain_model_event.persons">
 				<source>Persons</source>
 			</trans-unit>
 		</body>
