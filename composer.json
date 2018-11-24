@@ -1,0 +1,31 @@
+{
+	"name": "undkonsorten/frab-integration",
+	"type": "typo3-cms-extension",
+	"description": "Frab integration",
+	"authors": [
+		{
+			"name": "Eike Starkmann",
+			"email": "eike.starkmann@posteo.de",
+			"role": "Developer"
+		}
+	],
+	"license": ["GPL-2.0+"],
+	"keywords": ["frab", "TYPO3", "congress"],
+	"require": {
+		"typo3/cms": ">=8.7"
+	},
+	"replace": {
+		"frab-integration": "self.version",
+		"typo3-ter/frab-integration": "self.version"
+	},
+	"autoload": {
+		"psr-4": {
+			"Undkonsorten\\FrabIntegration\\": "Classes"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Eike\\FrabIntegration\\Tests\\": "Tests"
+		}
+	}
+}
