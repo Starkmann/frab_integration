@@ -30,20 +30,20 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
  ***************************************************************/
 
 /**
- *
  * @author Eike Starkmann
  */
-class RowspanViewHelper extends AbstractViewHelper {
+class RowspanViewHelper extends AbstractViewHelper
+{
 
-	/**
-	 * @param \DateTime $duratrion
-	 * return \string
-	 */
-	public function render(\DateTime $duration) {
-		$localDuration = clone $duration;
-		$hours = $localDuration->format(H);
-		$minutes = $localDuration->format(i);
-		return ($hours*60+$minutes)/15;
-	}
-
+    /**
+     * @param \DateTime $duratrion
+     * return \string
+     */
+    public function render(\DateTime $duration)
+    {
+        $localDuration = clone $duration;
+        $hours = $localDuration->format(H);
+        $minutes = $localDuration->format(i);
+        return ($hours*60+$minutes)/15;
+    }
 }

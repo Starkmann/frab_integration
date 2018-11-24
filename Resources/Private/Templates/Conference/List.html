@@ -1,4 +1,4 @@
-
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
 This Template is responsible for creating a table of domain objects.
@@ -15,54 +15,31 @@ Otherwise your changes will be overwritten the next time you save the extension 
 <f:section name="main">
 
 
-<f:flashMessages renderMode="div" />
+<f:flashMessages />
 
 
 
-	<f:for each="{conferences}" as="conference">
-
-
-<p><a href="https://www.ein-anderes-europa.de/index.php?id=76974" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Tagesansicht</a>  | <a href="https://www.ein-anderes-europa.de/index.php?id=76973" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Liste der ReferentInnen</a> 
-
-		<!--<h1>Veranstaltungstage</h1>-->
-		<f:for each="{conference.days}" as="day" iteration="iterater">
-			<div class="card">
-				<div class="card-header">
-					<strong>Tag {iterater.cycle} – {day.date}</strong>
-  				</div>
-  				<div class="card-body">
-  				<p class="card-text"><f:for each="{day.rooms}" as="room">
-				<f:if condition="{room.events}">
-  				<ul>
-  				<f:for each="{room.events}" as="event">
-  					<li><f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}">{event.title}</f:link.action></li>
-  				</f:for>
-  				</ul>
-      </f:if>
-			</f:for></p>
-  				</div>
+<f:for each="{conferences}" as="conference">
+	<f:for each="{conference.days}" as="day" iteration="iterater">
+		<div class="card">
+			<div class="card-header">
+				<strong>Tag {iterater.cycle} – {day.date}</strong>
 			</div>
-			<br/>
-
-			<!--<div>
-				<div>Datum: {day.date -> f:format.date()}</div>
-				<div>Beginn: {day.dayStart -> f:format.date(format:'Y-m-d H:i')}</div>
-				<div>Ende: {day.dayEnd -> f:format.date(format:'Y-m-d H:i')}</div>
-			</div>-->
-			
-			<!--<h3>Räume</h3>-->
-			
-		</f:for>
-
-
-
-
-
-
-
-				    
-
-
+			<div class="card-body">
+				<p class="card-text">
+				<f:for each="{day.rooms}" as="room">
+					<f:if condition="{room.events}">
+						<ul>
+							<f:for each="{room.events}" as="event">
+								<li><f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}">{event.title}</f:link.action></li>
+							</f:for>
+						</ul>
+					</f:if>
+				</f:for>
+				</p><br/>
+			</div>
+		</div>
+	</f:for>
 </f:for>
 
 

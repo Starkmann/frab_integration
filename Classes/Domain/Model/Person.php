@@ -1,6 +1,8 @@
 <?php
 namespace Eike\FrabIntegration\Domain\Model;
+
 use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
+
 /***************************************************************
  *
  *  Copyright notice
@@ -29,244 +31,240 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 /**
  * Person
  */
-class Person extends AbstractValueObject {
+class Person extends AbstractValueObject
+{
 
-	/**
-	 * ID
-	 * @var integer
-	 */
-	protected $id = NULL;
-	
-	/**
-	 * image
-	 *
-	 * @var string
-	 */
-	protected $image = '';
+    /**
+     * ID
+     * @var int
+     */
+    protected $id = null;
 
-	/**
-	 * fullPublicName
-	 *
-	 * @var string
-	 */
-	protected $fullPublicName = '';
+    /**
+     * image
+     *
+     * @var string
+     */
+    protected $image = '';
 
-	/**
-	 * abstract
-	 *
-	 * @var string
-	 */
-	protected $abstract = '';
+    /**
+     * fullPublicName
+     *
+     * @var string
+     */
+    protected $fullPublicName = '';
 
-	/**
-	 * description
-	 *
-	 * @var string
-	 */
-	protected $description = '';
+    /**
+     * abstract
+     *
+     * @var string
+     */
+    protected $abstract = '';
 
-	/**
-	 * links
-	 *
-	 * @var string
-	 */
-	protected $links = '';
+    /**
+     * description
+     *
+     * @var string
+     */
+    protected $description = '';
 
-	/**
-	 * events
-	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Event>
-	 */
-	protected $events = NULL;
+    /**
+     * links
+     *
+     * @var string
+     */
+    protected $links = '';
 
-	/**
-	 * __construct
-	 */
-	public function __construct() {
-		//Do not remove the next line: It would break the functionality
-		$this->initStorageObjects();
-	}
+    /**
+     * events
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Event>
+     */
+    protected $events = null;
 
-	/**
-	 * Initializes all ObjectStorage properties
-	 * Do not modify this method!
-	 * It will be rewritten on each save in the extension builder
-	 * You may modify the constructor of this class instead
-	 *
-	 * @return void
-	 */
-	protected function initStorageObjects() {
-		$this->events = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-	}
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+        //Do not remove the next line: It would break the functionality
+        $this->initStorageObjects();
+    }
 
-	/**
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     */
+    protected function initStorageObjects()
+    {
+        $this->events = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
 
-	 * Returns the id
+    /**
+     * Returns the id
 
-	 *
+     *
 
-	 * @return string $id
+     * @return string $id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
-	 */
+    /**
+     * Sets the id
 
-	public function getId() {
+     *
 
-		return $this->id;
+     * @param string $id
 
-	}
+     * @return void
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
-	
+    /**
+     * Returns the image
+     *
+     * @return string $image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 
-	/**
+    /**
+     * Sets the image
+     *
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
 
-	 * Sets the id
+    /**
+     * Returns the fullPublicName
+     *
+     * @return string $fullPublicName
+     */
+    public function getFullPublicName()
+    {
+        return $this->fullPublicName;
+    }
 
-	 *
+    /**
+     * Sets the fullPublicName
+     *
+     * @param string $fullPublicName
+     */
+    public function setFullPublicName($fullPublicName)
+    {
+        $this->fullPublicName = $fullPublicName;
+    }
 
-	 * @param string $id
+    /**
+     * Returns the abstract
+     *
+     * @return string $abstract
+     */
+    public function getAbstract()
+    {
+        return $this->abstract;
+    }
 
-	 * @return void
+    /**
+     * Sets the abstract
+     *
+     * @param string $abstract
+     */
+    public function setAbstract($abstract)
+    {
+        $this->abstract = $abstract;
+    }
 
-	 */
+    /**
+     * Returns the description
+     *
+     * @return string $description
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 
-	public function setId($id) {
+    /**
+     * Sets the description
+     *
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
 
-		$this->id = $id;
+    /**
+     * Returns the links
+     *
+     * @return string $links
+     */
+    public function getLinks()
+    {
+        return $this->links;
+    }
 
-	}
-	
-	/**
-	 * Returns the image
-	 *
-	 * @return string $image
-	 */
-	public function getImage() {
-		return $this->image;
-	}
+    /**
+     * Sets the links
+     *
+     * @param string $links
+     */
+    public function setLinks($links)
+    {
+        $this->links = $links;
+    }
 
-	/**
-	 * Sets the image
-	 *
-	 * @param string $image
-	 * @return void
-	 */
-	public function setImage($image) {
-		$this->image = $image;
-	}
+    /**
+     * Adds a Event
+     *
+     * @param \Eike\FrabIntegration\Domain\Model\Event $event
+     */
+    public function addEvent(\Eike\FrabIntegration\Domain\Model\Event $event)
+    {
+        $this->events->attach($event);
+    }
 
-	/**
-	 * Returns the fullPublicName
-	 *
-	 * @return string $fullPublicName
-	 */
-	public function getFullPublicName() {
-		return $this->fullPublicName;
-	}
+    /**
+     * Removes a Event
+     *
+     * @param \Eike\FrabIntegration\Domain\Model\Event $eventToRemove The Event to be removed
+     */
+    public function removeEvent(\Eike\FrabIntegration\Domain\Model\Event $eventToRemove)
+    {
+        $this->events->detach($eventToRemove);
+    }
 
-	/**
-	 * Sets the fullPublicName
-	 *
-	 * @param string $fullPublicName
-	 * @return void
-	 */
-	public function setFullPublicName($fullPublicName) {
-		$this->fullPublicName = $fullPublicName;
-	}
+    /**
+     * Returns the events
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Event> $events
+     */
+    public function getEvents()
+    {
+        return $this->events;
+    }
 
-	/**
-	 * Returns the abstract
-	 *
-	 * @return string $abstract
-	 */
-	public function getAbstract() {
-		return $this->abstract;
-	}
-
-	/**
-	 * Sets the abstract
-	 *
-	 * @param string $abstract
-	 * @return void
-	 */
-	public function setAbstract($abstract) {
-		$this->abstract = $abstract;
-	}
-
-	/**
-	 * Returns the description
-	 *
-	 * @return string $description
-	 */
-	public function getDescription() {
-		return $this->description;
-	}
-
-	/**
-	 * Sets the description
-	 *
-	 * @param string $description
-	 * @return void
-	 */
-	public function setDescription($description) {
-		$this->description = $description;
-	}
-
-	/**
-	 * Returns the links
-	 *
-	 * @return string $links
-	 */
-	public function getLinks() {
-		return $this->links;
-	}
-
-	/**
-	 * Sets the links
-	 *
-	 * @param string $links
-	 * @return void
-	 */
-	public function setLinks($links) {
-		$this->links = $links;
-	}
-
-	/**
-	 * Adds a Event
-	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Event $event
-	 * @return void
-	 */
-	public function addEvent(\Eike\FrabIntegration\Domain\Model\Event $event) {
-		$this->events->attach($event);
-	}
-
-	/**
-	 * Removes a Event
-	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Event $eventToRemove The Event to be removed
-	 * @return void
-	 */
-	public function removeEvent(\Eike\FrabIntegration\Domain\Model\Event $eventToRemove) {
-		$this->events->detach($eventToRemove);
-	}
-
-	/**
-	 * Returns the events
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Event> $events
-	 */
-	public function getEvents() {
-		return $this->events;
-	}
-
-	/**
-	 * Sets the events
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Event> $events
-	 * @return void
-	 */
-	public function setEvents(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $events) {
-		$this->events = $events;
-	}
-
+    /**
+     * Sets the events
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Event> $events
+     */
+    public function setEvents(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $events)
+    {
+        $this->events = $events;
+    }
 }

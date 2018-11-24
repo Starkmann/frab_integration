@@ -1,6 +1,8 @@
 <?php
 namespace Eike\FrabIntegration\Domain\Model;
+
 use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
+
 /***************************************************************
  *
  *  Copyright notice
@@ -29,475 +31,488 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 /**
  * Event
  */
-class Event extends AbstractValueObject {
+class Event extends AbstractValueObject
+{
 
-	/**
-	 * guid
-	 *
-	 * @var string
-	 */
-	protected $guid = '';
+    /**
+     * guid
+     *
+     * @var string
+     */
+    protected $guid = '';
 
-	/**
-	 * date
-	 *
-	 * @var \DateTime
-	 */
-	protected $date = NULL;
+    /**
+     * date
+     *
+     * @var \DateTime
+     */
+    protected $date = null;
 
-	/**
-	 * start
-	 *
-	 * @var \DateTime
-	 */
-	protected $start = 0;
+    /**
+     * start
+     *
+     * @var \DateTime
+     */
+    protected $start = 0;
 
-	/**
-	 * duration
-	 *
-	 * @var \DateTime
-	 */
-	protected $duration = 0;
+    /**
+     * duration
+     *
+     * @var \DateTime
+     */
+    protected $duration = 0;
 
-	/**
-	 * room
-	 *
-	 * @var string
-	 */
-	protected $room = '';
+    /**
+     * room
+     *
+     * @var string
+     */
+    protected $room = '';
 
-	/**
-	 * slug
-	 *
-	 * @var string
-	 */
-	protected $slug = '';
+    /**
+     * slug
+     *
+     * @var string
+     */
+    protected $slug = '';
 
-	/**
-	 * title
-	 *
-	 * @var string
-	 */
-	protected $title = '';
+    /**
+     * title
+     *
+     * @var string
+     */
+    protected $title = '';
 
-	/**
-	 * subtitle
-	 *
-	 * @var string
-	 */
-	protected $subtitle = '';
+    /**
+     * subtitle
+     *
+     * @var string
+     */
+    protected $subtitle = '';
 
-	/**
-	 * track
-	 *
-	 * @var string
-	 */
-	protected $track = '';
+    /**
+     * track
+     *
+     * @var string
+     */
+    protected $track = '';
 
-	/**
-	 * type
-	 *
-	 * @var string
-	 */
-	protected $type = '';
+    /**
+     * type
+     *
+     * @var string
+     */
+    protected $type = '';
 
-	/**
-	 * language
-	 *
-	 * @var string
-	 */
-	protected $language = '';
+    /**
+     * language
+     *
+     * @var string
+     */
+    protected $language = '';
 
-	/**
-	 * abstract
-	 *
-	 * @var string
-	 */
-	protected $abstract = '';
+    /**
+     * abstract
+     *
+     * @var string
+     */
+    protected $abstract = '';
 
-	/**
-	 * description
-	 *
-	 * @var string
-	 */
-	protected $description = '';
+    /**
+     * description
+     *
+     * @var string
+     */
+    protected $description = '';
 
-	/**
-	 * links
-	 *
-	 * @var string
-	 */
-	protected $links = '';
+    /**
+     * links
+     *
+     * @var string
+     */
+    protected $links = '';
 
-	/**
-	 * persons
-	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Person>
-	 */
-	protected $persons = NULL;
-	
-	/**
-	 * Helper property to easier handle sheduler view
-	 * @var integer
-	 */
-	protected $day = NULL;
+    /**
+     * persons
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Person>
+     */
+    protected $persons = null;
 
-	/**
-	 * __construct
-	 */
-	public function __construct() {
-		//Do not remove the next line: It would break the functionality
-		$this->initStorageObjects();
-	}
+    /**
+     * Helper property to easier handle sheduler view
+     * @var int
+     */
+    protected $day = null;
 
-	/**
-	 * Initializes all ObjectStorage properties
-	 * Do not modify this method!
-	 * It will be rewritten on each save in the extension builder
-	 * You may modify the constructor of this class instead
-	 *
-	 * @return void
-	 */
-	protected function initStorageObjects() {
-		$this->persons = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-	}
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+        //Do not remove the next line: It would break the functionality
+        $this->initStorageObjects();
+    }
 
-	/**
-	 * Returns the guid
-	 *
-	 * @return string $guid
-	 */
-	public function getGuid() {
-		return $this->guid;
-	}
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     */
+    protected function initStorageObjects()
+    {
+        $this->persons = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
 
-	/**
-	 * Sets the guid
-	 *
-	 * @param string $guid
-	 * @return void
-	 */
-	public function setGuid($guid) {
-		$this->guid = $guid;
-	}
+    /**
+     * Returns the guid
+     *
+     * @return string $guid
+     */
+    public function getGuid()
+    {
+        return $this->guid;
+    }
 
-	/**
-	 * Returns the date
-	 *
-	 * @return \DateTime $date
-	 */
-	public function getDate() {
-		return $this->date;
-	}
+    /**
+     * Sets the guid
+     *
+     * @param string $guid
+     */
+    public function setGuid($guid)
+    {
+        $this->guid = $guid;
+    }
 
-	/**
-	 * Sets the date
-	 *
-	 * @param \DateTime $date
-	 * @return void
-	 */
-	public function setDate(\DateTime $date) {
-		$this->date = $date;
-	}
+    /**
+     * Returns the date
+     *
+     * @return \DateTime $date
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
 
-	/**
-	 * Returns the start
-	 *
-	 * @return \DateTime $start
-	 */
-	public function getStart() {
-		return $this->start;
-	}
+    /**
+     * Sets the date
+     *
+     * @param \DateTime $date
+     */
+    public function setDate(\DateTime $date)
+    {
+        $this->date = $date;
+    }
 
-	/**
-	 * Sets the start
-	 *
-	 * @param \DateTime $start
-	 * @return void
-	 */
-	public function setStart(\DateTime $start) {
-		$this->start = $start;
-	}
-	
-	/**
-	 * Returns the start
-	 *
-	 * @return \DateTime $end
-	 */
-	public function getEnd() {
-		$end = clone $this->start;
-		$zerodate = new \DateTime('00:00:00');
-		$interval = $zerodate->diff($this->duration);
-		$end->add($interval);
-		$end->sub(new \DateInterval('PT' . 15 . 'M'));
-		return $end;
-	}
-	
-	
-	
+    /**
+     * Returns the start
+     *
+     * @return \DateTime $start
+     */
+    public function getStart()
+    {
+        return $this->start;
+    }
 
-	/**
-	 * Returns the duration
-	 *
-	 * @return \DateTime $duration
-	 */
-	public function getDuration() {
-		return $this->duration;
-	}
+    /**
+     * Sets the start
+     *
+     * @param \DateTime $start
+     */
+    public function setStart(\DateTime $start)
+    {
+        $this->start = $start;
+    }
 
-	/**
-	 * Sets the duration
-	 *
-	 * @param \DateTime $duration
-	 * @return void
-	 */
-	public function setDuration(\DateTime $duration) {
-		$this->duration = $duration;
-	}
+    /**
+     * Returns the start
+     *
+     * @return \DateTime $end
+     */
+    public function getEnd()
+    {
+        $end = clone $this->start;
+        $zerodate = new \DateTime('00:00:00');
+        $interval = $zerodate->diff($this->duration);
+        $end->add($interval);
+        $end->sub(new \DateInterval('PT' . 15 . 'M'));
+        return $end;
+    }
 
-	/**
-	 * Returns the room
-	 *
-	 * @return string $room
-	 */
-	public function getRoom() {
-		return $this->room;
-	}
+    /**
+     * Returns the duration
+     *
+     * @return \DateTime $duration
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
 
-	/**
-	 * Sets the room
-	 *
-	 * @param string $room
-	 * @return void
-	 */
-	public function setRoom($room) {
-		$this->room = $room;
-	}
+    /**
+     * Sets the duration
+     *
+     * @param \DateTime $duration
+     */
+    public function setDuration(\DateTime $duration)
+    {
+        $this->duration = $duration;
+    }
 
-	/**
-	 * Returns the slug
-	 *
-	 * @return string $slug
-	 */
-	public function getSlug() {
-		return $this->slug;
-	}
+    /**
+     * Returns the room
+     *
+     * @return string $room
+     */
+    public function getRoom()
+    {
+        return $this->room;
+    }
 
-	/**
-	 * Sets the slug
-	 *
-	 * @param string $slug
-	 * @return void
-	 */
-	public function setSlug($slug) {
-		$this->slug = $slug;
-	}
+    /**
+     * Sets the room
+     *
+     * @param string $room
+     */
+    public function setRoom($room)
+    {
+        $this->room = $room;
+    }
 
-	/**
-	 * Returns the title
-	 *
-	 * @return string $title
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
+    /**
+     * Returns the slug
+     *
+     * @return string $slug
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 
-	/**
-	 * Sets the title
-	 *
-	 * @param string $title
-	 * @return void
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
-	}
+    /**
+     * Sets the slug
+     *
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
 
-	/**
-	 * Returns the subtitle
-	 *
-	 * @return string $subtitle
-	 */
-	public function getSubtitle() {
-		return $this->subtitle;
-	}
+    /**
+     * Returns the title
+     *
+     * @return string $title
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
-	/**
-	 * Sets the subtitle
-	 *
-	 * @param string $subtitle
-	 * @return void
-	 */
-	public function setSubtitle($subtitle) {
-		$this->subtitle = $subtitle;
-	}
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 
-	/**
-	 * Returns the track
-	 *
-	 * @return string $track
-	 */
-	public function getTrack() {
-		return $this->track;
-	}
+    /**
+     * Returns the subtitle
+     *
+     * @return string $subtitle
+     */
+    public function getSubtitle()
+    {
+        return $this->subtitle;
+    }
 
-	/**
-	 * Sets the track
-	 *
-	 * @param string $track
-	 * @return void
-	 */
-	public function setTrack($track) {
-		$this->track = $track;
-	}
+    /**
+     * Sets the subtitle
+     *
+     * @param string $subtitle
+     */
+    public function setSubtitle($subtitle)
+    {
+        $this->subtitle = $subtitle;
+    }
 
-	/**
-	 * Returns the type
-	 *
-	 * @return string $type
-	 */
-	public function getType() {
-		return $this->type;
-	}
+    /**
+     * Returns the track
+     *
+     * @return string $track
+     */
+    public function getTrack()
+    {
+        return $this->track;
+    }
 
-	/**
-	 * Sets the type
-	 *
-	 * @param string $type
-	 * @return void
-	 */
-	public function setType($type) {
-		$this->type = $type;
-	}
+    /**
+     * Sets the track
+     *
+     * @param string $track
+     */
+    public function setTrack($track)
+    {
+        $this->track = $track;
+    }
 
-	/**
-	 * Returns the language
-	 *
-	 * @return string $language
-	 */
-	public function getLanguage() {
-		return $this->language;
-	}
+    /**
+     * Returns the type
+     *
+     * @return string $type
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 
-	/**
-	 * Sets the language
-	 *
-	 * @param string $language
-	 * @return void
-	 */
-	public function setLanguage($language) {
-		$this->language = $language;
-	}
+    /**
+     * Sets the type
+     *
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
 
-	/**
-	 * Returns the abstract
-	 *
-	 * @return string $abstract
-	 */
-	public function getAbstract() {
-		return $this->abstract;
-	}
+    /**
+     * Returns the language
+     *
+     * @return string $language
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
 
-	/**
-	 * Sets the abstract
-	 *
-	 * @param string $abstract
-	 * @return void
-	 */
-	public function setAbstract($abstract) {
-		$this->abstract = $abstract;
-	}
+    /**
+     * Sets the language
+     *
+     * @param string $language
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+    }
 
-	/**
-	 * Returns the description
-	 *
-	 * @return string $description
-	 */
-	public function getDescription() {
-		return $this->description;
-	}
+    /**
+     * Returns the abstract
+     *
+     * @return string $abstract
+     */
+    public function getAbstract()
+    {
+        return $this->abstract;
+    }
 
-	/**
-	 * Sets the description
-	 *
-	 * @param string $description
-	 * @return void
-	 */
-	public function setDescription($description) {
-		$this->description = $description;
-	}
+    /**
+     * Sets the abstract
+     *
+     * @param string $abstract
+     */
+    public function setAbstract($abstract)
+    {
+        $this->abstract = $abstract;
+    }
 
-	/**
-	 * Returns the links
-	 *
-	 * @return string $links
-	 */
-	public function getLinks() {
-		return $this->links;
-	}
+    /**
+     * Returns the description
+     *
+     * @return string $description
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 
-	/**
-	 * Sets the links
-	 *
-	 * @param string $links
-	 * @return void
-	 */
-	public function setLinks($links) {
-		$this->links = $links;
-	}
+    /**
+     * Sets the description
+     *
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
 
-	/**
-	 * Adds a Person
-	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Person $person
-	 * @return void
-	 */
-	public function addPerson(\Eike\FrabIntegration\Domain\Model\Person $person) {
-		$this->persons->attach($person);
-	}
+    /**
+     * Returns the links
+     *
+     * @return string $links
+     */
+    public function getLinks()
+    {
+        return $this->links;
+    }
 
-	/**
-	 * Removes a Person
-	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Person $personToRemove The Person to be removed
-	 * @return void
-	 */
-	public function removePerson(\Eike\FrabIntegration\Domain\Model\Person $personToRemove) {
-		$this->persons->detach($personToRemove);
-	}
+    /**
+     * Sets the links
+     *
+     * @param string $links
+     */
+    public function setLinks($links)
+    {
+        $this->links = $links;
+    }
 
-	/**
-	 * Returns the persons
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Person> $persons
-	 */
-	public function getPersons() {
-		return $this->persons;
-	}
+    /**
+     * Adds a Person
+     *
+     * @param \Eike\FrabIntegration\Domain\Model\Person $person
+     */
+    public function addPerson(\Eike\FrabIntegration\Domain\Model\Person $person)
+    {
+        $this->persons->attach($person);
+    }
 
-	/**
-	 * Sets the persons
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Person> $persons
-	 * @return void
-	 */
-	public function setPersons(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $persons) {
-		$this->persons = $persons;
-	}
+    /**
+     * Removes a Person
+     *
+     * @param \Eike\FrabIntegration\Domain\Model\Person $personToRemove The Person to be removed
+     */
+    public function removePerson(\Eike\FrabIntegration\Domain\Model\Person $personToRemove)
+    {
+        $this->persons->detach($personToRemove);
+    }
 
-	/**
-	 * 
-	 * @return integer
-	 */
-	public function getDay(){
-		return $this->day;
-	}
-	
-	/**
-	 * 
-	 * @param integer $day
-	 */
-	public function setDay($day){
-		$this->day = $day;
-	}
-	
+    /**
+     * Returns the persons
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Person> $persons
+     */
+    public function getPersons()
+    {
+        return $this->persons;
+    }
+
+    /**
+     * Sets the persons
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Person> $persons
+     */
+    public function setPersons(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $persons)
+    {
+        $this->persons = $persons;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDay()
+    {
+        return $this->day;
+    }
+
+    /**
+     * @param int $day
+     */
+    public function setDay($day)
+    {
+        $this->day = $day;
+    }
 }

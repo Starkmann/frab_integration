@@ -1,4 +1,4 @@
-
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
 This Template is responsible for creating a table of domain objects.
@@ -15,7 +15,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 <f:section name="main">
 
 
-<f:flashMessages renderMode="div" />
+<f:flashMessages />
 
 
 
@@ -34,17 +34,17 @@ Otherwise your changes will be overwritten the next time you save the extension 
 		<!--<h1>Veranstaltungstage</h1>-->
 		<f:for each="{conference.days}" as="day">
 			<f:if condition="{day.index} == {currentDay}">
-				
+
 				<div class="erstezeile">
 				<f:for each="{day.rooms}" as="room">
 					<f:if condition="{room.events}">
 					<span class="span2">{room.name}</span>
 					</f:if>
 				</f:for>
-				
+
 				</div>
-				
-					
+
+
 				<f:for each="{timeline}" as="timeSlot">
 					<span class="span2">
 					{timeSlot -> f:format.date(format:'H:i')}</span>
@@ -69,7 +69,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 	  					</f:for>
 	  					</f:if>
   					</f:for>
-  					
+
 				</f:for>
 				</div>
 			</f:if>

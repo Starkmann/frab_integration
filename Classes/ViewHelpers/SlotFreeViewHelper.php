@@ -1,6 +1,7 @@
 <?php
 
 namespace Eike\FrabIntegration\ViewHelpers;
+
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /***************************************************************
@@ -29,29 +30,27 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
  ***************************************************************/
 
 /**
- *
  * @author Eike Starkmann
  */
-class SlotFreeViewHelper extends AbstractViewHelper {
+class SlotFreeViewHelper extends AbstractViewHelper
+{
 
-	/**
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Event> $events
-	 * @params \DateTime $timeslot
-	 * return \boolean
-	 */
-	public function render(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $events, \DateTime $timeslot) {
-		$localEvents = clone $events;
-		foreach($localEvents as $event){
-			if($event->getStart()->format('H:i') == $timeslot->format('H:i')){
-				return false;
-			}
-			if($event->getStart()->format('H:i') < $timeslot->format('H:i') && ($event->getEnd()->format('H:i') > $timeslot->format('H:i') || $event->getEnd()->format('H:i') == $timeslot->format('H:i'))){
-				return false;
-			}
-		}
-		return true;
-		
-		
-	}
-
+    /**
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Event> $events
+     * @params \DateTime $timeslot
+     * return \boolean
+     */
+    public function render(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $events, \DateTime $timeslot)
+    {
+        $localEvents = clone $events;
+        foreach ($localEvents as $event) {
+            if ($event->getStart()->format('H:i') == $timeslot->format('H:i')) {
+                return false;
+            }
+            if ($event->getStart()->format('H:i') < $timeslot->format('H:i') && ($event->getEnd()->format('H:i') > $timeslot->format('H:i') || $event->getEnd()->format('H:i') == $timeslot->format('H:i'))) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

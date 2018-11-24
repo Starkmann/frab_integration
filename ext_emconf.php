@@ -10,25 +10,25 @@
  * "version" and "dependencies" must not be touched!
  ***************************************************************/
 
-$EM_CONF[$_EXTKEY] = array(
-	'title' => 'Frab Integration',
-	'description' => 'This extension integrates the conference tool frab into typo3 (read only)',
-	'category' => 'plugin',
-	'author' => 'Eike Starkmann',
-	'author_email' => 'eikestarkmann@web.de',
-	'state' => 'alpha',
-	'internal' => '',
-	'uploadfolder' => '0',
-	'createDirs' => '',
-	'clearCacheOnLoad' => 0,
-	'version' => '',
-	'constraints' => array(
-		'depends' => array(
-			'typo3' => '8.7.0 - 8.7.99',
-		),
-		'conflicts' => array(
-		),
-		'suggests' => array(
-		),
-	),
-);
+$EM_CONF[$_EXTKEY] = [
+    'title' => 'Frab Integration',
+    'description' => 'This extension integrates the conference tool frab into typo3 (read only)',
+    'category' => 'plugin',
+    'author' => 'Eike Starkmann',
+    'author_email' => 'eikestarkmann@web.de',
+    'state' => 'alpha',
+    'internal' => '',
+    'uploadfolder' => '0',
+    'createDirs' => '',
+    'clearCacheOnLoad' => 0,
+    'version' => '',
+    'constraints' => [
+        'depends' => [
+            'typo3' => '8.7.0 - 8.7.99',
+        ],
+        'conflicts' => [
+        ],
+        'suggests' => [
+        ],
+    ],
+];

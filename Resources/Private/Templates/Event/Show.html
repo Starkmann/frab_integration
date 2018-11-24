@@ -1,4 +1,4 @@
-
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
 This Template is responsible for displaying a single view for a domain object
@@ -13,9 +13,9 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
-<f:flashMessages renderMode="div" />
+<f:flashMessages />
 <p><a href="https://www.ein-anderes-europa.de/index.php?id=76975" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Liste aller Veranstaltungen</a> | <a href="https://www.ein-anderes-europa.de/index.php?id=76973" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Liste der ReferentInnen</a> | <button type="button" class="btn btn-primary btn-sm" onclick="goBack()">Zurück zur Tagesübersicht</button></p>
-<div> 
+<div>
     <div class="span11">
         <div class="news_teaser"><h2>{event.title}</h2></div>
        <!-- <b>Kurzbeschreibung</b>
@@ -25,7 +25,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 				Beschreibung
   			</div>
   			<div class="card-body">
-  				<p class="card-text">{event.abstract ->f:format.html()}</p>	
+  				<p class="card-text">{event.abstract ->f:format.html()}</p>
   			</div>
 		</div>
 		<br/>-->
@@ -34,12 +34,12 @@ Otherwise your changes will be overwritten the next time you save the extension 
 				Beschreibung
   			</div>
   			<div class="card-body">
-  				<p class="card-text">{event.description ->f:format.html()}</p>	
+  				<p class="card-text">{event.description ->f:format.html()}</p>
   			</div>
 		</div>
-        
-        
-        
+
+
+
 
  <br/>
         <button type="button" class="btn btn-primary btn-sm" onclick="goBack()">Zurück</button>
@@ -71,7 +71,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 	    </div>
 	  </div>
 	</div>
-	
+
 	<div class="card-group">
 	  <div class="card">
 	    <div class="card-body">
@@ -91,7 +91,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 				<h5 class="card-title">Referent_in</h5>
 				<p class="card-text"><f:link.action controller="Person" action="show" arguments="{personId:person.id}">{person.fullPublicName}</f:link.action></p>
 			</f:for>
-	        
+
 	    </div>
 	  </div>
 	</div>
