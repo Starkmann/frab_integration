@@ -15,8 +15,8 @@
 		"typo3/cms": "^8.7"
 	},
 	"replace": {
-		"frab-integration": "self.version",
-		"typo3-ter/frab-integration": "self.version"
+		"frab_integration": "self.version",
+		"typo3-ter/frab_integration": "self.version"
 	},
 	"autoload": {
 		"psr-4": {

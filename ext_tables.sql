@@ -179,8 +179,6 @@ CREATE TABLE tx_frabintegration_domain_model_event (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-	room int(11) unsigned DEFAULT '0' NOT NULL,
-
 	guid varchar(255) DEFAULT '' NOT NULL,
 	date datetime DEFAULT '0000-00-00 00:00:00',
 	start int(11) DEFAULT '0' NOT NULL,
