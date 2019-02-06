@@ -1,5 +1,6 @@
 <?php
 namespace Eike\FrabIntegration\Domain\Model;
+
 use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 
 /***************************************************************
@@ -30,203 +31,209 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 /**
  * Conference
  */
-class Conference extends  AbstractValueObject{
+class Conference extends AbstractValueObject
+{
 
-	/**
-	 * title
-	 *
-	 * @var string
-	 */
-	protected $title = '';
+    /**
+     * title
+     *
+     * @var string
+     */
+    protected $title = '';
 
-	/**
-	 * start
-	 *
-	 * @var \DateTime
-	 */
-	protected $start = NULL;
+    /**
+     * start
+     *
+     * @var \DateTime
+     */
+    protected $start = null;
 
-	/**
-	 * end
-	 *
-	 * @var \DateTime
-	 */
-	protected $end = NULL;
+    /**
+     * end
+     *
+     * @var \DateTime
+     */
+    protected $end = null;
 
-	/**
-	 * daysCount
-	 *
-	 * @var integer
-	 */
-	protected $daysCount = 0;
+    /**
+     * daysCount
+     *
+     * @var int
+     */
+    protected $daysCount = 0;
 
-	/**
-	 * timeslotDuration
-	 *
-	 * @var \DateTime
-	 */
-	protected $timeslotDuration = 0;
+    /**
+     * timeslotDuration
+     *
+     * @var \DateTime
+     */
+    protected $timeslotDuration = 0;
 
-	/**
-	 * days
-	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Day>
-	 * @cascade remove
-	 */
-	protected $days = NULL;
+    /**
+     * days
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Day>
+     * @cascade remove
+     */
+    protected $days = null;
 
-	/**
-	 * __construct
-	 */
-	public function __construct() {
-		//Do not remove the next line: It would break the functionality
-		$this->initStorageObjects();
-	}
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+        //Do not remove the next line: It would break the functionality
+        $this->initStorageObjects();
+    }
 
-	/**
-	 * Initializes all ObjectStorage properties
-	 * Do not modify this method!
-	 * It will be rewritten on each save in the extension builder
-	 * You may modify the constructor of this class instead
-	 *
-	 * @return void
-	 */
-	protected function initStorageObjects() {
-		$this->days = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-	}
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     */
+    protected function initStorageObjects()
+    {
+        $this->days = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
 
-	/**
-	 * Returns the title
-	 *
-	 * @return string $title
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
+    /**
+     * Returns the title
+     *
+     * @return string $title
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
-	/**
-	 * Sets the title
-	 *
-	 * @param string $title
-	 * @return void
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
-	}
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 
-	/**
-	 * Returns the start
-	 *
-	 * @return \DateTime $start
-	 */
-	public function getStart() {
-		return $this->start;
-	}
+    /**
+     * Returns the start
+     *
+     * @return \DateTime $start
+     */
+    public function getStart()
+    {
+        return $this->start;
+    }
 
-	/**
-	 * Sets the start
-	 *
-	 * @param \DateTime $start
-	 * @return void
-	 */
-	public function setStart(\DateTime $start) {
-		$this->start = $start;
-	}
+    /**
+     * Sets the start
+     *
+     * @param \DateTime $start
+     */
+    public function setStart(\DateTime $start)
+    {
+        $this->start = $start;
+    }
 
-	/**
-	 * Returns the end
-	 *
-	 * @return \DateTime $end
-	 */
-	public function getEnd() {
-		return $this->end;
-	}
+    /**
+     * Returns the end
+     *
+     * @return \DateTime $end
+     */
+    public function getEnd()
+    {
+        return $this->end;
+    }
 
-	/**
-	 * Sets the end
-	 *
-	 * @param \DateTime $end
-	 * @return void
-	 */
-	public function setEnd(\DateTime $end) {
-		$this->end = $end;
-	}
+    /**
+     * Sets the end
+     *
+     * @param \DateTime $end
+     */
+    public function setEnd(\DateTime $end)
+    {
+        $this->end = $end;
+    }
 
-	/**
-	 * Returns the daysCount
-	 *
-	 * @return integer $daysCount
-	 */
-	public function getDaysCount() {
-		return $this->daysCount;
-	}
+    /**
+     * Returns the daysCount
+     *
+     * @return int $daysCount
+     */
+    public function getDaysCount()
+    {
+        return $this->daysCount;
+    }
 
-	/**
-	 * Sets the daysCount
-	 *
-	 * @param integer $daysCount
-	 * @return void
-	 */
-	public function setDaysCount($daysCount) {
-		$this->daysCount = $daysCount;
-	}
+    /**
+     * Sets the daysCount
+     *
+     * @param int $daysCount
+     */
+    public function setDaysCount($daysCount)
+    {
+        $this->daysCount = $daysCount;
+    }
 
-	/**
-	 * Returns the timeslotDuration
-	 *
-	 * @return \DateTime $timeslotDuration
-	 */
-	public function getTimeslotDuration() {
-		return $this->timeslotDuration;
-	}
+    /**
+     * Returns the timeslotDuration
+     *
+     * @return \DateTime $timeslotDuration
+     */
+    public function getTimeslotDuration()
+    {
+        return $this->timeslotDuration;
+    }
 
-	/**
-	 * Sets the timeslotDuration
-	 *
-	 * @param \DateTime $timeslotDuration
-	 * @return void
-	 */
-	public function setTimeslotDuration(\DateTime $timeslotDuration) {
-		$this->timeslotDuration = $timeslotDuration;
-	}
+    /**
+     * Sets the timeslotDuration
+     *
+     * @param \DateTime $timeslotDuration
+     */
+    public function setTimeslotDuration(\DateTime $timeslotDuration)
+    {
+        $this->timeslotDuration = $timeslotDuration;
+    }
 
-	/**
-	 * Adds a Day
-	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Day $day
-	 * @return void
-	 */
-	public function addDay(\Eike\FrabIntegration\Domain\Model\Day $day) {
-		$this->days->attach($day);
-	}
+    /**
+     * Adds a Day
+     *
+     * @param \Eike\FrabIntegration\Domain\Model\Day $day
+     */
+    public function addDay(\Eike\FrabIntegration\Domain\Model\Day $day)
+    {
+        $this->days->attach($day);
+    }
 
-	/**
-	 * Removes a Day
-	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Day $dayToRemove The Day to be removed
-	 * @return void
-	 */
-	public function removeDay(\Eike\FrabIntegration\Domain\Model\Day $dayToRemove) {
-		$this->days->detach($dayToRemove);
-	}
+    /**
+     * Removes a Day
+     *
+     * @param \Eike\FrabIntegration\Domain\Model\Day $dayToRemove The Day to be removed
+     */
+    public function removeDay(\Eike\FrabIntegration\Domain\Model\Day $dayToRemove)
+    {
+        $this->days->detach($dayToRemove);
+    }
 
-	/**
-	 * Returns the days
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Day> $days
-	 */
-	public function getDays() {
-		return $this->days;
-	}
+    /**
+     * Returns the days
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Day> $days
+     */
+    public function getDays()
+    {
+        return $this->days;
+    }
 
-	/**
-	 * Sets the days
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Day> $days
-	 * @return void
-	 */
-	public function setDays(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $days) {
-		$this->days = $days;
-	}
-
+    /**
+     * Sets the days
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Day> $days
+     */
+    public function setDays(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $days)
+    {
+        $this->days = $days;
+    }
 }

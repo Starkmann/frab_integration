@@ -1,6 +1,8 @@
 <?php
 namespace Eike\FrabIntegration\Domain\Model;
+
 use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
+
 /***************************************************************
  *
  *  Copyright notice
@@ -29,177 +31,182 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 /**
  * Day
  */
-class Day extends AbstractValueObject {
+class Day extends AbstractValueObject
+{
 
-	/**
-	 * index
-	 *
-	 * @var integer
-	 */
-	protected $index = 0;
+    /**
+     * index
+     *
+     * @var int
+     */
+    protected $index = 0;
 
-	/**
-	 * date
-	 *
-	 * @var \DateTime
-	 */
-	protected $date = NULL;
+    /**
+     * date
+     *
+     * @var \DateTime
+     */
+    protected $date = null;
 
-	/**
-	 * dayStart
-	 *
-	 * @var \DateTime
-	 */
-	protected $dayStart = NULL;
+    /**
+     * dayStart
+     *
+     * @var \DateTime
+     */
+    protected $dayStart = null;
 
-	/**
-	 * dayEnd
-	 *
-	 * @var \DateTime
-	 */
-	protected $dayEnd = NULL;
+    /**
+     * dayEnd
+     *
+     * @var \DateTime
+     */
+    protected $dayEnd = null;
 
-	/**
-	 * rooms
-	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Room>
-	 */
-	protected $rooms = NULL;
+    /**
+     * rooms
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Room>
+     */
+    protected $rooms = null;
 
-	/**
-	 * __construct
-	 */
-	public function __construct() {
-		//Do not remove the next line: It would break the functionality
-		$this->initStorageObjects();
-	}
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+        //Do not remove the next line: It would break the functionality
+        $this->initStorageObjects();
+    }
 
-	/**
-	 * Initializes all ObjectStorage properties
-	 * Do not modify this method!
-	 * It will be rewritten on each save in the extension builder
-	 * You may modify the constructor of this class instead
-	 *
-	 * @return void
-	 */
-	protected function initStorageObjects() {
-		$this->rooms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-	}
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     */
+    protected function initStorageObjects()
+    {
+        $this->rooms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
 
-	/**
-	 * Returns the index
-	 *
-	 * @return integer $index
-	 */
-	public function getIndex() {
-		return $this->index;
-	}
+    /**
+     * Returns the index
+     *
+     * @return int $index
+     */
+    public function getIndex()
+    {
+        return $this->index;
+    }
 
-	/**
-	 * Sets the index
-	 *
-	 * @param integer $index
-	 * @return void
-	 */
-	public function setIndex($index) {
-		$this->index = $index;
-	}
+    /**
+     * Sets the index
+     *
+     * @param int $index
+     */
+    public function setIndex($index)
+    {
+        $this->index = $index;
+    }
 
-	/**
-	 * Returns the date
-	 *
-	 * @return \DateTime $date
-	 */
-	public function getDate() {
-		setlocale(LC_TIME, "de_DE");
-		return strftime('%A, %d.%m.%Y',$this->date->getTimestamp());
-	}
+    /**
+     * Returns the date
+     *
+     * @return \DateTime $date
+     */
+    public function getDate()
+    {
+        setlocale(LC_TIME, 'de_DE');
+        return strftime('%A, %d.%m.%Y', $this->date->getTimestamp());
+    }
 
-	/**
-	 * Sets the date
-	 *
-	 * @param \DateTime $date
-	 * @return void
-	 */
-	public function setDate(\DateTime $date) {
-		$this->date = $date;
-	}
+    /**
+     * Sets the date
+     *
+     * @param \DateTime $date
+     */
+    public function setDate(\DateTime $date)
+    {
+        $this->date = $date;
+    }
 
-	/**
-	 * Returns the dayStart
-	 *
-	 * @return \DateTime $dayStart
-	 */
-	public function getDayStart() {
-		return $this->dayStart;
-	}
+    /**
+     * Returns the dayStart
+     *
+     * @return \DateTime $dayStart
+     */
+    public function getDayStart()
+    {
+        return $this->dayStart;
+    }
 
-	/**
-	 * Sets the dayStart
-	 *
-	 * @param \DateTime $dayStart
-	 * @return void
-	 */
-	public function setDayStart(\DateTime $dayStart) {
-		$this->dayStart = $dayStart;
-	}
+    /**
+     * Sets the dayStart
+     *
+     * @param \DateTime $dayStart
+     */
+    public function setDayStart(\DateTime $dayStart)
+    {
+        $this->dayStart = $dayStart;
+    }
 
-	/**
-	 * Returns the dayEnd
-	 *
-	 * @return \DateTime $dayEnd
-	 */
-	public function getDayEnd() {
-		return $this->dayEnd;
-	}
+    /**
+     * Returns the dayEnd
+     *
+     * @return \DateTime $dayEnd
+     */
+    public function getDayEnd()
+    {
+        return $this->dayEnd;
+    }
 
-	/**
-	 * Sets the dayEnd
-	 *
-	 * @param \DateTime $dayEnd
-	 * @return void
-	 */
-	public function setDayEnd(\DateTime $dayEnd) {
-		$this->dayEnd = $dayEnd;
-	}
+    /**
+     * Sets the dayEnd
+     *
+     * @param \DateTime $dayEnd
+     */
+    public function setDayEnd(\DateTime $dayEnd)
+    {
+        $this->dayEnd = $dayEnd;
+    }
 
-	/**
-	 * Adds a Room
-	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Room $room
-	 * @return void
-	 */
-	public function addRoom(\Eike\FrabIntegration\Domain\Model\Room $room) {
-		$this->rooms->attach($room);
-	}
+    /**
+     * Adds a Room
+     *
+     * @param \Eike\FrabIntegration\Domain\Model\Room $room
+     */
+    public function addRoom(\Eike\FrabIntegration\Domain\Model\Room $room)
+    {
+        $this->rooms->attach($room);
+    }
 
-	/**
-	 * Removes a Room
-	 *
-	 * @param \Eike\FrabIntegration\Domain\Model\Room $roomToRemove The Room to be removed
-	 * @return void
-	 */
-	public function removeRoom(\Eike\FrabIntegration\Domain\Model\Room $roomToRemove) {
-		$this->rooms->detach($roomToRemove);
-	}
+    /**
+     * Removes a Room
+     *
+     * @param \Eike\FrabIntegration\Domain\Model\Room $roomToRemove The Room to be removed
+     */
+    public function removeRoom(\Eike\FrabIntegration\Domain\Model\Room $roomToRemove)
+    {
+        $this->rooms->detach($roomToRemove);
+    }
 
-	/**
-	 * Returns the rooms
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Room> $rooms
-	 */
-	public function getRooms() {
-		return $this->rooms;
-	}
+    /**
+     * Returns the rooms
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Room> $rooms
+     */
+    public function getRooms()
+    {
+        return $this->rooms;
+    }
 
-	/**
-	 * Sets the rooms
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Room> $rooms
-	 * @return void
-	 */
-	public function setRooms(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $rooms) {
-		$this->rooms = $rooms;
-	}
-
+    /**
+     * Sets the rooms
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Room> $rooms
+     */
+    public function setRooms(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $rooms)
+    {
+        $this->rooms = $rooms;
+    }
 }

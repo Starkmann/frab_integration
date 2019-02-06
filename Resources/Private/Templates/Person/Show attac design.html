@@ -1,4 +1,4 @@
-
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:layout name="Default" />
 
 This Template is responsible for displaying a single view for a domain object
@@ -13,8 +13,8 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
-<f:flashMessages renderMode="div" />
-<div style="margin-left:-35px;"> 
+<f:flashMessages />
+<div style="margin-left:-35px;">
     <div class="span11">
 
 <f:render partial="Person/Properties" arguments="{person:person}" />
@@ -25,6 +25,8 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <h2>{person.fullPublicName}</h2>
             <img src="http://frab.attac.de/{person.image}">
         </div>
-        
+
     </div><!-- span4 -->
+</div>
 </f:section>
+

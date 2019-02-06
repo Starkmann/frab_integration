@@ -29,48 +29,47 @@ namespace Eike\FrabIntegration\Controller;
 /**
  * EventController
  */
-class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
-	/**
-	* 
- 	* @var \Eike\FrabIntegration\Domain\Repository\FrabRepository
- 	* @inject
-	*/
-	protected $frabRepository;
+class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
+    /**
+    * @var \Eike\FrabIntegration\Domain\Repository\FrabRepository
+    * @inject
+    */
+    protected $frabRepository;
 
-	public function injectFrabRepository(\Eike\FrabIntegration\Domain\Repository\FrabRepository $frabRepository){
-		$this->frabRepository = $frabRepository;
-	}
-	/**
-	 * action list
-	 *
-	 * @return void
-	 */
-	public function listAction() {
-		$events = $this->frabRepository->findEvents(
-				$this->settings['conferenceParameters']['conferenceUri'],
-				$this->settings['conferenceParameters']['userAgent'],
-				$this->settings['conferenceParameters']['accept'],
-				$this->settings['conferenceParameters']['encoding']
-				);
-		$this->view->assign('events', $events);
-	}
+    public function injectFrabRepository(\Eike\FrabIntegration\Domain\Repository\FrabRepository $frabRepository)
+    {
+        $this->frabRepository = $frabRepository;
+    }
+    /**
+     * action list
+     */
+    public function listAction()
+    {
+        $events = $this->frabRepository->findEvents(
+                $this->settings['conferenceParameters']['conferenceUri'],
+                $this->settings['conferenceParameters']['userAgent'],
+                $this->settings['conferenceParameters']['accept'],
+                $this->settings['conferenceParameters']['encoding']
+                );
+        $this->view->assign('events', $events);
+    }
 
-	/**
-	 * action show
-	 *
-	 * @param \string $eventGuid
-	 * @return void
-	 */
-	public function showAction($eventGuid) {
-		$event = $conferences = $this->frabRepository->findEvent(
-				$this->settings['conferenceParameters']['conferenceUri'],
-				$this->settings['conferenceParameters']['userAgent'],
-				$this->settings['conferenceParameters']['accept'],
-				$this->settings['conferenceParameters']['encoding'],
-				$eventGuid
-				);
-		//debug($event);
-		$this->view->assign('event', $event);
-	}
-
+    /**
+     * action show
+     *
+     * @param \string $eventGuid
+     */
+    public function showAction($eventGuid)
+    {
+        $event = $conferences = $this->frabRepository->findEvent(
+                $this->settings['conferenceParameters']['conferenceUri'],
+                $this->settings['conferenceParameters']['userAgent'],
+                $this->settings['conferenceParameters']['accept'],
+                $this->settings['conferenceParameters']['encoding'],
+                $eventGuid
+                );
+        //debug($event);
+        $this->view->assign('event', $event);
+    }
 }

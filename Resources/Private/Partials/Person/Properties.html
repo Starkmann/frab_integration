@@ -1,11 +1,11 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
 
 
-  
 
   <div class="card">
 	  <div class="card-header">Veranstaltungen</div>
     <div class="card-body">
-      <p class="card-text">			
+      <p class="card-text">
 	    <f:for each="{person.events}" as="event">
 	    Veranstaltungen mit {person.fullPublicName}:
 	   <p><f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}">{event.title}</f:link.action></p>
@@ -13,7 +13,7 @@
     </div>
   </div>
 
-			
-    
+
+
 
 

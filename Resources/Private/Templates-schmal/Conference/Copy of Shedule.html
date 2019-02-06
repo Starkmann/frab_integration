@@ -1,3 +1,5 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+
 {namespace u=Tx_FrabIntegration_ViewHelpers}
 <f:layout name="Default" />
 
@@ -15,7 +17,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 <f:section name="main">
 
 
-<f:flashMessages renderMode="div" />
+<f:flashMessages />
 
 
 
@@ -35,7 +37,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 		<f:for each="{conference.days}" as="day">
 			<f:if condition="{day.index} == {currentDay}">
 				<thead>
-				<tr>	
+				<tr>
 				<th style="min-width:90px !important;">&nbsp;</th>
 				<f:for each="{day.rooms}" as="room">
 					<f:if condition="{room.events}">

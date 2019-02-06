@@ -29,48 +29,47 @@ namespace Eike\FrabIntegration\Controller;
 /**
  * PersonController
  */
-class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+{
 
-	/**
-	* 
- 	* @var \Eike\FrabIntegration\Domain\Repository\FrabRepository
- 	* @inject
-	*/
-	protected $frabRepository;
+    /**
+    * @var \Eike\FrabIntegration\Domain\Repository\FrabRepository
+    * @inject
+    */
+    protected $frabRepository;
 
-	public function injectFrabRepository(\Eike\FrabIntegration\Domain\Repository\FrabRepository $frabRepository){
-		$this->frabRepository = $frabRepository;
-	} 
-	/**
-	 * action list
-	 *
-	 * @return void
-	 */
-	public function listAction() {
-		$persons = $this->frabRepository->findPersons(
-				$this->settings['conferenceParameters']['speakersUri'],
-				$this->settings['conferenceParameters']['userAgent'],
-				$this->settings['conferenceParameters']['accept'],
-				$this->settings['conferenceParameters']['encoding']
-				);
-		$this->view->assign('persons', $persons);
-	}
+    public function injectFrabRepository(\Eike\FrabIntegration\Domain\Repository\FrabRepository $frabRepository)
+    {
+        $this->frabRepository = $frabRepository;
+    }
+    /**
+     * action list
+     */
+    public function listAction()
+    {
+        $persons = $this->frabRepository->findPersons(
+                $this->settings['conferenceParameters']['speakersUri'],
+                $this->settings['conferenceParameters']['userAgent'],
+                $this->settings['conferenceParameters']['accept'],
+                $this->settings['conferenceParameters']['encoding']
+                );
+        $this->view->assign('persons', $persons);
+    }
 
-	/**
-	 * action show
-	 *
-	 * @param integer $personId
-	 * @return void
-	 */
-	public function showAction($personId) {
-		$person = $this->frabRepository->findPerson(
-				$this->settings['conferenceParameters']['speakersUri'],
-				$this->settings['conferenceParameters']['userAgent'],
-				$this->settings['conferenceParameters']['accept'],
-				$this->settings['conferenceParameters']['encoding'],
-				$personId
-		);
-		$this->view->assign('person', $person);
-	}
-
+    /**
+     * action show
+     *
+     * @param int $personId
+     */
+    public function showAction($personId)
+    {
+        $person = $this->frabRepository->findPerson(
+                $this->settings['conferenceParameters']['speakersUri'],
+                $this->settings['conferenceParameters']['userAgent'],
+                $this->settings['conferenceParameters']['accept'],
+                $this->settings['conferenceParameters']['encoding'],
+                $personId
+        );
+        $this->view->assign('person', $person);
+    }
 }
