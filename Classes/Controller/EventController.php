@@ -33,7 +33,7 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
     /**
     * @var \Eike\FrabIntegration\Domain\Repository\FrabRepository
-    * @inject
+    *
     */
     protected $frabRepository;
 
@@ -41,6 +41,7 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         $this->frabRepository = $frabRepository;
     }
+
     /**
      * action list
      */
@@ -49,25 +50,22 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $events = $this->frabRepository->findEvents(
                 $this->settings['conferenceParameters']['conferenceUri'],
                 $this->settings['conferenceParameters']['userAgent'],
-                $this->settings['conferenceParameters']['accept'],
-                $this->settings['conferenceParameters']['encoding']
+                $this->settings['conferenceParameters']['accept']
                 );
         $this->view->assign('events', $events);
     }
 
     /**
-     * action show
-     *
-     * @param \string $eventGuid
+     * @param string $eventGuid
+     * @throws \Exception
      */
-    public function showAction($eventGuid)
+    public function showAction(string $eventGuid)
     {
-        $event = $conferences = $this->frabRepository->findEvent(
+        $event = $this->frabRepository->findEvent(
                 $this->settings['conferenceParameters']['conferenceUri'],
+                $eventGuid,
                 $this->settings['conferenceParameters']['userAgent'],
-                $this->settings['conferenceParameters']['accept'],
-                $this->settings['conferenceParameters']['encoding'],
-                $eventGuid
+                $this->settings['conferenceParameters']['accept']
                 );
         //debug($event);
         $this->view->assign('event', $event);

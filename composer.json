@@ -12,7 +12,7 @@
 	"license": ["GPL-2.0+"],
 	"keywords": ["frab", "TYPO3", "congress"],
 	"require": {
-		"typo3/cms": "^8.7"
+		"typo3/cms-core": "^10.4"
 	},
 	"replace": {
 		"frab_integration": "self.version",

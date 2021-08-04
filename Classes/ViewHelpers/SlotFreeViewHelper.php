@@ -2,7 +2,9 @@
 
 namespace Eike\FrabIntegration\ViewHelpers;
 
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use DateTime;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /***************************************************************
  *
@@ -36,18 +38,26 @@ class SlotFreeViewHelper extends AbstractViewHelper
 {
 
     /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Event> $events
-     * @params \DateTime $timeslot
-     * return \boolean
+     * Arguments initialization
+     *
      */
-    public function render(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $events, \DateTime $timeslot)
+    public function initializeArguments()
     {
-        $localEvents = clone $events;
+        $this->registerArgument('events', ObjectStorage::class, 'Events', true, null);
+        $this->registerArgument('timeslot', DateTime::class, 'timeslot', true, null);
+    }
+
+    /**
+     * @return bool
+     */
+    public function render()
+    {
+        $localEvents = clone $this->arguments['events'];
         foreach ($localEvents as $event) {
-            if ($event->getStart()->format('H:i') == $timeslot->format('H:i')) {
+            if ($event->getStart()->format('H:i') == $this->arguments['timeslot']->format('H:i')) {
                 return false;
             }
-            if ($event->getStart()->format('H:i') < $timeslot->format('H:i') && ($event->getEnd()->format('H:i') > $timeslot->format('H:i') || $event->getEnd()->format('H:i') == $timeslot->format('H:i'))) {
+            if ($event->getStart()->format('H:i') < $this->arguments['timeslot']->format('H:i') && ($event->getEnd()->format('H:i') > $this->arguments['timeslot']->format('H:i') || $event->getEnd()->format('H:i') == $this->arguments['timeslot']->format('H:i'))) {
                 return false;
             }
         }

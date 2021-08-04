@@ -2,11 +2,11 @@
 plugin.tx_frabintegration {
 	view {
 		# cat=plugin.tx_frabintegration/file; type=string; label=Path to template root (FE)
-		templateRootPath = EXT:frab_integration/Resources/Private/Templates/
+		templateRootPath =
 		# cat=plugin.tx_frabintegration/file; type=string; label=Path to template partials (FE)
-		partialRootPath = EXT:frab_integration/Resources/Private/Partials/
+		partialRootPath =
 		# cat=plugin.tx_frabintegration/file; type=string; label=Path to template layouts (FE)
-		layoutRootPath = EXT:frab_integration/Resources/Private/Layouts/
+		layoutRootPath =
 	}
 	persistence {
 		# cat=plugin.tx_frabintegration//a; type=string; label=Default storage PID
@@ -15,11 +15,11 @@ plugin.tx_frabintegration {
 	settings{
 		conferenceParameters{
 		# cat=plugin.tx_frabintegration/uri; type=string; label= Url to conference json
-		conferenceUri = 
+		conferenceUri =
 		# cat=plugin.tx_frabintegration/uri; type=string; label= Url to speakers json
 		speakersUri =
 		# cat=plugin.tx_frabintegration/useragent; type=string; label= User agent
-		useragent = 
+		useragent =
 		# cat=plugin.tx_frabintegration/accept; type=string; label=
 		accept =
 		# cat=plugin.tx_frabintegration/encoding; type=string; label=Encoding

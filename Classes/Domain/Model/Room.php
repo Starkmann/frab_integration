@@ -45,7 +45,7 @@ class Room extends AbstractValueObject
      * events
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Event>
-     * @cascade remove
+     *
      */
     protected $events = null;
 

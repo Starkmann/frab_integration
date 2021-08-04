@@ -1,4 +1,6 @@
-<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+			xmlns:u="http://typo3.org/ns/Undkonsorten/FrabIntegration/ViewHelpers"
+			data-namespace-typo3-fluid="true">
 {namespace u= Eike\FrabIntegration\ViewHelpers}
 <f:layout name="Default" />
 
@@ -14,7 +16,6 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
-<p><a href="https://www.ein-anderes-europa.de/index.php?id=76975" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Liste aller Veranstaltungen</a> | <a href="https://www.ein-anderes-europa.de/index.php?id=76973" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Liste der ReferentInnen</a></p>
 <div class="frab-scheduler">
 
 <f:flashMessages />
@@ -26,7 +27,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 			<f:for each="{conference.days}" as="day" iteration="iterator">
 					<f:if condition="{day.index}=={currentDay}">
 					<f:then>
-						<li class="page-item active"><f:link.action action="shedule" class="page-link" arguments="{currentDay: day.index}">Tag {iterator.cycle}</f:link.action></li>
+						<li class="page-item active"><f:link.action action="shedule" class="button" arguments="{currentDay: day.index}">Tag {iterator.cycle}</f:link.action></li>
 					</f:then>
 					<f:else>
 						<li class="page-item"><f:link.action action="shedule" class="page-link" arguments="{currentDay: day.index}">Tag {iterator.cycle}</f:link.action></li>
@@ -35,7 +36,6 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 			</f:for>
 		</ul>
-
 		</nav>
 		<div class="alert alert-success" role="alert">
 Bitte die entsprechenden Tage auswählen. Alle Veranstaltungen des Tages erscheinen dann in unserer Programmtabelle. Diese lässt sich vertikal und horizontal Scrollen. Benutzen Sie dafür ihr Mausrad, die Scrollbalken ihres Browsers oder unsere Buttons links und rechts über der Programmtabelle.
@@ -93,7 +93,4 @@ Bitte die entsprechenden Tage auswählen. Alle Veranstaltungen des Tages erschei
 	</div>
 </f:for>
 </div>
-<script src="https:///ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
-<script src="/typo3conf/ext/frab_integration/Resources/Public/Js/jquery.stickyheader.js"></script>
 </f:section>

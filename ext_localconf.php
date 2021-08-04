@@ -4,7 +4,7 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Eike.' . $_EXTKEY,
+    'Eike.frab_integration',
     'List',
     [
         'Conference' => 'list, show, showEvent, shedule',
@@ -19,3 +19,12 @@ if (!defined('TYPO3_MODE')) {
         'Event' => '',
     ]
 );
+
+$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+    \TYPO3\CMS\Core\Imaging\IconRegistry::class
+);
+$registry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
+$registry->registerIcon('extension-frab-integration', \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class, [
+    'source' => 'EXT:autoloader/Resources/Public/Icons/Extension.svg',
+]);
+

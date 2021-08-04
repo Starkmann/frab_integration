@@ -29,6 +29,9 @@ namespace Eike\FrabIntegration\Controller;
 /**
  * ConferenceController
  */
+
+use Eike\FrabIntegration\Domain\Model\Conference;
+use Eike\FrabIntegration\Domain\Repository\FrabRepository;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -37,17 +40,13 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
     /**
     * @var \Eike\FrabIntegration\Domain\Repository\FrabRepository
-    * @inject
+    *
     */
     protected $frabRepository;
 
-    protected function initializeAction()
+    public function injectFrabRepository(FrabRepository $frabRepository)
     {
-        if ($this->settings['cssPath']) {
-            $this->response->addAdditionalHeaderData($this->wrapCssFile($this->settings['cssPath']));
-        } else {
-            $this->response->addAdditionalHeaderData($this->wrapCssFile(ExtensionManagementUtility::siteRelPath('frab_integration') . 'Resources/Public/Css/Style.css'));
-        }
+        $this->frabRepository = $frabRepository;
     }
 
     /**
@@ -58,31 +57,28 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         $conferences = $this->frabRepository->findConference(
                 $this->settings['conferenceParameters']['conferenceUri'],
                 $this->settings['conferenceParameters']['userAgent'],
-                $this->settings['conferenceParameters']['accept'],
-                $this->settings['conferenceParameters']['encoding']
+                $this->settings['conferenceParameters']['accept']
                 );
 
         $this->view->assign('conferences', $conferences);
     }
 
     /**
-     * action list
-     *@param int $currentDay
+     * @param int $currentDay
+     * @throws \Exception
      */
-    public function sheduleAction($currentDay = 1)
+    public function sheduleAction(int $currentDay = 1)
     {
         $conferences = $this->frabRepository->findConference(
                 $this->settings['conferenceParameters']['conferenceUri'],
                 $this->settings['conferenceParameters']['userAgent'],
-                $this->settings['conferenceParameters']['accept'],
-                $this->settings['conferenceParameters']['encoding']
+                $this->settings['conferenceParameters']['accept']
         );
         $day = $this->frabRepository->findDayByIndex(
                 $currentDay,
                 $this->settings['conferenceParameters']['conferenceUri'],
                 $this->settings['conferenceParameters']['userAgent'],
-                $this->settings['conferenceParameters']['accept'],
-                $this->settings['conferenceParameters']['encoding']
+                $this->settings['conferenceParameters']['accept']
         );
 
         $timeline = $this->generateTimeline($day->getDayStart(), $day->getDayEnd(), 15);
@@ -94,32 +90,21 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     /**
      * action show
      *
-     * @param \Eike\FrabIntegration\Domain\Model\Conference $conference
+     * @param Conference $conference
      */
-    public function showAction(\Eike\FrabIntegration\Domain\Model\Conference $conference)
+    public function showAction(Conference $conference)
     {
         $this->view->assign('conference', $conference);
-    }
-
-    /**
-     * Wrap css files inside <link /> tag
-     *
-     * @param string $cssFile Path to file
-     * @return string <link.. string ready for <head> part
-     */
-    protected function wrapCssFile($cssFile)
-    {
-        $cssFile = GeneralUtility::resolveBackPath($cssFile);
-        $cssFile = GeneralUtility::createVersionNumberedFilename($cssFile);
-        return '<link rel="stylesheet" type="text/css" href="' . htmlspecialchars($cssFile) . '" media="screen" />';
     }
 
     /**
      * @param \DateTime $begin
      * @param \DateTime $end
      * @param int $step
+     * @return array
+     * @throws \Exception
      */
-    protected function generateTimeline($begin, $end, $step)
+    protected function generateTimeline(\DateTime $begin, \DateTime $end, int $step)
     {
         $timeSolts = [];
         $timeSolts[] = $begin;

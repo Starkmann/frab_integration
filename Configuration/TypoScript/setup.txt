@@ -1,16 +1,17 @@
-/*
-page.includeJSFooter {
-	jqueryThrottle = EXT:frab_integration/Resources/Public/Js/jquery.ba-throttle-debounce.min.js
-	jqueryStickyHeader = EXT:frab_integration/Resources/Public/Js/jquery.stickyheader.js
-}
-*/
-
-
 plugin.tx_frabintegration {
 	view {
-		templateRootPath = {$plugin.tx_frabintegration.view.templateRootPath}
-		partialRootPath = {$plugin.tx_frabintegration.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_frabintegration.view.layoutRootPath}
+		templateRootPaths {
+        			0 = EXT:frab_integration/Resources/Private/Templates/
+        			10 = {$plugin.tx_frabintegration.view.templateRootPath}
+        		}
+        		partialRootPaths {
+        			0 = EXT:frab_integration/Resources/Private/Partials/
+        			10 = {$plugin.tx_frabintegration.view.partialRootPath}
+        		}
+        		layoutRootPaths {
+        			0 = EXT:frab_integration/Resources/Private/Layouts/
+        			10 = {$plugin.tx_frabintegration.view.layoutRootPath}
+        		}
 	}
 	persistence {
 		storagePid = {$plugin.tx_frabintegration.persistence.storagePid}
@@ -26,42 +27,12 @@ plugin.tx_frabintegration {
 			useragent = {$plugin.tx_frabintegration.settings.conferenceParameters.useragent}
 			accept = {$plugin.tx_frabintegration.settings.conferenceParameters.accept}
 			encoding = {$plugin.tx_frabintegration.settings.conferenceParameters.encoding}
-		} 
+		}
 	}
 }
-
-/*
-plugin.tx_frabintegration._CSS_DEFAULT_STYLE (
-	textarea.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
-
-	input.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
-
-	.tx-frab-integration table {
-		border-collapse:separate;
-		border-spacing:10px;
-	}
-
-	.tx-frab-integration table th {
-		font-weight:bold;
-	}
-
-	.tx-frab-integration table td {
-		vertical-align:top;
-	}
-
-	.typo3-messages .message-error {
-		color:red;
-	}
-
-	.typo3-messages .message-ok {
-		color:green;
-	}
-
-)
-*/
+page.includeCSS.tx_frabintegration = EXT:frab_integration/Resources/Public/Css/Style.css
+page.includeJSFooter.tx_frabintegration {
+	jqueryThrottle = EXT:frab_integration/Resources/Public/Js/jquery.ba-throttle-debounce.min.js
+	jqueryStickyHeader = EXT:frab_integration/Resources/Public/Js/jquery.stickyheader.js
+	scroll = EXT:frab_integration/Resources/Public/Js/Scroll.js
+}

@@ -2,7 +2,8 @@
 
 namespace Eike\FrabIntegration\ViewHelpers;
 
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use DateTime;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /***************************************************************
  *
@@ -36,14 +37,22 @@ class RowspanViewHelper extends AbstractViewHelper
 {
 
     /**
-     * @param \DateTime $duratrion
-     * return \string
+     * Arguments initialization
+     *
      */
-    public function render(\DateTime $duration)
+    public function initializeArguments()
     {
-        $localDuration = clone $duration;
-        $hours = $localDuration->format(H);
-        $minutes = $localDuration->format(i);
+        $this->registerArgument('duration', DateTime::class, 'Duration', true, null);
+    }
+
+    /**
+     * @return float|int
+     */
+    public function render()
+    {
+        $localDuration = clone $this->arguments['duration'];
+        $hours = $localDuration->format('H');
+        $minutes = $localDuration->format('i');
         return ($hours*60+$minutes)/15;
     }
 }

@@ -73,7 +73,7 @@ class Conference extends AbstractValueObject
      * days
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Day>
-     * @cascade remove
+     *
      */
     protected $days = null;
 
