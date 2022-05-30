@@ -45,7 +45,7 @@ Bitte die entsprechenden Tage auswählen. Alle Veranstaltungen des Tages erschei
 			<button type="button" class="btn btn-secondary btn-success left pull-left">«</button><button type="button" class="btn btn-secondary btn-success right pull-right">»</button>
 		</div>
 		<div class="scrollable">
-		<table class="scheduler-table">
+		<table class="scheduler-table display dataTable no-footer" id="example">
 		<f:for each="{conference.days}" as="day">
 			<f:if condition="{day.index} == {currentDay}">
 				<thead>
@@ -74,9 +74,7 @@ Bitte die entsprechenden Tage auswählen. Alle Veranstaltungen des Tages erschei
 									<f:else>
 										<f:if condition="{iterator.index} == 0">
 											<f:then>
-												<f:if condition="<u:slotFree events='{room.events}' timeslot='{timeSlot}'/>">
 													<td></td>
-												</f:if>
 											</f:then>
 										</f:if>
 									</f:else>

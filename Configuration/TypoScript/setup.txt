@@ -30,9 +30,9 @@ plugin.tx_frabintegration {
 		}
 	}
 }
-page.includeCSS.tx_frabintegration = EXT:frab_integration/Resources/Public/Css/Style.css
-page.includeJSFooter.tx_frabintegration {
-	jqueryThrottle = EXT:frab_integration/Resources/Public/Js/jquery.ba-throttle-debounce.min.js
-	jqueryStickyHeader = EXT:frab_integration/Resources/Public/Js/jquery.stickyheader.js
-	scroll = EXT:frab_integration/Resources/Public/Js/Scroll.js
-}
+page.includeCSS.tx_frabintegration_style = EXT:frab_integration/Resources/Public/Css/Style.css
+page.includeCSS.tx_frabintegration_datatables = https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css
+
+page.includeJSFooterlibs.tx_frabintegration_jquery = https://code.jquery.com/jquery-3.5.1.js
+page.includeJSFooterlibs.tx_frabintegration_datatables = https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js
+page.includeJSFooterlibs.tx_frabintegration_fix = https://cdn.datatables.net/fixedcolumns/4.1.0/js/dataTables.fixedColumns.min.js
