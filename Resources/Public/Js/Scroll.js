@@ -1,4 +1,3 @@
-$.noConflict();
 $(document).ready(function () {
 	$('#example').DataTable({
 		scrollY:        "600px",
