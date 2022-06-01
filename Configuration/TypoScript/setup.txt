@@ -37,4 +37,7 @@ page.includeCSS.tx_frabintegration_style = EXT:frab_integration/Resources/Public
 page.includeJSFooterlibs.tx_frabintegration_fix = EXT:frab_integration/Resources/Public/Js/Fix.js
 page.includeJSFooterlibs.tx_frabintegration_datatables = https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js
 page.includeJSFooterlibs.tx_frabintegration_fixColumns = https://cdn.datatables.net/fixedcolumns/4.1.0/js/dataTables.fixedColumns.js
+page.includeJSFooterlibs.tx_frabintegration_row_group = EXT:frab_integration/Resources/Public/Js/dataTables.rowsGroup.js
+
 page.includeJSFooterlibs.tx_frabintegration_scroll = EXT:frab_integration/Resources/Public/Js/Scroll.js
+

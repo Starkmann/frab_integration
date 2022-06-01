@@ -45,7 +45,7 @@ Bitte die entsprechenden Tage auswählen. Alle Veranstaltungen des Tages erschei
 			<button type="button" class="btn btn-secondary btn-success left pull-left">«</button><button type="button" class="btn btn-secondary btn-success right pull-right">»</button>
 		</div>
 		<div class="scrollable">
-		<table class="scheduler-table display dataTable no-footer" id="example">
+		<table class="scheduler-table display" id="example">
 		<f:for each="{conference.days}" as="day">
 			<f:if condition="{day.index} == {currentDay}">
 				<thead>
@@ -59,31 +59,22 @@ Bitte die entsprechenden Tage auswählen. Alle Veranstaltungen des Tages erschei
 				</tr>
 				</thead>
 				<tbody>
-				<f:for each="{timeline}" as="timeSlot">
-					<tr>
-					<th>{timeSlot -> f:format.date(format:'H:i')}</th>
-					<f:for each="{day.rooms}" as="room">
-						<f:if condition="{room.events}">
-							<f:for each="{room.events}" as="event" iteration="iterator">
-								<f:if condition="{f:format.date(date:event.start, format:'H:i')} == {f:format.date(date:timeSlot, format:'H:i')}">
+					<f:for each="{table}" as="row" key="timeslot">
+						<tr>
+								<th>{timeslot}</th>
+							<f:for each="{row}" as="entry">
+								<f:if condition="{entry}">
 									<f:then>
-										<td rowspan="<u:rowspan duration='{event.duration}'/>" class="event-{f:format.date(date:event.duration, format:'H-i')}">
-											<f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}">{event.title}</f:link.action>
-										</td>
+										<td><f:link.action controller="Event" action="show" arguments="{eventGuid:entry.guid}">{entry.title}</f:link.action></td>
 									</f:then>
 									<f:else>
-										<f:if condition="{iterator.index} == 0">
-											<f:then>
-													<td></td>
-											</f:then>
-										</f:if>
+										<td></td>
 									</f:else>
 								</f:if>
+
 							</f:for>
-	  					</f:if>
-  					</f:for>
-  					</tr>
-				</f:for>
+						</tr>
+					</f:for>
 				</tbody>
 			</f:if>
 		</f:for>

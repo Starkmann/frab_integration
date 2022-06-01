@@ -31,6 +31,9 @@ namespace Eike\FrabIntegration\Controller;
  */
 
 use Eike\FrabIntegration\Domain\Model\Conference;
+use Eike\FrabIntegration\Domain\Model\Day;
+use Eike\FrabIntegration\Domain\Model\Event;
+use Eike\FrabIntegration\Domain\Model\Room;
 use Eike\FrabIntegration\Domain\Repository\FrabRepository;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -82,8 +85,40 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         );
 
         $timeline = $this->generateTimeline($day->getDayStart(), $day->getDayEnd(), 15);
+
+        $table = [];
+        foreach($conferences as $conference){
+            /** @var $conference Conference*/
+            foreach ($conference->getDays() as $day){
+                /** @var $day Day */
+                if($day->getIndex() == $currentDay){
+                    foreach ($timeline as $timeslot){
+                        foreach ($day->getRooms() as $room){
+                            $eventFoundForRoom = false;
+                            /** @var $room Room */
+                            if($room->getEvents()->count()>0) {
+                                /** @var $event Event*/
+                                foreach ($room->getEvents() as $event) {
+                                    if($event->getStart()->format('H:i') <= $timeslot->format('H:i')
+                                        && $event->getEnd()->format('H:i') >= $timeslot->format('H:i')
+                                    ){
+                                        $table[$timeslot->format('H:i')][] = $event;
+                                        $eventFoundForRoom = true;
+                                    }
+                                }
+                                if($eventFoundForRoom == false){
+                                    $table[$timeslot->format('H:i')][] = '';
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
         $this->view->assign('conferences', $conferences);
         $this->view->assign('currentDay', $currentDay);
+        $this->view->assign('table', $table);
         $this->view->assign('timeline', $timeline);
     }
 
