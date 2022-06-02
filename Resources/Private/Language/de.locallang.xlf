@@ -132,6 +132,10 @@
 				<source>Timeslot</source>
                 <target>Uhrzeit</target>
 			</trans-unit>
+            <trans-unit id="frab.slot">
+				<source>more</source>
+                <target>mehr</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

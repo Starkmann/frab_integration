@@ -121,4 +121,15 @@ td.user-name {
 	padding: .2em;
 	color:#0060a7;
 }
+.cell .card {
+	background-color: #004f9f;
+	padding: 1em;
+	color: white;
+	margin-bottom: 1em;
+}
+
+.cell .card h4 {
+	color: white;
+}
+
 

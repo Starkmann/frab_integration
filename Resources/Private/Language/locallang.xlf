@@ -129,6 +129,9 @@
 			<trans-unit id="frab.slot">
 				<source>Timeslot</source>
 			</trans-unit>
+			<trans-unit id="frab.more">
+				<source>more</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
