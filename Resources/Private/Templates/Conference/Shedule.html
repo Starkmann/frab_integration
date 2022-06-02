@@ -65,7 +65,7 @@ Bitte die entsprechenden Tage auswählen. Alle Veranstaltungen des Tages erschei
 							<f:for each="{row}" as="entry">
 								<f:if condition="{entry}">
 									<f:then>
-										<td><f:link.action controller="Event" action="show" arguments="{eventGuid:entry.guid}">{entry.title}</f:link.action></td>
+										<td class="event-{f:format.date(date:entry.duration, format:'H-i')}" ><f:link.action controller="Event" action="show" arguments="{eventGuid:entry.guid}">{entry.title}</f:link.action></td>
 									</f:then>
 									<f:else>
 										<td></td>
