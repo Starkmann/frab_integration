@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-    <file datatype="plaintext" source-language="en" original="EXT:frab_integration/Resources/Private/Language/locallang.xlf" product-name="frabintegration">
+    <file datatype="plaintext" source-language="en" original="EXT:frab_integration/Resources/Private/Language/locallang.xlf" product-name="frabintegration" target-language="fr">
         <header/>
         <body>
 			<trans-unit id="tx_frabintegration_domain_model_conference">
@@ -122,12 +122,15 @@
 			</trans-unit>
 			<trans-unit id="frab.howto">
 				<source>Please select the appropriate day. All events of the day will then appear in our schedule. This can be scrolled vertically and horizontally. To scroll please use the mouse wheel, the scroll bars of the browser or for mobile devices the familiar swipe gestures and scroll to the right.</source>
-			</trans-unit>
+                <target>Veuillez sélectionner le jour correspondant. Tous les événements du jour apparaissent alors dans notre grille horaire. Celui-ci peut être déroulé verticalement et horizontalement. Pour faire défiler, veuillez utiliser la molette de la souris, les barres de défilement du navigateur ou, pour les appareils mobiles, les gestes de balayage bien connus et faire défiler vers la droite.</target>
+            </trans-unit>
 			<trans-unit id="frab.day">
 				<source>Day</source>
+                <target>Jour</target>
 			</trans-unit>
 			<trans-unit id="frab.slot">
 				<source>Timeslot</source>
+                <target>Heure</target>
 			</trans-unit>
 		</body>
 	</file>

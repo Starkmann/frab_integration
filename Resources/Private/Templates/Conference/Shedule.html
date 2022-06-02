@@ -27,10 +27,10 @@ Otherwise your changes will be overwritten the next time you save the extension 
 			<f:for each="{conference.days}" as="day" iteration="iterator">
 					<f:if condition="{day.index}=={currentDay}">
 					<f:then>
-						<li class="current"><f:link.action action="shedule"  arguments="{currentDay: day.index}">Tag {iterator.cycle}</f:link.action></li>
+						<li class="current"><f:link.action action="shedule"  arguments="{currentDay: day.index}"><f:translate key="frab.day"/> {iterator.cycle}</f:link.action></li>
 					</f:then>
 					<f:else>
-						<li ><f:link.action action="shedule"  arguments="{currentDay: day.index}">Tag {iterator.cycle}</f:link.action></li>
+						<li ><f:link.action action="shedule"  arguments="{currentDay: day.index}"><f:translate key="frab.day"/> {iterator.cycle}</f:link.action></li>
 					</f:else>
 					</f:if>
 
@@ -39,8 +39,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 		</nav>
 		
 		<div class="callout secondary">
-			<p>
-				Bitte die entsprechenden Tage auswählen. Alle Veranstaltungen des Tages erscheinen dann in unserer Programmtabelle. Diese lässt sich vertikal und horizontal Scrollen. Benutzen Sie dafür ihr Mausrad, die Scrollbalken ihres Browsers oder unsere Buttons links und rechts über der Programmtabelle.
+			<p><f:translate key="frab.howto"/>
 			</p>
 			
 		</div>
@@ -55,7 +54,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 			<f:if condition="{day.index} == {currentDay}">
 				<thead>
 				<tr>
-				<th>Zeit</th>
+				<th><f:translate key="frab.slot"/></th>
 				<f:for each="{day.rooms}" as="room">
 					<f:if condition="{room.events}">
 					<th>{room.name}</th>
