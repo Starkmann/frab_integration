@@ -132,9 +132,57 @@
 				<source>Timeslot</source>
                 <target>Uhrzeit</target>
 			</trans-unit>
-            <trans-unit id="frab.slot">
+            <trans-unit id="frab.more">
 				<source>more</source>
                 <target>mehr</target>
+			</trans-unit>
+            <trans-unit id="frab.back">
+				<source>back</source>
+                <target>zurück</target>
+			</trans-unit>
+            <trans-unit id="frab.backtolist">
+				<source>Back to Listview</source>
+                <target>Liste aller Veranstaltungen</target>
+			</trans-unit>
+            <trans-unit id="frab.listofreferents">
+				<source>List of Speakers</source>
+                <target>Liste der Referierenden</target>
+			</trans-unit>
+            <trans-unit id="frab.timetable">
+				<source>Timetable</source>
+                <target>Stundenplan</target>
+			</trans-unit>
+            <trans-unit id="frab.track">
+				<source>Track:</source>
+                <target>Themenstrang:</target>
+			</trans-unit>
+            <trans-unit id="frab.start">
+				<source>Start:</source>
+                <target>Beginn:</target>
+			</trans-unit>
+			<trans-unit id="frab.at">
+				<source>at</source>
+                <target>um</target>
+			</trans-unit>
+			<trans-unit id="frab.h">
+				<source>h</source>
+                <target>Uhr</target>
+			</trans-unit>
+            <trans-unit id="frab.duration">
+				<source>Duration</source>
+                <target>Länge der Veranstaltung</target>
+			</trans-unit>
+            <trans-unit id="frab.eventtype">
+				<source>Type of event:</source>
+                <target>Art der Veranstaltung:</target>
+			</trans-unit>
+            <trans-unit id="frab.speaker">
+				<source>Speaker:</source>
+                <target>Referent/in(en):</target>
+			</trans-unit>
+            <trans-unit id="frab.room">
+				<source>Room:</source>
+                <target>Raum:</target>
 			</trans-unit>
 		</body>
 	</file>

@@ -132,6 +132,42 @@
 			<trans-unit id="frab.more">
 				<source>more</source>
 			</trans-unit>
+			<trans-unit id="frab.back">
+				<source>back</source>
+			</trans-unit>
+			<trans-unit id="frab.backtolist">
+				<source>Back to Listview</source>
+			</trans-unit>
+			<trans-unit id="frab.listofreferents">
+				<source>List of Speakers</source>
+			</trans-unit>
+			<trans-unit id="frab.timetable">
+				<source>Timetable</source>
+			</trans-unit>
+			<trans-unit id="frab.track">
+				<source>Track:</source>
+			</trans-unit>
+			<trans-unit id="frab.start">
+				<source>Start:</source>
+			</trans-unit>
+			<trans-unit id="frab.at">
+				<source>at</source>
+			</trans-unit>
+			<trans-unit id="frab.h">
+				<source>h</source>
+			</trans-unit>
+			<trans-unit id="frab.duration">
+				<source>Duration</source>
+			</trans-unit>
+			<trans-unit id="frab.eventtype">
+				<source>Type of event:</source>
+			</trans-unit>
+			<trans-unit id="frab.speaker">
+				<source>Speaker:</source>
+			</trans-unit>
+			<trans-unit id="frab.room">
+				<source>Room:</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
