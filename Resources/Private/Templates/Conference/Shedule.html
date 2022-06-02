@@ -22,24 +22,29 @@ Otherwise your changes will be overwritten the next time you save the extension 
 	<f:for each="{conferences}" as="conference">
 
 
-		<nav aria-label="Tagesmenue">
-		<ul class="pagination pagination-lg">
+		<nav aria-label="Pagination">
+		<ul class="pagination">
 			<f:for each="{conference.days}" as="day" iteration="iterator">
 					<f:if condition="{day.index}=={currentDay}">
 					<f:then>
-						<li class="page-item active"><f:link.action action="shedule" class="button" arguments="{currentDay: day.index}">Tag {iterator.cycle}</f:link.action></li>
+						<li class="current"><f:link.action action="shedule"  arguments="{currentDay: day.index}">Tag {iterator.cycle}</f:link.action></li>
 					</f:then>
 					<f:else>
-						<li class="page-item"><f:link.action action="shedule" class="page-link" arguments="{currentDay: day.index}">Tag {iterator.cycle}</f:link.action></li>
+						<li ><f:link.action action="shedule"  arguments="{currentDay: day.index}">Tag {iterator.cycle}</f:link.action></li>
 					</f:else>
 					</f:if>
 
 			</f:for>
 		</ul>
 		</nav>
-		<div class="alert alert-success" role="alert">
-Bitte die entsprechenden Tage auswählen. Alle Veranstaltungen des Tages erscheinen dann in unserer Programmtabelle. Diese lässt sich vertikal und horizontal Scrollen. Benutzen Sie dafür ihr Mausrad, die Scrollbalken ihres Browsers oder unsere Buttons links und rechts über der Programmtabelle.
+		
+		<div class="callout secondary">
+			<p>
+				Bitte die entsprechenden Tage auswählen. Alle Veranstaltungen des Tages erscheinen dann in unserer Programmtabelle. Diese lässt sich vertikal und horizontal Scrollen. Benutzen Sie dafür ihr Mausrad, die Scrollbalken ihres Browsers oder unsere Buttons links und rechts über der Programmtabelle.
+			</p>
+			
 		</div>
+	
 
 		<div class="sticky-controls btn-group btn-group-lg" role="group" aria-label="Large button group">
 			<button type="button" class="btn btn-secondary btn-success left pull-left">«</button><button type="button" class="btn btn-secondary btn-success right pull-right">»</button>
