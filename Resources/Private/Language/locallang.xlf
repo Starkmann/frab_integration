@@ -168,6 +168,13 @@
 			<trans-unit id="frab.room">
 				<source>Room:</source>
 			</trans-unit>
+			<trans-unit id="frab.speakerinfo">
+				<source>Informations and Events</source>
+			</trans-unit>
+			<trans-unit id="frab.langcode">
+				<source>L=4</source>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>

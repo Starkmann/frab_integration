@@ -15,21 +15,26 @@ in /Configuration/ExtensionBuilder/settings.yaml:
 Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
-<p><a href="https://www.ein-anderes-europa.de/index.php?id=76974" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Tagesansicht</a>  | <a href="https://www.ein-anderes-europa.de/index.php?id=76975" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Liste der Veranstaltungen</a>
-
+	<p><a href="https://www.esu22.eu/index.php?id=80175&<f:translate key='frab.langcode'/>" class="button" role="button" aria-pressed="true"><f:translate key="frab.backtolist"/></a> | <a href="https://www.esu22.eu/index.php?id=80173&<f:translate key='frab.langcode'/>" class="button" role="button" aria-pressed="true"><f:translate key="frab.timetable"/></a></p>
 <f:flashMessages />
-<h3>Referent_Innen</h3>
+<h3><f:translate key="frab.speaker"/></h3>
 
-<div class="card-columns">
-		<f:for each="{persons}" as="person">
-			<div class="card">
-				<img class="card-img-top" src="https://frab.attac.de/{person.image}" alt="{person.fullPublicName}">
-			    <div class="card-body">
-			      <h5 class="card-title">{person.fullPublicName}</h5>
-			      <p class="card-text"><f:link.action action="show" class="btn btn-primary btn-xs" arguments="{personId:person.id}">Infos und Veranstaltungen</f:link.action></li></p>
-			    </div>
-			</div>
-		</f:for>
+<div class="grid-container">
+	<div class="grid-x grid-margin-x small-up-2 medium-up-3">
+		
+			<f:for each="{persons}" as="person">
+				<div class="cell">
+					<div class="card">
+						<img class="card-img-top" src="https://frab.attac.de/{person.image}" alt="{person.fullPublicName}">
+						<div class="card-section">
+							<h4 class="card-title">{person.fullPublicName}</h4>
+							<p ><f:link.action action="show" class="btn btn-primary btn-xs" arguments="{personId:person.id}"><f:translate key="frab.speakerinfo"/></f:link.action></li></p>
+						</div>
+					</div>
+				</div>
+			</f:for>
+		
+	</div>
 </div>
 
 </f:section>

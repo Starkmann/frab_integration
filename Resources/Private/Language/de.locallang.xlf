@@ -184,6 +184,14 @@
 				<source>Room:</source>
                 <target>Raum:</target>
 			</trans-unit>
+            <trans-unit id="frab.speakerinfo">
+				<source>Informations and Events</source>
+                <target>Infos und Veranstaltungen</target>
+			</trans-unit>
+            <trans-unit id="frab.langcode">
+				<source>L=4</source>
+                <target>L=0</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
