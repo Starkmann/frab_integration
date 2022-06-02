@@ -56,7 +56,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 	<div class="grid-x grid-margin-x small-up-2 medium-up-3">
 	  <div class="cell">
 		<div class="card">
-			
+
 		  <div class="card-section">
 			<h4><f:translate key="frab.track"/></h4>
 			<p>{event.track}</p>
@@ -65,7 +65,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 	  </div>
 	  <div class="cell">
 		<div class="card">
-		
+
 		  <div class="card-section">
 			<h4><f:translate key="frab.start"/></h4>
 			<p>{event.date  -> f:format.date(format:'d.m Y')} <f:translate key="frab.at"/> {event.start -> f:format.date(format:'H:i')} <f:translate key="frab.h"/></p>
@@ -74,7 +74,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 	  </div>
 	  <div class="cell">
 		<div class="card">
-		  
+
 		  <div class="card-section">
 			<h4><f:translate key="frab.duration"/></h4>
 			<p>{event.duration -> f:format.date(format:'H:i')} <f:translate key="frab.h"/></p>
@@ -86,7 +86,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
   <div class="grid-x grid-margin-x small-up-2 medium-up-3">
 	<div class="cell">
 	  <div class="card">
-		
+
 		<div class="card-section">
 		  <h4><f:translate key="frab.eventtype"/></h4>
 		  <p>{event.type}</p>
@@ -98,7 +98,9 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 		<div class="card-section">
 		  <h4><f:translate key="frab.speaker"/></h4>
-		  <p><f:link.action controller="Person" action="show" arguments="{personId:person.id}">{person.fullPublicName}</f:link.action>{person.fullPublicName}</p>
+			<f:for each="{event.persons}" as="person">
+				<p><f:link.action controller="Person" action="show" arguments="{personId:person.id}">{person.fullPublicName}</f:link.action></p>
+			</f:for>
 		</div>
 	  </div>
 	</div>
