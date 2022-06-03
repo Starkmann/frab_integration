@@ -53,6 +53,7 @@
 			</trans-unit>
 			<trans-unit id="tx_frabintegration_domain_model_person.events">
 				<source>Events</source>
+                <target>Veranstaltungen</target>
 			</trans-unit>
 			<trans-unit id="tx_frabintegration_domain_model_day">
 				<source>Day</source>
@@ -191,6 +192,10 @@
             <trans-unit id="frab.langcode">
 				<source>L=4</source>
                 <target>L=0</target>
+			</trans-unit>
+            <trans-unit id="frab.mit">
+				<source>width</source>
+                <target>mit</target>
 			</trans-unit>
 		</body>
 	</file>

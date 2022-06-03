@@ -99,7 +99,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 		<div class="card-section">
 		  <h4><f:translate key="frab.speaker"/></h4>
 			<f:for each="{event.persons}" as="person">
-				<p><f:link.action controller="Person" action="show" arguments="{personId:person.id}">{person.fullPublicName}</f:link.action></p>
+				<p><f:link.action controller="Person" class="button small" action="show" arguments="{personId:person.id}">{person.fullPublicName}</f:link.action></p>
 			</f:for>
 		</div>
 	  </div>

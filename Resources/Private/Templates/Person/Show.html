@@ -16,24 +16,39 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:section name="main">
 <f:flashMessages />
-<p><a href="https://www.ein-anderes-europa.de/index.php?id=76975" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Liste aller Veranstaltungen</a> | <a href="https://www.ein-anderes-europa.de/index.php?id=76973" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Liste der ReferentInnen</a> | <a href="https://www.ein-anderes-europa.de/index.php?id=76974" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Tagesansicht</a>  </p>
-<h2>Referent_innen Information</h2>
-<div class="card-deck">
+<p><a href="https://www.esu22.eu/index.php?id=80172&<f:translate key='frab.langcode'/>" class="button" role="button" aria-pressed="true"><f:translate key="frab.listofreferents"/></a> | <a href="https://www.esu22.eu/index.php?id=80173&<f:translate key='frab.langcode'/>" class="button" role="button" aria-pressed="true"><f:translate key="frab.timetable"/></a></p>
 
+
+
+
+
+<div class="grid-container">
+	<div class="grid-x grid-margin-x small-up-2 medium-up-3">
+
+		<div class="cell">
 			<div class="card">
-				<div class="card-header">{person.fullPublicName}</div>
 				<img class="card-img-top" src="https://frab.attac.de/{person.image}" alt="{person.fullPublicName}">
-			    <div class="card-body"><p>{person.description}</p>
-
-			    </div>
-			</div>
-
-<f:render partial="Person/Properties" arguments="{person:person}" />
-
-
+				<div class="card-section">
+					<h4>{person.fullPublicName}</h4>
+				</div>
+		    </div>
+		</div>
+		<div class="cell">
+			<div class="card">
+				<div class="card-section">
+					<p>{person.description}</p>
+				</div>
+		    </div>
+		</div>
+		<f:render partial="Person/Properties" arguments="{person:person}" />
+	</div>
 </div>
-<br/>
-<button type="button" class="btn btn-primary btn-sm" onclick="goBack()">Zurück zur Liste der Referent_innen</button>
+
+
+
+
+
+<button type="button" class="btn btn-primary btn-sm" onclick="goBack()"><f:translate key="frab.listofreferents"/></button>
 
 
 

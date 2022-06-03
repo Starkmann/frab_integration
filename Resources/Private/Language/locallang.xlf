@@ -174,6 +174,9 @@
 			<trans-unit id="frab.langcode">
 				<source>L=4</source>
 			</trans-unit>
+			<trans-unit id="frab.mit">
+				<source>width</source>
+			</trans-unit>
 
 		</body>
 	</file>

@@ -31,7 +31,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 							<f:for each="{room.events}" as="event">
 								<div class="cell">
 									<div class="card">
-										{event.start -> f:format.date(format:'H:i')} h: 
+										{event.start -> f:format.date(format:'H:i')} h: | <f:translate key="frab.room"/> {event.room}
 										<div class="card-section">
 											<h4>{event.title}</h4>
 											<f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}" class="button small"><f:translate key="frab.more"/></f:link.action>
