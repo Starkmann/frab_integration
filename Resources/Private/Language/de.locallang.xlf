@@ -123,7 +123,7 @@
 			</trans-unit>
 			<trans-unit id="frab.howto">
 				<source>Please select the appropriate day. All events of the day will then appear in our schedule. This can be scrolled vertically and horizontally. To scroll please use the mouse wheel, the scroll bars of the browser or for mobile devices the familiar swipe gestures and scroll to the right.</source>
-                <target>Bitte den entsprechenden Tag auswählen. Alle Veranstaltungen des Tages erscheinen dann in unsererm Stundenplam. Dieser lässt sich vertikal und horizontal Scrollen. Zum Scrollen bitte das Mausrad, die Scrollbalken des Browsers oder bei mobilen Geräten die bekannten Wischgesten verwenden und nach rechts zu scrollen.</target>
+                <target>Bitte den entsprechenden Tag auswählen. Alle Veranstaltungen des Tages erscheinen dann in unserem Stundenplan. Dieser lässt sich vertikal und horizontal Scrollen. Zum Scrollen bitte das Mausrad, die Scrollbalken des Browsers oder bei mobilen Geräten die bekannten Wischgesten verwenden um nach rechts zu scrollen.</target>
             </trans-unit>
             <trans-unit id="frab.day">
 				<source>Day</source>
