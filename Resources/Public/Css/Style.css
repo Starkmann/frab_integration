@@ -132,4 +132,5 @@ td.user-name {
 	color: white;
 }
 
-
+/* ersten tag ausblenden*/
+[id="Mittwoch\,\ 17\.08\.2022"] {visibility: hidden;}
