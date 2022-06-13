@@ -58,7 +58,8 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     public function listAction()
     {
         $conferences = $this->frabRepository->findConference(
-                $this->settings['conferenceParameters']['conferenceUri'],
+                $this->settings['conferenceParameters']['frabUri'],
+                $this->settings['conferenceParameters']['conference'],
                 $this->settings['conferenceParameters']['userAgent'],
                 $this->settings['conferenceParameters']['accept']
                 );
@@ -73,13 +74,13 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     public function sheduleAction(int $currentDay = 1)
     {
         $conferences = $this->frabRepository->findConference(
-                $this->settings['conferenceParameters']['conferenceUri'],
+                $this->settings['conferenceParameters']['frabUri'],
                 $this->settings['conferenceParameters']['userAgent'],
                 $this->settings['conferenceParameters']['accept']
         );
         $day = $this->frabRepository->findDayByIndex(
                 $currentDay,
-                $this->settings['conferenceParameters']['conferenceUri'],
+                $this->settings['conferenceParameters']['frabUri'],
                 $this->settings['conferenceParameters']['userAgent'],
                 $this->settings['conferenceParameters']['accept']
         );

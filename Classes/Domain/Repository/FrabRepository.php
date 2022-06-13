@@ -27,11 +27,30 @@ namespace Eike\FrabIntegration\Domain\Repository;
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
+use Eike\FrabIntegration\Domain\Model\Event;
+use Eike\FrabIntegration\Domain\Model\Room;
 use TYPO3\CMS\Core\Charset\CharsetConverter;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
+
+    /**
+     * @var string
+     */
+   private $events = '/events.json';
+
+    /**
+     * @var string
+     */
+   private $schedule = '/schedule.json';
+
+   /**
+     * @var string
+     */
+   private $speakers = '/speakers.json';
+
 
     /**
      * @var \TYPO3\CMS\Core\Charset\CharsetConverter
@@ -54,9 +73,9 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
      * @throws \Exception
      */
-    public function findConference(string $uri, string $useragent = null , string $accept = null)
+    public function findConference(string $frabUri, string $useragent = null , string $accept = null)
     {
-        $result = $this->query($uri, $useragent, $accept);
+        $result = $this->query($frabUri.$this->schedule, $useragent, $accept);
         $result = json_decode($result, true);
 
         /* @var $confercences \TYPO3\CMS\Extbase\Persistence\ObjectStorage  */
@@ -131,35 +150,32 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function findEvents(string $uri, string $useragent = null, string $accept = null)
     {
-        $result = $this->query($uri, $useragent, $accept);
-        $result = json_decode($result, true);
+        $result = $this->query($uri.$this->events, $useragent, $accept);
+        $events = json_decode($result, true);
+        $events = $events['conference_events']['events'];
 
-        if (count($result['schedule']['conference']['days'])>0) {
-            /* @var $eventStorage \TYPO3\CMS\Extbase\Persistence\ObjectStorage  */
-            $eventStorage = $this->objectManager->get('TYPO3\CMS\Extbase\Persistence\ObjectStorage');
+        usort(
+            $events,
+            function ($a , $b) {
+                return $a['start_time'] > $b['start_time'];
+            }
+        );
 
-            //Days
-            foreach ($result['schedule']['conference']['days'] as $resultDay) {
-                //Rooms
-                if (count($resultDay['rooms'])>0) {
-                    foreach ($resultDay['rooms'] as $key=>$events) {
-                        /* @var $room \Eike\FrabIntegration\Domain\Model\Room  */
-                        $room = $this->objectManager->get('Eike\FrabIntegration\Domain\Model\Room');
-                        $room->setName($key);
-
-                        //Events
-                        if (count($events)>0) {
-                            foreach ($events as $resultEvent) {
-                                /* @var $event \Eike\FrabIntegration\Domain\Model\Event  */
-                                $event = $this->objectManager->get('Eike\FrabIntegration\Domain\Model\Event');
-                                $event->setTitle($resultEvent['title']);
-                                $event->setRoom($room);
-                                $event->setGuid($resultEvent['guid']);
-                                $eventStorage->attach($event);
-                            }
-                        }
-                    }
-                }
+        //Events
+        if (count($events)>0) {
+            /** @var ObjectStorage $eventStorage */
+            $eventStorage = GeneralUtility::makeInstance(ObjectStorage::class);
+            foreach ($events as $resultEvent) {
+                /* @var $event \Eike\FrabIntegration\Domain\Model\Event  */
+                $event = GeneralUtility::makeInstance(Event::class);
+                $event->setTitle($resultEvent['title']);
+                /** @var Room $room */
+                $room = GeneralUtility::makeInstance(Room::class);
+                $room->setName($resultEvent['room']['name']);
+                $event->setRoom($room);
+                $event->setStart(new \DateTime($resultEvent['start_time']));
+                $event->setGuid($resultEvent['guid']);
+                $eventStorage->attach($event);
             }
         }
 
@@ -176,58 +192,40 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function findEvent(string $uri, string $eventGuid, string $useragent = null ,string $accept = null)
     {
-        $result = $this->query($uri, $useragent, $accept);
-        $result = json_decode($result, true);
+        $result = $this->query($uri.$this->events, $useragent, $accept);
+        $events = json_decode($result, true);
+        $events = $events['conference_events']['events'];
 
-        if (count($result['schedule']['conference']['days'])>0) {
-            //Days
-            foreach ($result['schedule']['conference']['days'] as $resultDay) {
-                /* @var $day \\Eike\FrabIntegration\Domain\Model\Day  */
-                $day = $this->objectManager->get('Eike\FrabIntegration\Domain\Model\Day');
-                $day->setDate(new \DateTime($resultDay['date']));
-                $day->setDayEnd(new \DateTime($resultDay['day_end']));
-                $day->setDayStart(new \DateTime($resultDay['day_start']));
-                $day->setIndex($resultDay['index']);
-                //Rooms
-                if (count($resultDay['rooms'])>0) {
-                    foreach ($resultDay['rooms'] as $key=>$events) {
-                        /* @var $room \\Eike\FrabIntegration\Domain\Model\Room  */
-                        $room = $this->objectManager->get('Eike\FrabIntegration\Domain\Model\Room');
-                        $room->setName($key);
-
-                        //Events
-                        if (count($events)>0) {
-                            foreach ($events as $resultEvent) {
-                                if ($resultEvent['guid']==$eventGuid) {
-                                    /* @var $event \Eike\FrabIntegration\Domain\Model\Event  */
-                                    $event = $this->objectManager->get('Eike\FrabIntegration\Domain\Model\Event');
-                                    $event->setTitle($resultEvent['title']);
-                                    $event->setRoom($resultEvent['room']);
-                                    $event->setGuid($resultEvent['guid']);
-                                    $event->setAbstract($resultEvent['abstract']);
-                                    $event->setDate(new \DateTime($resultEvent['date']));
-                                    $event->setDescription($resultEvent['description']);
-                                    $event->setAbstract($resultEvent['abstract']);
-                                    $event->setDuration(new \DateTime($resultEvent['duration']));
-                                    $event->setLanguage($resultEvent['language']);
-                                    $event->setLinks($resultEvent['links']);
-                                    $event->setStart(new \DateTime($resultEvent['start']));
-                                    $event->setSubtitle($resultEvent['subtitle']);
-                                    $event->setTrack($resultEvent['track']);
-                                    $event->setType($resultEvent['type']);
-                                    if (count($resultEvent['persons'])>0) {
-                                        foreach ($resultEvent['persons'] as $resultPerson) {
-                                            $event->addPerson($this->buildPerson($resultPerson));
-                                        }
-                                    }
-                                    return $event;
-                                }
-                            }
+        //Events
+        if (count($events)>0) {
+            foreach ($events as $resultEvent) {
+                if ($resultEvent['guid'] == $eventGuid) {
+                    /* @var $event \Eike\FrabIntegration\Domain\Model\Event  */
+                    $event = GeneralUtility::makeInstance(Event::class);
+                    $event->setTitle($resultEvent['title']);
+                    $event->setRoom($resultEvent['room']['name']);
+                    $event->setGuid($resultEvent['guid']);
+                    $event->setAbstract($resultEvent['abstract']);
+                    $event->setDate(new \DateTime($resultEvent['date']));
+                    $event->setDescription($resultEvent['description']);
+                    $event->setAbstract($resultEvent['abstract']);
+                    $event->setDuration(new \DateTime($resultEvent['duration']));
+                    $event->setLanguage($resultEvent['language']);
+                    $event->setLinks($resultEvent['links']);
+                    $event->setStart(new \DateTime($resultEvent['start_time']));
+                    $event->setSubtitle($resultEvent['subtitle']);
+                    $event->setTrack($resultEvent['track']);
+                    $event->setType($resultEvent['type']);
+                    if (count($resultEvent['speakers'])>0) {
+                        foreach ($resultEvent['speakers'] as $resultPerson) {
+                            $event->addPerson($this->buildPerson($resultPerson));
                         }
                     }
+                    return $event;
                 }
             }
         }
+
         return null;
     }
 
@@ -240,7 +238,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function findPersons(string $uri, string $useragent = null, string $accept = null)
     {
-        $result = $this->query($uri, $useragent, $accept);
+        $result = $this->query($uri.$this->speakers, $useragent, $accept);
         $result = json_decode($result, true);
         if (count($result['schedule_speakers']['speakers'])>0) {
             /* @var $personStorage \TYPO3\CMS\Extbase\Persistence\ObjectStorage  */
@@ -262,7 +260,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function findPerson(string $uri, string $personId, string $useragent = null, string $accept = null)
     {
-        $result = $this->query($uri, $useragent, $accept);
+        $result = $this->query($uri.$this->speakers, $useragent, $accept);
         $result = json_decode($result, true);
         if (count($result['schedule_speakers']['speakers'])>0) {
             foreach ($result['schedule_speakers']['speakers'] as $resultPerson) {
@@ -283,7 +281,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function findDayByIndex(int $index, string $uri, string $useragent = null, string $accept = null)
     {
-        $result = $this->query($uri, $useragent, $accept);
+        $result = $this->query($uri.$this->schedule, $useragent, $accept);
         $result = json_decode($result, true);
         if (count($result['schedule']['conference']['days'])>0) {
             //Days

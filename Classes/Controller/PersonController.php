@@ -49,7 +49,7 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     public function listAction()
     {
         $persons = $this->frabRepository->findPersons(
-                $this->settings['conferenceParameters']['speakersUri'],
+                $this->settings['conferenceParameters']['frabUri'],
                 $this->settings['conferenceParameters']['userAgent'],
                 $this->settings['conferenceParameters']['accept']
                 );
@@ -63,7 +63,7 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     public function showAction(int $personId)
     {
         $person = $this->frabRepository->findPerson(
-                $this->settings['conferenceParameters']['speakersUri'],
+                $this->settings['conferenceParameters']['frabUri'],
                 $personId,
                 $this->settings['conferenceParameters']['userAgent'],
                 $this->settings['conferenceParameters']['accept']

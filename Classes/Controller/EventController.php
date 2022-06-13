@@ -48,7 +48,7 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function listAction()
     {
         $events = $this->frabRepository->findEvents(
-                $this->settings['conferenceParameters']['conferenceUri'],
+                $this->settings['conferenceParameters']['frabUri'],
                 $this->settings['conferenceParameters']['userAgent'],
                 $this->settings['conferenceParameters']['accept']
                 );
@@ -62,7 +62,7 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function showAction(string $eventGuid)
     {
         $event = $this->frabRepository->findEvent(
-                $this->settings['conferenceParameters']['conferenceUri'],
+                $this->settings['conferenceParameters']['frabUri'],
                 $eventGuid,
                 $this->settings['conferenceParameters']['userAgent'],
                 $this->settings['conferenceParameters']['accept']

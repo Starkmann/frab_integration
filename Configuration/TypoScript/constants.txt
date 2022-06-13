@@ -14,10 +14,8 @@ plugin.tx_frabintegration {
 	}
 	settings{
 		conferenceParameters{
-		# cat=plugin.tx_frabintegration/uri; type=string; label= Url to conference json
-		conferenceUri =
-		# cat=plugin.tx_frabintegration/uri; type=string; label= Url to speakers json
-		speakersUri =
+		# cat=plugin.tx_frabintegration/uri; type=string; label= Url to frab
+		frabUri =
 		# cat=plugin.tx_frabintegration/useragent; type=string; label= User agent
 		useragent =
 		# cat=plugin.tx_frabintegration/accept; type=string; label=

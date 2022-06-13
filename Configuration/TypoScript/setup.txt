@@ -22,8 +22,7 @@ plugin.tx_frabintegration {
 	}
 	settings {
 		conferenceParameters{
-			conferenceUri = {$plugin.tx_frabintegration.settings.conferenceParameters.conferenceUri}
-			speakersUri = {$plugin.tx_frabintegration.settings.conferenceParameters.speakersUri}
+		    frabUri = {$plugin.tx_frabintegration.settings.conferenceParameters.frabUri}
 			useragent = {$plugin.tx_frabintegration.settings.conferenceParameters.useragent}
 			accept = {$plugin.tx_frabintegration.settings.conferenceParameters.accept}
 			encoding = {$plugin.tx_frabintegration.settings.conferenceParameters.encoding}
