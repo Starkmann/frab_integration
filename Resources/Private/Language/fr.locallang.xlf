@@ -83,7 +83,7 @@
 			</trans-unit>
 			<trans-unit id="tx_frabintegration_domain_model_event.date">
 				<source>Date</source>
-				<target>Titel</target>
+				<target>Date</target>
 			</trans-unit>
 			<trans-unit id="tx_frabintegration_domain_model_event.start">
 				<source>Start</source>
