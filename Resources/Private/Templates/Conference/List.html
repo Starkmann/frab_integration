@@ -19,8 +19,6 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:flashMessages />
 
-<f:debug>{_all}</f:debug>
-
 <f:for each="{conferences}" as="conference">
 	<f:for each="{conference.days}" as="day" iteration="iterater">
 		<h5 id="{day.date}"><f:translate key="frab.day"/> {iterater.cycle} – {day.date}</h5>
@@ -37,14 +35,14 @@ Otherwise your changes will be overwritten the next time you save the extension 
 											<f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}" class="button small"><f:translate key="frab.more"/></f:link.action>
 									  	</div>
 									</div>
-								</div>	
+								</div>
 							</f:for>
 					</f:if>
 				</f:for>
 			</div>
 		</div>
-			
-		
+
+
 	</f:for>
 </f:for>
 
