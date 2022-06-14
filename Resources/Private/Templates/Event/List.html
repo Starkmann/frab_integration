@@ -20,12 +20,28 @@ Otherwise your changes will be overwritten the next time you save the extension 
 <f:flashMessages />
 
 
-
-		
+<table>
+	<thead>
+	  <tr>
+		<th><f:translate key="tx_frabintegration_domain_model_event.date"/></th>
+		<th><f:translate key="tx_frabintegration_domain_model_event.title"/></th>
+		<th><f:translate key="frab.room"/></th>
+		<th><f:translate key="frab.more"/></th>
+	  </tr>
+	</thead>
+	<tbody>
+	 
+	  		
 		<f:for each="{events}" as="event">
-			<f:link.action controller="Event" action="show" arguments="{eventGuid:event.guid}">{event.title}</f:link.action>
+			<tr><td>{event.start  -> f:format.date(format:'d.m')}</td>
+				<td>{event.title}</td>
+				<td>{event.room.name}</td>
+				<td><f:link.action controller="Event" class="button tiny" action="show" arguments="{eventGuid:event.guid}"><f:translate key="frab.more"/></f:link.action></td>
+			</tr>
 		</f:for>
 		
+	</tbody>
+</table>	
 
 
 
