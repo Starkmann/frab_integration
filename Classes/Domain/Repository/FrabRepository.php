@@ -317,7 +317,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $person->setAbstract($resultPerson['abstract']);
         $person->setDescription($resultPerson['description']);
         $person->setImage($resultPerson['image']);
-        if (count($resultPerson['events'])>0) {
+        if (isset($resultPerson['events']) && count($resultPerson['events'])>0) {
             foreach ($resultPerson['events'] as $resultEvent) {
                 /* @var $event \Eike\FrabIntegration\Domain\Model\Event  */
                 $event = $this->objectManager->get('Eike\FrabIntegration\Domain\Model\Event');
