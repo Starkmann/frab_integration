@@ -81,6 +81,7 @@
 			</trans-unit>
 			<trans-unit id="tx_frabintegration_domain_model_event.date">
 				<source>Date</source>
+				<target>Datum</target>
 			</trans-unit>
 			<trans-unit id="tx_frabintegration_domain_model_event.start">
 				<source>Start</source>
@@ -96,6 +97,7 @@
 			</trans-unit>
 			<trans-unit id="tx_frabintegration_domain_model_event.title">
 				<source>Title</source>
+				<target>Titel</target>
 			</trans-unit>
 			<trans-unit id="tx_frabintegration_domain_model_event.subtitle">
 				<source>Subtitle</source>
