@@ -11,4 +11,16 @@ $(document).ready(function () {
 			right: 0
 		}
 	});
+	document.querySelectorAll('.frab-scheduler').forEach(function(scheduler) {
+		var HORIZONTAL_SCROLL_THRESHOLD = 100;
+		var buttons = scheduler.querySelectorAll('.sticky-controls button');
+		var scrollBody = scheduler.querySelector('.dataTables_scrollBody');
+		buttons.forEach(function(button) {
+			button.addEventListener('click', function() {
+				scrollBody.scrollLeft += button.classList.contains('left') ? - HORIZONTAL_SCROLL_THRESHOLD : HORIZONTAL_SCROLL_THRESHOLD;
+			})
+		});
+	});
 });
+
+
