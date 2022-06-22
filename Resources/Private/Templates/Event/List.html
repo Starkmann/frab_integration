@@ -24,24 +24,27 @@ Otherwise your changes will be overwritten the next time you save the extension 
 	<thead>
 	  <tr>
 		<th><f:translate key="tx_frabintegration_domain_model_event.date"/></th>
+			<th><f:translate key="tx_frabintegration_domain_model_event.duration"/></th>
 		<th><f:translate key="tx_frabintegration_domain_model_event.title"/></th>
 		<th><f:translate key="frab.room"/></th>
 		<th><f:translate key="frab.more"/></th>
 	  </tr>
 	</thead>
 	<tbody>
-	 
-	  		
+
+
 		<f:for each="{events}" as="event">
-			<tr><td>{event.start  -> f:format.date(format:'d.m')}</td>
+			<tr>
+				<td>{event.date  -> f:format.date(format:'d.m - H:i')}</td>
+				<td>{event.duration -> f:format.date(format:'H:i')}</td>
 				<td>{event.title}</td>
 				<td>{event.room.name}</td>
 				<td><f:link.action controller="Event" class="button tiny" action="show" arguments="{eventGuid:event.guid}"><f:translate key="frab.more"/></f:link.action></td>
 			</tr>
 		</f:for>
-		
+
 	</tbody>
-</table>	
+</table>
 
 
 

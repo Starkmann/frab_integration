@@ -173,7 +173,14 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 $room = GeneralUtility::makeInstance(Room::class);
                 $room->setName($resultEvent['room']['name']);
                 $event->setRoom($room);
-                $event->setStart(new \DateTime($resultEvent['start_time']));
+                $start = new \DateTime($resultEvent['start_time']);
+                $event->setDate($start);
+                $end = new \DateTime($resultEvent['end_time']);
+                $event->setDuration(
+                    new \DateTime(
+                        $end->diff($start)->format('%H:%I')
+                    )
+                );
                 $event->setGuid($resultEvent['guid']);
                 $eventStorage->attach($event);
             }
