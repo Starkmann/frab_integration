@@ -159,7 +159,7 @@
 			</trans-unit>
 			<trans-unit id="frab.track">
 				<source>Track:</source>
-                <target>Chaîne thématique:</target>
+                <target>Axe thématique:</target>
 			</trans-unit>
 			<trans-unit id="frab.start">
 				<source>Start:</source>
@@ -183,11 +183,11 @@
 			</trans-unit>
 			<trans-unit id="frab.speaker">
 				<source>Speaker:</source>
-                <target>Conférencier(s):</target>
+                <target>Intervenant·es:</target>
 			</trans-unit>
 			 <trans-unit id="frab.room">
 				<source>Room:</source>
-                <target>Chambre:</target>
+                <target>Salle:</target>
 			</trans-unit>
 			<trans-unit id="frab.speakerinfo">
 				<source>Informations and Events</source>
