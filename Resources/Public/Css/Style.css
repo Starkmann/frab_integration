@@ -126,6 +126,7 @@ td.user-name {
 	padding: 1em;
 	color: white;
 	margin-bottom: 1em;
+	width:100%;
 }
 
 .cell .card h4 {
@@ -134,3 +135,10 @@ td.user-name {
 
 /* ersten tag ausblenden*/
 [id="Mittwoch\,\ 17\.08\.2022"] {visibility: hidden;}
+
+.equal-height-cards .cell {
+	  display: flex;
+	  align-items: stretch;
+	  
+	
+  }

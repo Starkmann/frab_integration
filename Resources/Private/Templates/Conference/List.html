@@ -18,16 +18,16 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 
 <f:flashMessages />
-
+<f:debug>{_all}</f:debug>
 <f:for each="{conferences}" as="conference">
 	<f:for each="{conference.days}" as="day" iteration="iterater">
 		<h5 id="{day.date}"><f:translate key="frab.day"/> {iterater.cycle} – {day.date}</h5>
 		<div class="grid-container">
-			<div class="grid-x grid-margin-x small-up-2 medium-up-3">
+			<div class="grid-x grid-padding-x medium-unstack equal-height-cards">
 				<f:for each="{day.rooms}" as="room">
 					<f:if condition="{room.events}">
 							<f:for each="{room.events}" as="event">
-								<div class="cell">
+								<div class="cell medium-4">
 									<div class="card">
 										{event.start -> f:format.date(format:'H:i')} h: | <f:translate key="frab.room"/> {event.room}
 										<div class="card-section">
