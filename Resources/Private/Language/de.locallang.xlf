@@ -145,7 +145,7 @@
 			</trans-unit>
             <trans-unit id="frab.backtolist">
 				<source>Back to Listview</source>
-                <target>Liste aller Veranstaltungen</target>
+                <target>Liste der Veranstaltungen</target>
 			</trans-unit>
             <trans-unit id="frab.listofreferents">
 				<source>List of Speakers</source>
