@@ -112,6 +112,13 @@ class Event extends AbstractValueObject
     protected $language = '';
 
     /**
+     * audio language
+     *
+     * @var string
+     */
+    protected $audioLanguages = '';
+
+    /**
      * abstract
      *
      * @var string
@@ -399,6 +406,24 @@ class Event extends AbstractValueObject
     {
         $this->language = $language;
     }
+
+    /**
+     * @return string
+     */
+    public function getAudioLanguages(): ?string
+    {
+        return $this->audioLanguages;
+    }
+
+    /**
+     * @param ?string $audioLanguages
+     */
+    public function setAudioLanguages(?string $audioLanguages): void
+    {
+        $this->audioLanguages = $audioLanguages;
+    }
+
+
 
     /**
      * Returns the abstract

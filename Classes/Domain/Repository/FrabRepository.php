@@ -224,6 +224,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                     $event->setDescription($resultEvent['description']);
                     $event->setAbstract($resultEvent['abstract']);
                     $event->setLanguage($resultEvent['language']);
+                    $event->setAudioLanguages($resultEvent['audio_languages']);
                     $event->setLinks($resultEvent['links']);
                     $event->setStart(new \DateTime($resultEvent['start_time']));
                     $event->setSubtitle($resultEvent['subtitle']);

@@ -177,6 +177,9 @@
 			<trans-unit id="frab.mit">
 				<source>width</source>
 			</trans-unit>
+			<trans-unit id="frab.audioLanguages">
+				<target>Translation</target>
+			</trans-unit>
 
 		</body>
 	</file>
