@@ -1,6 +1,7 @@
 <?php
 namespace Eike\FrabIntegration\Domain\Model;
 
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 
 /***************************************************************
@@ -142,7 +143,7 @@ class Event extends AbstractValueObject
     /**
      * persons
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Person>
+     * @var ObjectStorage<Person>
      */
     protected $persons = null;
 
@@ -169,7 +170,7 @@ class Event extends AbstractValueObject
      */
     protected function initStorageObjects()
     {
-        $this->persons = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->persons = new ObjectStorage();
     }
 
     /**
@@ -488,9 +489,9 @@ class Event extends AbstractValueObject
     /**
      * Adds a Person
      *
-     * @param \Eike\FrabIntegration\Domain\Model\Person $person
+     * @param Person $person
      */
-    public function addPerson(\Eike\FrabIntegration\Domain\Model\Person $person)
+    public function addPerson(Person $person)
     {
         $this->persons->attach($person);
     }
@@ -498,9 +499,9 @@ class Event extends AbstractValueObject
     /**
      * Removes a Person
      *
-     * @param \Eike\FrabIntegration\Domain\Model\Person $personToRemove The Person to be removed
+     * @param Person $personToRemove The Person to be removed
      */
-    public function removePerson(\Eike\FrabIntegration\Domain\Model\Person $personToRemove)
+    public function removePerson(Person $personToRemove)
     {
         $this->persons->detach($personToRemove);
     }
@@ -508,7 +509,7 @@ class Event extends AbstractValueObject
     /**
      * Returns the persons
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Person> $persons
+     * @return ObjectStorage<Person> $persons
      */
     public function getPersons()
     {
@@ -518,9 +519,9 @@ class Event extends AbstractValueObject
     /**
      * Sets the persons
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Person> $persons
+     * @param ObjectStorage<Person> $persons
      */
-    public function setPersons(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $persons)
+    public function setPersons(ObjectStorage $persons)
     {
         $this->persons = $persons;
     }

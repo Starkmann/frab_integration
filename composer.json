@@ -1,31 +1,38 @@
 {
-	"name": "eike/frab-integration",
-	"type": "typo3-cms-extension",
-	"description": "Frab integration",
-	"authors": [
-		{
-			"name": "Eike Starkmann",
-			"email": "eike.starkmann@posteo.de",
-			"role": "Developer"
-		}
-	],
-	"license": ["GPL-2.0+"],
-	"keywords": ["frab", "TYPO3", "congress"],
-	"require": {
-		"typo3/cms-core": "^10.4"
-	},
-	"replace": {
-		"frab_integration": "self.version",
-		"typo3-ter/frab_integration": "self.version"
-	},
-	"autoload": {
-		"psr-4": {
-			"Eike\\FrabIntegration\\": "Classes"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"Eike\\FrabIntegration\\Tests\\": "Tests"
-		}
-	}
+    "name": "eike/frab-integration",
+    "type": "typo3-cms-extension",
+    "description": "Frab integration",
+    "authors": [
+        {
+            "name": "Eike Starkmann",
+            "email": "eike.starkmann@posteo.de",
+            "role": "Developer"
+        }
+    ],
+    "license": [
+        "GPL-2.0+"
+    ],
+    "keywords": ["frab", "TYPO3", "congress"],
+    "require": {
+        "typo3/cms-core": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Eike\\FrabIntegration\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Eike\\FrabIntegration\\Tests\\": "Tests"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "frab_integration"
+        }
+    },
+    "replace": {
+        "frab_integration": "self.version",
+        "typo3-ter/frab_integration": "self.version"
+    }
 }

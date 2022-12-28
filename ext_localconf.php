@@ -1,30 +1,37 @@
 <?php
-if (!defined('TYPO3_MODE')) {
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+use Eike\FrabIntegration\Controller\ConferenceController;
+use Eike\FrabIntegration\Controller\PersonController;
+use Eike\FrabIntegration\Controller\EventController;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Imaging\IconRegistry;
+use TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider;
+if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Eike.frab_integration',
+ExtensionUtility::configurePlugin(
+    'FrabIntegration',
     'List',
     [
-        'Conference' => 'list, show, showEvent, shedule',
-        'Person' => 'list, show',
-        'Event' => 'list, show',
+        ConferenceController::class => 'list, show, showEvent, shedule',
+        PersonController::class => 'list, show',
+        EventController::class => 'list, show',
 
     ],
     // non-cacheable actions
     [
-        'Conference' => '',
-        'Person' => '',
-        'Event' => '',
+        ConferenceController::class => '',
+        PersonController::class => '',
+        EventController::class => '',
     ]
 );
 
-$iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-    \TYPO3\CMS\Core\Imaging\IconRegistry::class
+$iconRegistry = GeneralUtility::makeInstance(
+    IconRegistry::class
 );
-$registry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
-$registry->registerIcon('extension-frab-integration', \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class, [
+$registry = GeneralUtility::makeInstance(IconRegistry::class);
+$registry->registerIcon('extension-frab-integration', BitmapIconProvider::class, [
     'source' => 'EXT:autoloader/Resources/Public/Icons/Extension.svg',
 ]);
 

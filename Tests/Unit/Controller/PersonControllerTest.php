@@ -1,6 +1,8 @@
 <?php
 namespace Eike\FrabIntegration\Tests\Unit\Controller;
 
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use Eike\FrabIntegration\Controller\PersonController;
 use Eike\FrabIntegration\Domain\Model\Person;
 
 /***************************************************************
@@ -32,11 +34,11 @@ use Eike\FrabIntegration\Domain\Model\Person;
  *
  * @author Eike Starkmann <eikestarkmann@web.de>
  */
-class PersonControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class PersonControllerTest extends UnitTestCase
 {
 
     /**
-     * @var \Eike\FrabIntegration\Controller\PersonController
+     * @var PersonController
      */
     protected $subject = null;
 

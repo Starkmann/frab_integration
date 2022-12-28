@@ -26,14 +26,16 @@ namespace Eike\FrabIntegration\Domain\Repository;
 *
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
-
+use TYPO3\CMS\Extbase\Persistence\Repository;
+use Eike\FrabIntegration\Domain\Model\Person;
+use Eike\FrabIntegration\Domain\Model\Day;
 use Eike\FrabIntegration\Domain\Model\Event;
 use Eike\FrabIntegration\Domain\Model\Room;
 use TYPO3\CMS\Core\Charset\CharsetConverter;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class FrabRepository extends Repository
 {
 
     /**
@@ -53,8 +55,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
 
     /**
-     * @var \TYPO3\CMS\Core\Charset\CharsetConverter
-     *
+     * @var CharsetConverter
      */
     protected $charsetConverter;
 
@@ -70,7 +71,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param string $uri
      * @param string|null $useragent
      * @param string|null $accept
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     * @return ObjectStorage
      * @throws \Exception
      */
     public function findConference(string $frabUri, string $useragent = null , string $accept = null)
@@ -145,7 +146,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param string $uri
      * @param string|null $useragent
      * @param string|null $accept
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     * @return ObjectStorage
      * @throws \Exception
      */
     public function findEvents(string $uri, string $useragent = null, string $accept = null)
@@ -194,7 +195,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param string $eventGuid
      * @param string|null $useragent
      * @param string|null $accept
-     * @return \Eike\FrabIntegration\Domain\Model\Event|null
+     * @return Event|null
      * @throws \Exception
      */
     public function findEvent(string $uri, string $eventGuid, string $useragent = null ,string $accept = null)
@@ -247,7 +248,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param string $uri
      * @param string|null $useragent
      * @param string|null $accept
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     * @return ObjectStorage
      * @throws \Exception
      */
     public function findPersons(string $uri, string $useragent = null, string $accept = null)
@@ -269,7 +270,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param string $personId
      * @param string|null $useragent
      * @param string|null $accept
-     * @return \Eike\FrabIntegration\Domain\Model\Person|void
+     * @return Person|void
      * @throws \Exception
      */
     public function findPerson(string $uri, string $personId, string $useragent = null, string $accept = null)
@@ -290,7 +291,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param string $uri
      * @param string|null $useragent
      * @param string|null $accept
-     * @return \Eike\FrabIntegration\Domain\Model\Day
+     * @return Day
      * @throws \Exception
      */
     public function findDayByIndex(int $index, string $uri, string $useragent = null, string $accept = null)
@@ -315,7 +316,7 @@ class FrabRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
     /**
      * @param array $resultPerson
-     * @return \Eike\FrabIntegration\Domain\Model\Person
+     * @return Person
      */
     protected function buildPerson(array $resultPerson)
     {

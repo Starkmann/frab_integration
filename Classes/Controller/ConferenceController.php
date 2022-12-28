@@ -25,11 +25,11 @@ namespace Eike\FrabIntegration\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
 /**
  * ConferenceController
  */
-
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use Psr\Http\Message\ResponseInterface;
 use Eike\FrabIntegration\Domain\Model\Conference;
 use Eike\FrabIntegration\Domain\Model\Day;
 use Eike\FrabIntegration\Domain\Model\Event;
@@ -38,13 +38,12 @@ use Eike\FrabIntegration\Domain\Repository\FrabRepository;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class ConferenceController extends ActionController
 {
 
     /**
-    * @var \Eike\FrabIntegration\Domain\Repository\FrabRepository
-    *
-    */
+     * @var FrabRepository
+     */
     protected $frabRepository;
 
     public function injectFrabRepository(FrabRepository $frabRepository)
@@ -55,7 +54,7 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     /**
      * action list
      */
-    public function listAction()
+    public function listAction(): ResponseInterface
     {
         $conferences = $this->frabRepository->findConference(
                 $this->settings['conferenceParameters']['frabUri'],
@@ -65,13 +64,14 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
                 );
 
         $this->view->assign('conferences', $conferences);
+        return $this->htmlResponse();
     }
 
     /**
      * @param int $currentDay
      * @throws \Exception
      */
-    public function sheduleAction(int $currentDay = 1)
+    public function sheduleAction(int $currentDay = 1): ResponseInterface
     {
         $conferences = $this->frabRepository->findConference(
                 $this->settings['conferenceParameters']['frabUri'],
@@ -121,6 +121,7 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
         $this->view->assign('currentDay', $currentDay);
         $this->view->assign('table', $table);
         $this->view->assign('timeline', $timeline);
+        return $this->htmlResponse();
     }
 
     /**
@@ -128,9 +129,10 @@ class ConferenceController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
      *
      * @param Conference $conference
      */
-    public function showAction(Conference $conference)
+    public function showAction(Conference $conference): ResponseInterface
     {
         $this->view->assign('conference', $conference);
+        return $this->htmlResponse();
     }
 
     /**

@@ -1,6 +1,9 @@
 <?php
 namespace Eike\FrabIntegration\Controller;
 
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use Eike\FrabIntegration\Domain\Repository\FrabRepository;
+use Psr\Http\Message\ResponseInterface;
 /***************************************************************
  *
  *  Copyright notice
@@ -25,19 +28,17 @@ namespace Eike\FrabIntegration\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
 /**
  * EventController
  */
-class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class EventController extends ActionController
 {
     /**
-    * @var \Eike\FrabIntegration\Domain\Repository\FrabRepository
-    *
-    */
+     * @var FrabRepository
+     */
     protected $frabRepository;
 
-    public function injectFrabRepository(\Eike\FrabIntegration\Domain\Repository\FrabRepository $frabRepository)
+    public function injectFrabRepository(FrabRepository $frabRepository)
     {
         $this->frabRepository = $frabRepository;
     }
@@ -45,7 +46,7 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
      * action list
      */
-    public function listAction()
+    public function listAction(): ResponseInterface
     {
         $events = $this->frabRepository->findEvents(
                 $this->settings['conferenceParameters']['frabUri'],
@@ -53,13 +54,14 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 $this->settings['conferenceParameters']['accept']
                 );
         $this->view->assign('events', $events);
+        return $this->htmlResponse();
     }
 
     /**
      * @param string $eventGuid
      * @throws \Exception
      */
-    public function showAction(string $eventGuid)
+    public function showAction(string $eventGuid): ResponseInterface
     {
         $event = $this->frabRepository->findEvent(
                 $this->settings['conferenceParameters']['frabUri'],
@@ -69,5 +71,6 @@ class EventController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
                 );
         //debug($event);
         $this->view->assign('event', $event);
+        return $this->htmlResponse();
     }
 }

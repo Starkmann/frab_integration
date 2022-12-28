@@ -1,6 +1,7 @@
 <?php
 namespace Eike\FrabIntegration\Domain\Model;
 
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 
 /***************************************************************
@@ -72,8 +73,7 @@ class Conference extends AbstractValueObject
     /**
      * days
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Day>
-     *
+     * @var ObjectStorage<Day>
      */
     protected $days = null;
 
@@ -94,7 +94,7 @@ class Conference extends AbstractValueObject
      */
     protected function initStorageObjects()
     {
-        $this->days = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->days = new ObjectStorage();
     }
 
     /**
@@ -200,9 +200,9 @@ class Conference extends AbstractValueObject
     /**
      * Adds a Day
      *
-     * @param \Eike\FrabIntegration\Domain\Model\Day $day
+     * @param Day $day
      */
-    public function addDay(\Eike\FrabIntegration\Domain\Model\Day $day)
+    public function addDay(Day $day)
     {
         $this->days->attach($day);
     }
@@ -210,9 +210,9 @@ class Conference extends AbstractValueObject
     /**
      * Removes a Day
      *
-     * @param \Eike\FrabIntegration\Domain\Model\Day $dayToRemove The Day to be removed
+     * @param Day $dayToRemove The Day to be removed
      */
-    public function removeDay(\Eike\FrabIntegration\Domain\Model\Day $dayToRemove)
+    public function removeDay(Day $dayToRemove)
     {
         $this->days->detach($dayToRemove);
     }
@@ -220,7 +220,7 @@ class Conference extends AbstractValueObject
     /**
      * Returns the days
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Day> $days
+     * @return ObjectStorage<Day> $days
      */
     public function getDays()
     {
@@ -230,9 +230,9 @@ class Conference extends AbstractValueObject
     /**
      * Sets the days
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Day> $days
+     * @param ObjectStorage<Day> $days
      */
-    public function setDays(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $days)
+    public function setDays(ObjectStorage $days)
     {
         $this->days = $days;
     }

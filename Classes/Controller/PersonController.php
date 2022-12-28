@@ -1,6 +1,9 @@
 <?php
 namespace Eike\FrabIntegration\Controller;
 
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use Eike\FrabIntegration\Domain\Repository\FrabRepository;
+use Psr\Http\Message\ResponseInterface;
 /***************************************************************
  *
  *  Copyright notice
@@ -25,20 +28,18 @@ namespace Eike\FrabIntegration\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
 /**
  * PersonController
  */
-class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class PersonController extends ActionController
 {
 
     /**
-    * @var \Eike\FrabIntegration\Domain\Repository\FrabRepository
-    *
-    */
+     * @var FrabRepository
+     */
     protected $frabRepository;
 
-    public function injectFrabRepository(\Eike\FrabIntegration\Domain\Repository\FrabRepository $frabRepository)
+    public function injectFrabRepository(FrabRepository $frabRepository)
     {
         $this->frabRepository = $frabRepository;
     }
@@ -46,7 +47,7 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     /**
      * action list
      */
-    public function listAction()
+    public function listAction(): ResponseInterface
     {
         $persons = $this->frabRepository->findPersons(
                 $this->settings['conferenceParameters']['frabUri'],
@@ -54,13 +55,14 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
                 $this->settings['conferenceParameters']['accept']
                 );
         $this->view->assign('persons', $persons);
+        return $this->htmlResponse();
     }
 
     /**
      * @param int $personId
      * @throws \Exception
      */
-    public function showAction(int $personId)
+    public function showAction(int $personId): ResponseInterface
     {
         $person = $this->frabRepository->findPerson(
                 $this->settings['conferenceParameters']['frabUri'],
@@ -69,5 +71,6 @@ class PersonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
                 $this->settings['conferenceParameters']['accept']
         );
         $this->view->assign('person', $person);
+        return $this->htmlResponse();
     }
 }

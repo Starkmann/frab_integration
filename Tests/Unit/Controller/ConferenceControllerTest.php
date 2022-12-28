@@ -1,6 +1,9 @@
 <?php
 namespace Eike\FrabIntegration\Tests\Unit\Controller;
 
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use Eike\FrabIntegration\Controller\ConferenceController;
+use Eike\FrabIntegration\Tests\Unit\Controller\Eike\FrabIntegration\Domain\Model\Conference;
 /***************************************************************
  *  Copyright notice
  *
@@ -24,17 +27,16 @@ namespace Eike\FrabIntegration\Tests\Unit\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-
 /**
  * Test case for class Eike\FrabIntegration\Controller\ConferenceController.
  *
  * @author Eike Starkmann <eikestarkmann@web.de>
  */
-class ConferenceControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class ConferenceControllerTest extends UnitTestCase
 {
 
     /**
-     * @var \Eike\FrabIntegration\Controller\ConferenceController
+     * @var ConferenceController
      */
     protected $subject = null;
 
@@ -71,7 +73,7 @@ class ConferenceControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function showActionAssignsTheGivenConferenceToView()
     {
-        $conference = new Eike\FrabIntegration\Domain\Model\Conference();
+        $conference = new Conference();
 
         $view = $this->getMock('TYPO3\\CMS\\Extbase\\Mvc\\View\\ViewInterface');
         $this->inject($this->subject, 'view', $view);

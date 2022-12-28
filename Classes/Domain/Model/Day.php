@@ -1,6 +1,7 @@
 <?php
 namespace Eike\FrabIntegration\Domain\Model;
 
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 
 /***************************************************************
@@ -65,7 +66,7 @@ class Day extends AbstractValueObject
     /**
      * rooms
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Room>
+     * @var ObjectStorage<Room>
      */
     protected $rooms = null;
 
@@ -86,7 +87,7 @@ class Day extends AbstractValueObject
      */
     protected function initStorageObjects()
     {
-        $this->rooms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->rooms = new ObjectStorage();
     }
 
     /**
@@ -173,9 +174,9 @@ class Day extends AbstractValueObject
     /**
      * Adds a Room
      *
-     * @param \Eike\FrabIntegration\Domain\Model\Room $room
+     * @param Room $room
      */
-    public function addRoom(\Eike\FrabIntegration\Domain\Model\Room $room)
+    public function addRoom(Room $room)
     {
         $this->rooms->attach($room);
     }
@@ -183,9 +184,9 @@ class Day extends AbstractValueObject
     /**
      * Removes a Room
      *
-     * @param \Eike\FrabIntegration\Domain\Model\Room $roomToRemove The Room to be removed
+     * @param Room $roomToRemove The Room to be removed
      */
-    public function removeRoom(\Eike\FrabIntegration\Domain\Model\Room $roomToRemove)
+    public function removeRoom(Room $roomToRemove)
     {
         $this->rooms->detach($roomToRemove);
     }
@@ -193,7 +194,7 @@ class Day extends AbstractValueObject
     /**
      * Returns the rooms
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Room> $rooms
+     * @return ObjectStorage<Room> $rooms
      */
     public function getRooms()
     {
@@ -203,9 +204,9 @@ class Day extends AbstractValueObject
     /**
      * Sets the rooms
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Eike\FrabIntegration\Domain\Model\Room> $rooms
+     * @param ObjectStorage<Room> $rooms
      */
-    public function setRooms(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $rooms)
+    public function setRooms(ObjectStorage $rooms)
     {
         $this->rooms = $rooms;
     }
